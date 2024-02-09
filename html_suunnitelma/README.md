@@ -1,0 +1,1 @@
+Tähän kansioon laitettu frontend integroidaan myöhemmin resources kansioon
