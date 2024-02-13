@@ -129,10 +129,6 @@
                 dismissible: true
             })
         @endif
-        notyf.success({
-                message: 'test',
-                dismissible: true
-            })
     </script>
 </body>
 </html>

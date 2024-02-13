@@ -2,10 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
 }
 
 #container {
@@ -67,8 +63,13 @@ main#adventure-list {
 	border: 2px solid black;
 }
 
+.adventure-box h2 {
+    margin-bottom: 10px;
+}
+
 .adventure-box .adventure-stats {
 	font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #scenario-title {
@@ -91,4 +92,17 @@ aside.background-info {
 #description, #intro, #scenario, #monsters, #characters {
 	border-bottom: 2px solid black;
 	margin-bottom: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .adventure-box {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #page-header {
+        display: flex;
+        flex-direction: column;
+    }
 }
