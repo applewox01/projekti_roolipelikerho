@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: transparent;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #000000;
+    font-size: 16px;
+    height: 100%;
+    outline: 0;
+    padding: 4px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.30);
+}
+
+.btn {
+    background-color: #007bff;
+    border: 0;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    transition: ease-in-out 0.3s;
+    border: 1px solid #fff;
+}
+
+.btn:hover {
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #007bff;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    margin-right: 8px;
+    outline: none;
+    transition: background-color 0.4s;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #007bff;
+}
+
+label:hover input[type="checkbox"] {
+    border-color: #007bff;
+}
+
+label span {
+    font-size: 14px;
+}

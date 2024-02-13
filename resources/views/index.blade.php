@@ -6,14 +6,22 @@
     <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index/app.css') }}">
     <title>Seikkailijoiden kilta</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js" defer></script>
 </head>
 <body>
     <div id="container">
 		<header id="page-header">
 			<a class="guild-link">Seikkailijoiden kilta</a>
-			<a class="login-link" href="#">
+            @if (Auth::check())
+            <a class="login-link" href="{{ route('dashboard') }}">
+				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
+			</a>
+            @else
+            <a class="login-link" href="{{ route('login') }}">
 				Kirjaudu <i class="fa-solid fa-dungeon"></i>
 			</a>
+            @endif
 		</header>
 
 			<br>
@@ -107,5 +115,26 @@
 
 		</main>
 	</div>
+    <script type="module">
+        const notyf = new Notyf({
+            duration: 5000,
+            position: {
+                x: 'right',
+                y: 'top',
+            },
+        });
+        @if($errors->any())
+            notyf.error({
+                message: '{{ $errors->first() }}',
+                dismissible: true
+            })
+        @endif
+        @if(session('success'))
+            notyf.success({
+                message: '{{ session('success') }}',
+                dismissible: true
+            })
+        @endif
+    </script>
 </body>
 </html>
