@@ -14,7 +14,7 @@
 		<header id="page-header">
 			<a class="guild-link">Seikkailijoiden kilta</a>
             @if (Auth::check())
-            <a class="login-link" href="{{ route('login') }}">
+            <a class="login-link" href="{{ route('dashboard') }}">
 				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
 			</a>
             @else
