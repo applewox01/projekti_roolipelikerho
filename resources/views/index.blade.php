@@ -13,9 +13,15 @@
     <div id="container">
 		<header id="page-header">
 			<a class="guild-link">Seikkailijoiden kilta</a>
-			<a class="login-link" href="{{ route('login') }}">
+            @if (Auth::check())
+            <a class="login-link" href="{{ route('login') }}">
+				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
+			</a>
+            @else
+            <a class="login-link" href="{{ route('login') }}">
 				Kirjaudu <i class="fa-solid fa-dungeon"></i>
 			</a>
+            @endif
 		</header>
 
 			<br>
