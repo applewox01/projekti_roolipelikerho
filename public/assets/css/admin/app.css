@@ -28,3 +28,73 @@ body::-webkit-scrollbar {
     padding: 0;
     box-sizing: border-box;
 }
+
+.container {
+    display: flex;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 2px solid var(--border);
+    padding: 10px;
+    height: 100vh;
+}
+
+aside nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.navigation-buttons {
+    height: 85vh;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin-bottom: 24px;
+}
+
+.col div {
+    color: var(--text);
+    font-size: 14px;
+    text-align: center;
+    width: fit-content;
+}
+
+.col div i {
+    font-size: 30px;
+}
+
+.content {
+    padding: 10px;
+    margin-left: 20px;
+    width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    .col div p {
+        display: none;
+    }
+
+    .col div i {
+        font-size: 20px;
+    }
+
+    .content {
+        padding: 5px;
+        margin-left: 10px;
+    }
+}

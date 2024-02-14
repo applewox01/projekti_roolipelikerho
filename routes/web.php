@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Landing page
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 //Registeration page
 Route::get('/register', [AuthController::class, 'register'] )->name('register')->middleware('guest');
