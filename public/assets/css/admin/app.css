@@ -1,0 +1,30 @@
+@font-face {
+    font-family: Demon Slayer;
+    src: url('../../fonts/DragonSlayer-2Oe7d.ttf');
+}
+
+:root {
+    --main: #51A5C5;
+    --background: #51A5C5;
+    --text: #000000;
+    --border: #2A50A1;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    font-family: Demon Slayer, sans-serif;
+    background-color: var(--background);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
