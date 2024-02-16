@@ -1,0 +1,60 @@
+@font-face {
+    font-family: Demon Slayer;
+    src: url('../../fonts/DragonSlayer-2Oe7d.ttf');
+}
+
+:root {
+    --main: #51A5C5;
+    --background: #51A5C5;
+    --text: #000000;
+    --border: #2A50A1;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Demon Slayer, sans-serif;
+    background-color: var(--background);
+}
+
+#scenario-name {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+}
+
+#panel {
+    background-color: var(--main);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 150px;
+    overflow-y: auto;
+    border-right: 2px solid var(--border);
+}
+
+.icon-box {
+    margin: 10px auto;
+    width: 65%;
+    text-align: center;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 20px;
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.icon-box:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
