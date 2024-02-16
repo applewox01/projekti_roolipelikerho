@@ -95,11 +95,17 @@ main#adventure-list {
 .adventure-box {
     width: 32%;
     border-radius: 20px;
-	padding: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: lightgray;
-	border: 2px solid black;
+    border: 2px solid black;
+    transition: box-shadow 0.3s ease;
+}
+
+.adventure-box:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .adventure-box .adventure-stats {
