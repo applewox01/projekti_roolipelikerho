@@ -1,0 +1,180 @@
+@font-face {
+    font-family: Demon Slayer;
+    src: url('../../fonts/DragonSlayer-2Oe7d.ttf');
+}
+
+:root {
+    --main: #51A5C5;
+    --background: #51A5C5;
+    --text: #000000;
+    --border: #2A50A1;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    font-family: Demon Slayer, sans-serif;
+    background-color: var(--background);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 2px solid var(--border);
+    padding: 10px;
+    height: 100vh;
+}
+
+aside nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.navigation-buttons {
+    height: 85vh;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin-bottom: 24px;
+}
+
+.col div {
+    color: var(--text);
+    font-size: 14px;
+    text-align: center;
+    width: fit-content;
+}
+
+.col div i {
+    font-size: 30px;
+}
+
+.content {
+    padding: 10px;
+    margin-left: 20px;
+    width: 100%;
+}
+
+.content-box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 24px;
+}
+
+.content-box h1 {
+    color: var(--text);
+    font-size: 16px;
+}
+
+.form-box {
+    display: flex;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 20px;
+    margin-bottom: 24px;
+    border: 2px solid var(--border);
+    width: fit-content;
+}
+
+.form-container {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    background-color: transparent;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: var(--text);
+    font-size: 16px;
+    height: 100%;
+    outline: 0;
+    padding: 4px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.30);
+}
+
+@media screen and (max-width: 500px) {
+    .col div p {
+        display: none;
+    }
+
+    .col div i {
+        font-size: 20px;
+    }
+
+    .content {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .form-box {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .navigation-buttons {
+        height: 100%;
+    }
+
+    aside {
+        border-right: none;
+    }
+}
