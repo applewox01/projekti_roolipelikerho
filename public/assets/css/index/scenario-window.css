@@ -1,0 +1,68 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#scenario-name {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#panel {
+    background-color: lightgray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 150px;
+    overflow-y: auto;
+}
+
+.icon-box {
+    margin: 10px auto;
+    width: 65%;
+    text-align: center;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 10px;
+}
+
+
+.icon-box:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.moveable_window {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: grab;
+    display: none;
+}
+
+.moveable_window .header {
+    background-color: lightgray;
+    padding: 5px;
+    cursor: grab;
+}
+
+.moveable_window .header button {
+    float: right;
+    cursor: pointer;
+}
+
+.moveable_window.minimized {
+    display: none;
+}
