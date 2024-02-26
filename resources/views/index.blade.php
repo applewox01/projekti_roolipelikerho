@@ -26,10 +26,14 @@
 		</header>
 
 			<br>
-			@auth
 			<form method="POST" action="{{ route('index') }}" id="sort_form">
 				@csrf
 				<input id="search" type="search" placeholder="Hae" name="search" value="{{$search_by}}">
+				<script>
+					document.addEventListener("DOMContentLoaded", function(){
+						document.getElementById("dropdown").value = "{{$order_by}}";
+					});
+				</script>
 				<select id="dropdown" name="jarjestys">
 				<option value="">Järjestä</option>
 				<option value="name">A-Z</option>
@@ -57,10 +61,9 @@
 			@endif
 
 		</main>
-		@endauth
-		@guest
+		{{--@guest
 		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
-		@endguest
+		@endguest--}}
 	</div>
     <script type="module">
         const notyf = new Notyf({
