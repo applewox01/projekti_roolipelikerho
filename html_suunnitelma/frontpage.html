@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <title>Seikkailijoiden kilta</title>
+</head>
+<body>
+    <div id="container">
+		<header id="page-header">
+			<h1><i class="fa-brands fa-d-and-d"></i>
+				<a class="guild-link">Seikkailijoiden kilta</a></h1>
+			<a class="login-link" href="#">
+				Kirjaudu <i class="fa-solid fa-dungeon"></i>
+			</a>
+		</header>
+
+			<br>
+
+			<h3>
+				<a><input id="search" type="search" placeholder="Hae">
+				<select id="dropdown">
+				<option>Järjestä</option>
+				<option value="alphabetically">A-Z</option>
+				<option value="name">Nimi</option>
+				<option value="difficulty">Vaikeustaso</option>
+				<option value="players">Pelaajien määrä</option>
+				</select></a>
+			</h3>
+
+		    <br>
+
+		<main id="adventure-list">
+
+            <section class="adventure-box" id="adventureBox">
+				<h2><a><i class="fa-solid fa-scroll"></i> Title</a></h2>
+				<p class="adventure-stats">Lvl X-X, X-X hahmoa</p>
+				<p class="adventure-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ante id sapien hendrerit, vel pulvinar libero fermentum. Quisque consectetur mi et fringilla vehicula. Duis feugiat, purus eget cursus gravida, tellus mauris imperdiet leo, eu fermentum tortor elit sit amet elit. Sed tincidunt ligula a felis dapibus, vel pulvinar libero viverra. Etiam eget semper sapien.</p>
+			</section>
+
+			<section class="adventure-box">
+				<h2><a><i class="fa-solid fa-scroll"></i> Hylätty kääpiötemppeli</a></h2>
+				<p class="adventure-stats">Lvl 1-2, 3-6 hahmoa</p>
+				<p class="adventure-desc">Tapasitte muutama päivä sitten vanhan tuttavanne yhdessä kaupungin tavernoista, ja koska hän oli mielestään palveluksen velkaa, hän antoi teille löytämänsä dokumentin, jossa on kartta ja rakennuksen pohjapiirros. Kyseessä on kuulemma kääpiöiden hylkäämä paikka, josta saattaisi löytyä jotain aarteitakin.</p>
+			</section>
+
+		</main>
+	</div>
+        <script src="/resources/js/app.js"></script>
+</body>
+</html>

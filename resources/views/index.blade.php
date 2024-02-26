@@ -26,6 +26,7 @@
 		</header>
 
 			<br>
+			@auth
 			<form method="POST" action="{{ route('index') }}" id="sort_form">
 				@csrf
 				<input id="search" type="search" placeholder="Hae" name="search" value="{{$search_by}}">
@@ -61,9 +62,10 @@
 			@endif
 
 		</main>
-		{{--@guest
+		@endauth
+		@guest
 		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
-		@endguest--}}
+		@endguest
 	</div>
     <script type="module">
         const notyf = new Notyf({
