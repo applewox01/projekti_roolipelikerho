@@ -27,7 +27,7 @@
 
 			<br>
 			@if (isset($err))
-			<p>Ongelma hakiessa skenaarioita: {{$err}}</p>
+			<p>Ongelma skenaarioiden haussa: {{$err}}</p>
 			@else
 			@auth
 			<form method="POST" action="{{ route('index') }}" id="sort_form">
