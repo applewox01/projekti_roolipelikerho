@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,7 +71,7 @@
 		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
 		@endguest
 	</div>
-    <script type="module">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js">
         const notyf = new Notyf({
             duration: 5000,
             position: {
