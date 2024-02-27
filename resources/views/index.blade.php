@@ -26,10 +26,10 @@
 		</header>
 
 			<br>
+			@auth
 			@if (isset($err))
 			<p>Ongelma skenaarioiden haussa: {{$err}}</p>
 			@else
-			@auth
 			<form method="POST" action="{{ route('index') }}" id="sort_form">
 				@csrf
 				<input id="search" type="search" placeholder="Hae" name="search" value="{{$search_by}}">
@@ -65,11 +65,11 @@
 			@endif
 
 		</main>
+		@endif
 		@endauth
 		@guest
 		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
 		@endguest
-		@endif
 	</div>
     <script type="module">
         const notyf = new Notyf({
