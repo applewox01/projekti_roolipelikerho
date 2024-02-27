@@ -10,16 +10,11 @@ use Exception;
 class IndexController extends Controller
 {
     public function index() {
-        $scenarios = [];
         try {
             $scenarios = DB::table('scenarios')->get();
         }
         catch (Exception $e) {
-            return view("index",
-            [
-                'err' => $e->getMessage()
-            ]
-            );
+            return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
         }
         return view("index",
         [
@@ -32,7 +27,6 @@ class IndexController extends Controller
 
     public function sort_by() {
         try {
-        $scenarios = [];
         $order_by = trim(request()->get('jarjestys'));
         $search_by = trim(request()->get('search'));
         if ($search_by != '') {
@@ -44,11 +38,7 @@ class IndexController extends Controller
         };
         }
         catch (Exception $e) {
-            return view("index",
-            [
-                'err' => $e->getMessage()
-            ]
-            );
+            return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
         }
         return view("index",
         [
