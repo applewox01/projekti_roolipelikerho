@@ -114,6 +114,112 @@
                             </div>
                         </div>
 
+                        <div class="form-box">
+                            <div>
+                                <div class="form-group">
+                                    <label for="npcName">NPC Nimi</label>
+                                    <input type="text" id="npcName" name="npcName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="npcDescription">Kuvaus</label>
+                                    <textarea id="npcDescription" name="npcDescription" rows="5"></textarea>
+                                </div>
+                                <button class="btn" type="button">Poista <i class="fa-solid fa-trash"></i></button>
+                                <button class="btn" type="button">Uusi Hirviö</button>
+                            </div>
+                        </div>
+
+                        <div class="form-box">
+                            <div>
+                                <div class="form-group">
+                                    <label for="mnstrName">Hirviö Nimi</label>
+                                    <input type="text" id="mnstrName" name="mnstrName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mnstrCombat">Taistelutiedot</label>
+                                    <textarea id="mnstrCombat" name="mnstrCombat" rows="5"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mnstrExtraDetails">Lisätiedot</label>
+                                    <textarea id="mnstrExtraDetails" name="mnstrExtraDetails" rows="5"></textarea>
+                                </div>
+                                <button class="btn" type="button">Poista <i class="fa-solid fa-trash"></i></button>
+                                <button class="btn" type="button">Uusi NPC</button>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="mnstrDefense">Puolustus</label>
+                                    <input type="text" id="mnstrDefense" name="mnstrDefense">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mnstrHitPoints">Osumapisteet</label>
+                                    <input type="text" id="mnstrHitPoints" name="mnstrHitPoints">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mnstrXP">XP</label>
+                                    <input type="text" id="mnstrXP" name="mnstrXP">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mnstrLink">Linkki</label>
+                                    <input type="text" id="mnstrLink" name="mnstrLink">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-box">
+                            <div>
+                                <div class="form-group">
+                                    <label for="locationName">Paikan Nimi</label>
+                                    <input type="text" id="locationName" name="locationName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="locationDescription">Kuvaus</label>
+                                    <textarea id="locationDescription" name="locationDescription" rows="5"></textarea>
+                                </div>
+                                <button class="btn" type="button">Poista <i class="fa-solid fa-trash"></i></button>
+                                <button class="btn" type="button">Uusi Paikka</button>
+                            </div>
+                        </div>
+
+                        <div class="form-box">
+                            <div>
+                                <div class="form-group">
+                                    <label for="eventName">Tapahtuman Nimi</label>
+                                    <input type="text" id="eventName" name="eventName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="eventDescription">Kuvaus</label>
+                                    <textarea id="eventDescription" name="eventDescription" rows="5"></textarea>
+                                </div>
+                                <button class="btn" type="button">Poista <i class="fa-solid fa-trash"></i></button>
+                                <button class="btn" type="button">Uusi Tapahtuma</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-box">
+                            <div>
+                                <div class="form-group">
+                                    <label for="fileName">Liitteen Nimi</label>
+                                    <input type="text" id="fileName" name="fileName">
+                                </div>
+                                <div class="file-input">
+                                    <input type="file" name="file-input" id="file-input" class="file-input__input" />
+                                    <label class="file-input__label" for="file-input">
+                                        <div class="input-icon">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                    <button class="btn" type="button">Poista <i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn" type="button">Uusi Liite</button>
+                                </div>
+                                </div>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <button class="btn" type="submit">Luo Skenaario</button>
                     </div>
 
                     </form>
