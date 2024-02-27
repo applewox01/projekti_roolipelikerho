@@ -26,6 +26,9 @@
 		</header>
 
 			<br>
+			@if (isset($err))
+			<p>Ongelma hakiessa skenaarioita: {{$err}}</p>
+			@else
 			@auth
 			<form method="POST" action="{{ route('index') }}" id="sort_form">
 				@csrf
@@ -66,6 +69,7 @@
 		@guest
 		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
 		@endguest
+		@endif
 	</div>
     <script type="module">
         const notyf = new Notyf({
