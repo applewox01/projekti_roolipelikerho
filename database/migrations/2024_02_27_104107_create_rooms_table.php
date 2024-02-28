@@ -13,8 +13,16 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('scenario_id')->nullable();
+            $table->string('name');
+            $table->string('content')->nullable();
             $table->timestamps();
         });
+        if (Schema::hasColumn('rooms', 'scenario_id')) {
+            Schema::table('rooms', function (Blueprint $table) {
+                $table->foreign('scenario_id')->references('id')->on('scenarios')->onDelete('set null');
+            });
+        }
     }
 
     /**

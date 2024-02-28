@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('race');
+            $table->integer('level');
+            $table->string('class')->nullable();
+            $table->string('player_name')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }
