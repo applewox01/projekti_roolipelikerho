@@ -14,7 +14,7 @@ class IndexController extends Controller
             if (Auth::check()) {
             $scenarios = DB::table('scenarios')->get();
             } else {
-                $scenarios = [];
+                $scenarios = collect();
             }
         }
         catch (Exception $e) {
