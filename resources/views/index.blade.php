@@ -47,7 +47,6 @@
 
 		    <br>
 		<main id="adventure-list">
-
 			@if ($scenarios->count() == 0)
 			<p>Skenaarioita ei löydetty</p>
 			@else
