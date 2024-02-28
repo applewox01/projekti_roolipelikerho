@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index/app.css') }}">
-	<script src="{{ asset('assets/js/index.js') }}">
+	<script src="{{ asset('assets/js/index.js') }}"></script>
     <title>Seikkailijoiden kilta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js" defer></script>
 </head>
 <body>
     <div id="container">
@@ -71,7 +70,8 @@
 		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
 		@endguest
 	</div>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js">
+	<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script>
         const notyf = new Notyf({
             duration: 5000,
             position: {
