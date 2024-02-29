@@ -26,7 +26,10 @@
 
 			<br>
 			@if ($errors->has('get_scenarios'))
-			<p>Ongelma skenaarioiden haussa: {{$errors->first('get_scenarios')}}</p>
+			<p>Ongelma skenaarioiden haussa:</p>
+			<code>
+				{{$errors->first('get_scenarios')}}
+			</code>
 			@else
 			<form method="POST" action="{{ route('index') }}" id="sort_form">
 				@csrf
