@@ -4,18 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use \Auth;
 use Exception;
 
 class IndexController extends Controller
 {
     public function index() {
         try {
-            if (Auth::check()) {
             $scenarios = DB::table('scenarios')->get();
-            } else {
-                $scenarios = collect();
-            }
         }
         catch (Exception $e) {
             return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
@@ -31,7 +26,6 @@ class IndexController extends Controller
 
     public function sort_by() {
         try {
-        if (Auth::check()) {
             $order_by = trim(request()->get('jarjestys'));
             $search_by = trim(request()->get('search'));
             if ($search_by != '') {
@@ -41,9 +35,6 @@ class IndexController extends Controller
             } else {
                 $scenarios = DB::table('scenarios')->get();
             };
-        } else {
-            throw new Exception("Istunto päättynyt");
-        }
         }
         catch (Exception $e) {
             return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);

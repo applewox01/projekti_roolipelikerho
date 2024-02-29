@@ -25,7 +25,6 @@
 		</header>
 
 			<br>
-			@auth
 			@if ($errors->has('get_scenarios'))
 			<p>Ongelma skenaarioiden haussa: {{$errors->first('get_scenarios')}}</p>
 			@else
@@ -64,10 +63,6 @@
 
 		</main>
 		@endif
-		@endauth
-		@guest
-		<p>Kirjaudu sisään nähdäksesi skenaariosi</p>
-		@endguest
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script>
