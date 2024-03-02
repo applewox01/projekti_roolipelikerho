@@ -7,19 +7,27 @@ document.addEventListener("DOMContentLoaded", function(){
             document.addEventListener("mousemove", moveObject)
             function moveObject(event) {
                 event.preventDefault();
-                object.className = "window_moved";
+                object.style.position = "absolute";
                 const viewportWidth = window.innerWidth;
                 const viewportHeight = window.innerHeight;
                 const scrollX = window.scrollX;
                 const scrollY = window.scrollY;
+
+                let trueHeight = Number((object.style.height).replace('px', ''));
+                let trueWidth = Number((object.style.width).replace('px', ''));
+
                 //console.log(event.clientY)
-            
-                if (event.clientX < viewportWidth-(object.style.width) 
-                && event.clientY < viewportHeight-(object.style.height) 
-                && event.clientY-(object.style.height) > object.style.width 
-                && event.clientX-(object.style.width) > object.style.width) {
-                    object.style.top = (event.clientY + scrollY - 50) + "px"
-                    object.style.left = (event.clientX + scrollX - 65) + "px"
+
+                if (event.clientY-(trueHeight) > 0
+                    && event.clientY < viewportHeight-(0) ) {
+                    trueHeight = Number((object.style.height).replace('px', ''));
+                    object.style.top = (event.clientY + scrollY - (trueHeight)) + "px"
+                }
+                if (event.clientX-(trueWidth) > 0
+                    && event.clientX < viewportWidth-(0)) {
+                    trueWidth = Number((object.style.width).replace('px', ''));
+                    object.style.left = (event.clientX + scrollX - (trueWidth)) + "px"
+                    //ongelma on siinä, että width on pikseleissä, kuitenkin laskuja tehdään ilman niitä
                 }
             };
             

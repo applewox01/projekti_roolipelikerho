@@ -75,11 +75,11 @@
         <main>
 
 
-            <div class="moveable_window" style="background-color: white; min-width: 250px;">
+            <div class="moveable_window" style="background-color: white; width: 200px; height: 100px;">
                 <div style="display: flex;  background-color: grey;">
                     <p class="no-margin">Liitteet</p>
-                    <div style="height: 100%; background-color: lightblue; font-size: 30px;" class="material-icons">&#xe5ce;</div>
-                    <div style="height: fit-content; font-size: 30px; background-color: crimson;" class="fa">&#xf00d;</div>
+                        <div style="height: 100%; background-color: lightblue; font-size: 30px; margin-left: auto;" class="material-icons">&#xe5ce;</div>
+                        <div style="height: 100%; background-color: crimson; font-size: 30px;" class="fa">&#xf00d;</div>
                 </div>
                 <div>
                     <p>Hello world</p>

@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function(){
                 const scrollY = window.scrollY;
                 //console.log(event.clientY)
             
-                if (event.clientX < viewportWidth-(object.style.width) 
-                && event.clientY < viewportHeight-(object.style.height) 
-                && event.clientY-(object.style.height) > object.style.width 
-                && event.clientX-(object.style.width) > object.style.width) {
-                    object.style.top = (event.clientY + scrollY - 50) + "px"
-                    object.style.left = (event.clientX + scrollX - 65) + "px"
+                if (event.clientX < viewportWidth-(object.style.width-50) 
+                && event.clientY < viewportHeight-(object.style.height-50) 
+                && event.clientY-(object.style.height-50) > object.style.width 
+                && event.clientX-(object.style.width-50) > object.style.width) {
+                    object.style.top = (event.clientY + scrollY - (object.style.height)) + "px"
+                    object.style.left = (event.clientX + scrollX - (object.style.width)) + "px"
                 }
             };
             

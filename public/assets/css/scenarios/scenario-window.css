@@ -66,9 +66,16 @@ main {
 }
 
 .moveable_window {
+    min-height: 100px;
+    min-width: 200px;
     resize: both;
+    overflow: auto;
 }
 
 .window_moved {
+    min-height: 100px;
+    min-width: 200px;
     position: absolute;
+    resize: both;
+    overflow: auto;
 }
