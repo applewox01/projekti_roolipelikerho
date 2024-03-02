@@ -77,15 +77,15 @@
 
             <div class="moveable_window" style="background-color: white; width: 200px; height: 100px;">
                 <div style="display: flex;  background-color: grey;">
-                    <p class="no-margin">Liitteet</p>
-                        <div style="height: 100%; background-color: lightblue; font-size: 30px; margin-left: auto;" class="material-icons">&#xe5ce;</div>
+                    <p class="no-margin">Esimerkki</p>
+                        <div style="height: 100%; background-color: green; margin-left: auto;" class="move_here"><i style="font-size: 30px;" class="fas">&#xf0b2;</i></div>
+                        <div style="height: 100%; background-color: lightblue; font-size: 30px;" class="material-icons">&#xe5ce;</div>
                         <div style="height: 100%; background-color: crimson; font-size: 30px;" class="fa">&#xf00d;</div>
                 </div>
                 <div>
                     <p>Hello world</p>
                 </div>
             </div>
-
 
         </main>
 </body>
