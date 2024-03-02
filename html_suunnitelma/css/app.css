@@ -89,13 +89,13 @@ h1 {
 }
 
 main#adventure-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .adventure-box {
-    width: 32%;
     border-radius: 20px;
     padding: 10px;
     margin-top: 10px;
