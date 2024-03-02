@@ -77,10 +77,10 @@
 
             <div class="moveable_window" style="background-color: white; width: 200px; height: 100px;">
                 <div style="display: flex;  background-color: grey;">
-                    <p class="no-margin">Esimerkki</p>
-                        <div style="height: 100%; background-color: green; margin-left: auto;" class="move_here"><i style="font-size: 30px;" class="fas">&#xf0b2;</i></div>
-                        <div style="height: 100%; background-color: lightblue; font-size: 30px;" class="material-icons">&#xe5ce;</div>
-                        <div style="height: 100%; background-color: crimson; font-size: 30px;" class="fa">&#xf00d;</div>
+                    <p class="no-margin" style="width: 100%; text-overflow: ellipsis; overflow: hidden;">Esimerkki</p>
+                        <div style="height: 30px; width: 30px; background-color: green;" class="move_here"><i style="font-size: 30px; text-align: center;" class="fas">&#xf0b2;</i></div>
+                        <div style="height: 30px; width: 30px; background-color: lightblue;"><i style="font-size: 30px; text-align: center;" class="material-icons">&#xe5ce;</i></div>
+                        <div style="height: 30px; width: 30px; background-color: crimson;"><i style="font-size: 30px; text-align: center;" class="fa">&#xf00d;</i></div>
                 </div>
                 <div>
                     <p>Hello world</p>
