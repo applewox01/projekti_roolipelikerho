@@ -17,6 +17,7 @@ html {
 body {
     font-family: Demon Slayer, sans-serif;
     background-color: var(--background);
+    display: flex;
 }
 
 body::-webkit-scrollbar {
@@ -79,6 +80,7 @@ h1 {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+
 
 
 #page-header a {

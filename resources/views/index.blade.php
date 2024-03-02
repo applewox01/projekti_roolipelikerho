@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index/app.css') }}">
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index.css') }}">
 	<script src="{{ asset('assets/js/index.js') }}"></script>
     <title>Seikkailijoiden kilta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
@@ -12,7 +13,8 @@
 <body>
     <div id="container">
 		<header id="page-header">
-			<a class="guild-link">Seikkailijoiden kilta</a>
+			<h1><i class="fa-brands fa-d-and-d"></i>
+				<a class="guild-link">Seikkailijoiden kilta</a></h1>
             @if (Auth::check())
             <a class="login-link" href="{{ route('dashboard') }}">
 				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
@@ -26,6 +28,7 @@
 
 			<br>
 			@if ($errors->has('get_scenarios'))
+			<div class='fas fa-exclamation-triangle' style="font-size: 48px"></div>
 			<p>Ongelma skenaarioiden haussa:</p>
 			<code>
 				{{$errors->first('get_scenarios')}}
@@ -48,17 +51,19 @@
 			</form>
 
 		    <br>
-		<main id="adventure-list">
 			@if ($scenarios->count() == 0)
+			<div class='fas fa-list-alt' style="font-size: 48px"></div>
 			<p>Skenaarioita ei löydetty</p>
-			@else
+			@endif
+		<main id="adventure-list">
+			@if ($scenarios->count() != 0)
 			@foreach ($scenarios as $scenario)
 			<section class="adventure-box">
-				{{--<a href="{{ route('scenario?id='.$scenario->id.'') }}">--}}
+				<a href="{{ route('scenario') }}?id='{{$scenario->id}}'">
 				<h2><a><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</a></h2>
 				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest}}-{{$scenario->lvl_highest}}, {{$scenario->plr_least}}-{{$scenario->plr_most}} hahmoa</p>
 				<p class="adventure-desc">{{$scenario->description}}</p>
-				{{--</a>--}}
+				</a>
 			</section>	
 			@endforeach
 

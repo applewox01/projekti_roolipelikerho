@@ -22,6 +22,11 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::post('/', [IndexController::class, 'sort_by'])->name('index');
 
+// 'Scenario' page
+Route::get('/scenario', function(){
+    return view('scenarios.scenario');
+})->name('scenario');
+
 //Registeration page
 Route::get('/register', [AuthController::class, 'register'] )->name('register')->middleware('guest');
 

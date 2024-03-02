@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/scenario-window.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/scenarios/scenario-window.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/drag_windows.js"></script>
-    <title>Scenario window</title>
+    <script src="{{asset('assets/js/drag_windows.js')}}"></script>
+    <title>Skenaario</title>
 </head>
 <body>
     <aside id="panel">
@@ -65,7 +65,7 @@
             </div>
             <br>
             <div class="icon-box">
-                <a>
+                <a href="{{route('index')}}">
                     <h2><i class="fa-solid fa-dungeon"></i></h2>
                     <p>Takaisin kiltaan</p>
                 </a>
