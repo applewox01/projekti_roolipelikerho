@@ -23,15 +23,13 @@ document.addEventListener("DOMContentLoaded", function(){
                             trueWidth = 600
                         }
         
-        
-                        if (event.clientY > 0 
-                            && object.style.top - trueHeight < viewportHeight) {
+                        if (event.clientY - 15 > 0 
+                            && event.clientY + trueHeight - 15 < viewportHeight) {
                             object.style.top = (event.clientY - 15) + "px";
                        }
-                        if (event.clientX + (trueWidth - 75) > 150-trueWidth + 75
+                        if (event.clientX - (trueWidth - 75) > 150
                             && event.clientX + (75) < viewportWidth) {
                             object.style.left = (event.clientX - trueWidth + 75) + "px";
-
                         }
                     };
                     
