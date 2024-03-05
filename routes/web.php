@@ -38,7 +38,7 @@ Route::get('/login', [AuthController::class, 'login'] )->name('login')->middlewa
 Route::post('/login', [AuthController::class, 'authenticate'] )->middleware('guest');
 
 //Logout
-Route::get('/logout', [AuthController::class, 'logout'] )->middleware('auth');
+Route::get('/logout', [AuthController::class, 'logout'] )->middleware('auth')->name('logout');
 
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'render'] )->middleware('auth')->name('dashboard');

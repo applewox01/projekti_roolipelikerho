@@ -16,9 +16,14 @@
 			<h1><i class="fa-brands fa-d-and-d"></i>
 				<a class="guild-link">Seikkailijoiden kilta</a></h1>
             @if (Auth::check())
-            <a class="login-link" href="{{ route('dashboard') }}">
+			<div style="margin: 0; height: 100%;" class="list_after_login">
+            <a class="login-link" href="{{ route('dashboard') }}" style="height: 50%; display: block;"> 
 				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
 			</a>
+			<a class="login-link" href="{{ route('logout') }}" style="height: 50%; display: block;">
+				<i class='fas'>&#xf52b;</i> Kirjaudu ulos
+			</a>
+			</div>
             @else
             <a class="login-link" href="{{ route('login') }}">
 				Kirjaudu <i class="fa-solid fa-dungeon"></i>

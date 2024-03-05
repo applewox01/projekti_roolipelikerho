@@ -75,14 +75,14 @@
         <main>
 
 
-            <div class="moveable_window" style="background-color: white; width: 200px; height: 100px;">
+            <div class="moveable_window" style="width: 200px; height: 100px;">
                 <div style="display: flex;  background-color: grey;">
                     <p class="window_name">Esimerkki</p>
                         <div class="move_window"><i style="font-size: 30px; text-align: center;" class="fas">&#xf0b2;</i></div>
                         <div class="hide_window"><i style="font-size: 30px; text-align: center;" class="material-icons">&#xe5ce;</i></div>
                         <div class="close_window"><i style="font-size: 30px; text-align: center;" class="fa">&#xf00d;</i></div>
                 </div>
-                <div class="window_content" style="display: none;">
+                <div class="window_content" style="display: inline-block;">
                     <p>Hello world</p>
                 </div>
             </div>

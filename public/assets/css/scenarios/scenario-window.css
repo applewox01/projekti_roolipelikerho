@@ -5,7 +5,7 @@
 
 :root {
     --main: #51A5C5;
-    --background: #51A5C5;
+    --background: #86b2c4;
     --text: #000000;
     --border: #2A50A1;
 }
@@ -59,6 +59,9 @@ body {
 
 main {
     height: 100vh;
+    width: calc(100vw - 150px);
+    background-image:url("../../textures/grid.png");
+    background-repeat: repeat;
 }
 
 .no-margin {
@@ -94,7 +97,14 @@ main {
     min-height: 100px;
     max-height: 600px;
     min-width: 200px;
-    max-width: 500px;
+    max-width: 600px;
     resize: both;
     overflow: auto;
+}
+
+.window_content {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
 }
