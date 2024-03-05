@@ -13,12 +13,13 @@ document.addEventListener("DOMContentLoaded", function(){
                         let viewportHeight = window.innerHeight;
                         object.style.opacity = 0.5;
                         object.style["pointer-events"] = "none";
-        
-                        let trueHeight = Number((object.style.height).replace('px', ''));
+                        
+                        let trueHeight = Number((object.querySelectorAll(".window_content")[0].style.height).replace('px', ''));
                         if (trueHeight > 600) {
                             trueHeight = 600
                         }
-                        let trueWidth = Number((object.style.width).replace('px', ''));
+                        trueHeight += 30;
+                        let trueWidth = Number((object.querySelectorAll(".window_content")[0].style.width).replace('px', ''));
                         if (trueWidth > 600) {
                             trueWidth = 600
                         }
@@ -47,8 +48,10 @@ document.addEventListener("DOMContentLoaded", function(){
             child.addEventListener("click", function(){
                 for (let content of object.querySelectorAll(".window_content")) {
                     if (content.style.display == "none") {
+                        child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe5ce;"
                         content.style.display = "inline-block";
                     } else {
+                        child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe313;"
                         content.style.display = "none";
                     }
                     break
