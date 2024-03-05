@@ -56,5 +56,11 @@ document.addEventListener("DOMContentLoaded", function(){
             })
             break
         }
+        for (let child of object.querySelectorAll(".close_window")) {
+            child.addEventListener("click", function(){
+                        object.style.display = "none";
+            })
+            break
+        }
     };
 })

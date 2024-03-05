@@ -60,7 +60,7 @@ body {
 main {
     height: 100vh;
     width: calc(100vw - 150px);
-    background-image:url("../../textures/grid.png");
+    background-image:url("textures/grid.png");
     background-repeat: repeat;
 }
 

@@ -83,7 +83,9 @@
                         <div class="close_window"><i style="font-size: 30px; text-align: center;" class="fa">&#xf00d;</i></div>
                 </div>
                 <div class="window_content" style="display: inline-block;">
+                <div>
                     <p>Hello world</p>
+                </div>
                 </div>
             </div>
 
