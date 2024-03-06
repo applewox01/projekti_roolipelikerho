@@ -49,6 +49,20 @@ body::-webkit-scrollbar {
 	font-style: italic;
 }
 
+@media screen and (max-width: 825px) {
+    #page-header {
+        display: block;
+        text-align: center;
+    }
+    .login_link {
+        width: 100%;
+        text-align: center;
+    }
+    .guild_link {
+        text-align: center;
+    }
+}
+
 h1 {
 	font-size: 35px;
 }

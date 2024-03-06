@@ -33,7 +33,7 @@
 
 			<br>
 			@if ($errors->has('get_scenarios'))
-			<div class='fas fa-exclamation-triangle' style="font-size: 48px"></div>
+			<div class='fas fa-exclamation-triangle' style="font-size: 24px"></div>
 			<p>Ongelma skenaarioiden haussa:</p>
 			<code>
 				{{$errors->first('get_scenarios')}}
@@ -57,7 +57,7 @@
 
 		    <br>
 			@if ($scenarios->count() == 0)
-			<div class='fas fa-list-alt' style="font-size: 48px"></div>
+			<div class='fas' style="font-size: 24px">&#xf49e;</div>
 			<p>Skenaarioita ei löydetty</p>
 			@endif
 		<main id="adventure-list">
