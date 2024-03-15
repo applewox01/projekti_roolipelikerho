@@ -36,20 +36,21 @@ body {
 #panel {
     background-color: var(--main);
     height: 100vh;
-    width: 150px;
+    width: 180px;
     overflow-y:scroll;
     border-right: 2px solid var(--border);
 }
 
 .icon-box {
-    margin: 10px auto;
-    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 75%;
     text-align: center;
     background-color: lightgray;
     border: 2px solid black;
     border-radius: 20px;
     transition: box-shadow 0.3s ease;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 .icon-box:hover {

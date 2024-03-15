@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ScenarioController;
 use App\Http\Controllers\ScenariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,9 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::post('/', [IndexController::class, 'sort_by'])->name('index');
 
 // 'Scenario' page
-Route::get('/scenario', function(){
-    return view('scenarios.scenario');
-})->name('scenario');
+Route::get('/scenario/{id}', [ScenarioController::class, 'index'])->name("scenario");
+
+Route::redirect('/scenario', "/");
 
 //Registeration page
 Route::get('/register', [AuthController::class, 'register'] )->name('register')->middleware('guest');

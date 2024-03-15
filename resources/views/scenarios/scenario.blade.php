@@ -7,61 +7,58 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/scenarios/scenario-window.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="{{asset('assets/js/drag_windows.js')}}"></script>
     <title>Skenaario</title>
 </head>
 <body>
     <aside id="panel">
-        <header id="scenario-name">
             <a>Skenaarion nimi</a>
-        </header>
         <br>
         <section id="icons">
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-people-line"></i></a></h2>
-                <p><a>Pelaajat</a></p>
+                <h2><i class="fa-solid fa-people-line"></i></h2>
+                <p>Pelaajat</p>
             </div>            
             <br>
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-person"></i></a></h2>
-                <p><a>NPC:t</a></p>
+                <h2><i class="fa-solid fa-person"></i></h2>
+                <p>NPC:t</p>
             </div>
             <br>
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-dragon"></i></a></h2>
-                <p><a>Hirviöt</a></p>
+                <h2><i class="fa-solid fa-dragon"></i></h2>
+                <p>Hirviöt</p>
             </div>
             <br>
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-book-open"></i></a></h2>
-                <p><a>Kuvaus</a></p>
+                <h2><i class="fa-solid fa-book-open"></i></h2>
+                <p>Kuvaus</p>
             </div>
             <br>
             <div class="icon-box">
                 <h2><a><i class="fa-solid fa-book"></i></a></h2>
-                <p><a>Tausta-
-                    tiedot</a></p>
+                <p>Taustatiedot</p>
             </div>
             <br>
             <div class="icon-box">
                 <h2><a><i class="fa-solid fa-map-location-dot"></i></a></h2>
-                <p><a>Kartta</a></p>
+                <p>Kartta</a></p>
             </div>
             <br>
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-signs-post"></i></a></h2>
-                <p><a>Paikat</a></p>
+                <h2><a><i class="fa-solid fa-signs-post"></i></h2>
+                <p>Paikat</p>
             </div>
             <br>
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-calendar-days"></i></a></h2>
-                <p><a>Tapah-
-                    tumat</a></p>
+                <h2><a><i class="fa-solid fa-calendar-days"></i></h2>
+                <p>Tapahtumat</p>
             </div>
             <br>
             <div class="icon-box">
-                <h2><a><i class="fa-solid fa-paperclip"></i></a></h2>
-                <p><a>Liitteet</a></p>
+                <h2><i class="fa-solid fa-paperclip"></i></h2>
+                <p>Liitteet</p>
             </div>
             <br>
             <div class="icon-box">
@@ -87,5 +84,27 @@
             </div>
 
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+        <script>
+            const notyf = new Notyf({
+                duration: 5000,
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+            });
+            @if($errors->any())
+                notyf.error({
+                    message: '{{ $errors->first() }}',
+                    dismissible: true
+                })
+            @endif
+            @if(session('success'))
+                notyf.success({
+                    message: '{{ session('success') }}',
+                    dismissible: true
+                })
+            @endif
+        </script>
 </body>
 </html>
