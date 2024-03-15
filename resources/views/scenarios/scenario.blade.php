@@ -74,9 +74,8 @@
     </aside>
         <main>
 
-
             <div class="moveable_window">
-                <div style="display: flex;  background-color: grey;">
+                <div class="window_info">
                     <p class="window_name">Esimerkki</p>
                         <div class="move_window"><i style="font-size: 30px; text-align: center;" class="fas">&#xf0b2;</i></div>
                         <div class="hide_window"><i style="font-size: 30px; text-align: center;" class="material-icons">&#xe5ce;</i></div>

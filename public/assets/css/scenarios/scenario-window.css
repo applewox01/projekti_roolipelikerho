@@ -99,6 +99,11 @@ main {
     height: fit-content;
 }
 
+.window_info {
+    display: flex;  
+    background-color: grey;
+}
+
 .window_content {
     background-color: white;
     width: fit-content;

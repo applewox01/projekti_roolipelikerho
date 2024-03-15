@@ -49,9 +49,11 @@ document.addEventListener("DOMContentLoaded", function(){
                 for (let content of object.querySelectorAll(".window_content")) {
                     if (content.style.display == "none") {
                         child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe5ce;"
+                        child.parentNode.style.width = "100%";
                         content.style.display = "inline-block";
                     } else {
                         child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe313;"
+                        child.parentNode.style.width = content.style.width;
                         content.style.display = "none";
                     }
                     break
