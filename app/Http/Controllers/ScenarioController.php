@@ -11,7 +11,11 @@ class ScenarioController extends Controller
     public function index($id) {
         try {
             //load basic scenario info, monsters and characters related, rooms, npcs, and events
-            $scenario_info = DB::table('scenarios')->where("id",$id)->select('name','admin_desc','description')->first();
+            if (DB::table('scenarios')->where("id",$id)->doesntExist()) {
+                throw new Exception("Skenaarion tietoja ei löydetty! (ID: $id)");
+            } else {
+                $scenario_info = DB::table('scenarios')->where("id",$id)->select('name','admin_desc','background_info')->first();
+            }
             /*$rooms = DB::table('rooms')->where("scenario_id",$id)->get();
             $monsters = DB::table('monsters')->where("scenario_id",$id)->get();
             $npcs = DB::table('npcs')->where("scenario_id",$id)->get();
@@ -28,11 +32,11 @@ class ScenarioController extends Controller
             [
                 'name' => $scenario_info->name,
                 'admin_desc' => $scenario_info->admin_desc,
-                'description' => $scenario_info->description
+                'background_info' => $scenario_info->background_info
             ]);
         }
         catch(Exception $e) {
-            return view('scenarios.scenario')->withErrors(["load_scenario"=> $e->getMessage()]);
+            return view('scenarios.scenario',['id' => $id])->withErrors(["load_scenario"=> $e->getMessage()]);
         }   
     }
 

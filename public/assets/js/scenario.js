@@ -1,6 +1,17 @@
 
 document.addEventListener("DOMContentLoaded", function(){
     const objects = document.getElementsByClassName("moveable_window");
+    const icons = document.getElementsByClassName("icon-box");
+    for (let icon of icons) {
+        icon.addEventListener("click", function(){
+            const icon_window = document.getElementById(`${icon.id}_window`)
+            if (icon_window.style.display == "none") {
+                icon_window.style.display = "block";
+            } else {
+                icon_window.style.display = "none";
+            }
+        })
+    }
     for (let object of objects) {
         for (let child of object.querySelectorAll(".move_window")) {
                 child.addEventListener("mousedown", function(){
