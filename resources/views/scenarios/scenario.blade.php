@@ -30,47 +30,47 @@
     <aside id="panel">
             <p style="text-align: center">{{$name}}</p>
         <section id="icons">
-            <div class="icon-box" id="pelaajat">
+            <div class="icon-box" id="characters">
                 <h2><i class="fa-solid fa-people-line"></i></h2>
                 <p>Pelaajat</p>
             </div>            
             <br>
-            <div class="icon-box" id="npc">
+            <div class="icon-box" id="npcs">
                 <h2><i class="fa-solid fa-person"></i></h2>
                 <p>NPC:t</p>
             </div>
             <br>
-            <div class="icon-box" id="hirviot">
+            <div class="icon-box" id="monsters">
                 <h2><i class="fa-solid fa-dragon"></i></h2>
                 <p>Hirviöt</p>
             </div>
             <br>
-            <div class="icon-box" id="kuvaus">
+            <div class="icon-box" id="description">
                 <h2><i class="fa-solid fa-book-open"></i></h2>
                 <p>Kuvaus</p>
             </div>
             <br>
-            <div class="icon-box" id="taustatiedot">
+            <div class="icon-box" id="background_info">
                 <h2><a><i class="fa-solid fa-book"></i></a></h2>
                 <p>Taustatiedot</p>
             </div>
-            <br>
-            <div class="icon-box" id="kartta">
+            <!--<br>
+            <div class="icon-box" id="map">
                 <h2><a><i class="fa-solid fa-map-location-dot"></i></a></h2>
                 <p>Kartta</a></p>
-            </div>
+            </div>-->
             <br>
-            <div class="icon-box" id="paikat">
+            <div class="icon-box" id="rooms">
                 <h2><a><i class="fa-solid fa-signs-post"></i></h2>
                 <p>Paikat</p>
             </div>
             <br>
-            <div class="icon-box" id="tapahtumat">
+            <div class="icon-box" id="events">
                 <h2><a><i class="fa-solid fa-calendar-days"></i></h2>
                 <p>Tapahtumat</p>
             </div>
             <br>
-            <div class="icon-box" id="liitteet">
+            <div class="icon-box" id="attachments">
                 <h2><i class="fa-solid fa-paperclip"></i></h2>
                 <p>Liitteet</p>
             </div>
@@ -85,16 +85,27 @@
     </aside>
         <main>
 
-
-            <div class="moveable_window" id="taustatiedot_window" style="display: none;">
+            @php
+                $windows = array(["background_info","Taustatiedot"],
+                ["characters","Pelaajat"]/*,
+                ["npcs","NPC:t"],
+                ["monsters","Hirviöt"],
+                ["attachments","Liitteet"],
+                ["events","Tapahtumat"],
+                ["rooms","Paikat"],
+                ["description","Kuvaus"]*/)
+            @endphp
+            @foreach ($windows as $window) 
+            <div class="moveable_window" id="{{$window[0]}}_window" style="display: none;">
                 <div class="window_info">
-                    <p class="window_name">Taustatiedot</p>
+                    <p class="window_name">{{$window[1]}}</p>
                         <div class="move_window"><i style="font-size: 30px; text-align: center;" class="fas">&#xf0b2;</i></div>
                         <div class="hide_window"><i style="font-size: 30px; text-align: center;" class="material-icons">&#xe5ce;</i></div>
                         <div class="close_window"><i style="font-size: 30px; text-align: center;" class="fa">&#xf00d;</i></div>
                 </div>
-                    @include("scenarios.windows.background_info")
+                    @include("scenarios.windows.".$window[0])
             </div>
+            @endforeach
 
         </main>
         @endif

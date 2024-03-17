@@ -28,6 +28,7 @@ Route::get('/scenario/{id}', [ScenarioController::class, 'index'])->name("scenar
 
 Route::redirect('/scenario', "/");
 
+
 //Registeration page
 Route::get('/register', [AuthController::class, 'register'] )->name('register')->middleware('guest');
 
@@ -43,3 +44,8 @@ Route::get('/logout', [AuthController::class, 'logout'] )->middleware('auth')->n
 
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'render'] )->middleware('auth')->name('dashboard');
+
+// Invite codes
+Route::get('admin/invitecodes', function(){
+return view("admin.invitecodes");
+})->name("invitecodes");
