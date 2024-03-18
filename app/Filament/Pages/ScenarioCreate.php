@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -59,6 +60,8 @@ class ScenarioCreate extends Page implements HasForms
                 TextInput::make('admin_desc')
                     ->label('Ylläpidon kuvaus')
                     ->required(),
+                FileUpload::make('attachments')
+                    ->multiple()
             ])
             ->statePath('data')
             ->live();
