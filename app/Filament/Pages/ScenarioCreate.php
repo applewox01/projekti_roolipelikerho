@@ -68,7 +68,7 @@ class ScenarioCreate extends Page implements HasForms
     }
 
     public function create() {
-        dd($this->data, $this->npcs, $this->monsters, $this->places, $this->events);
+        dd($this->data, $this->npcs, $this->monsters, $this->places, $this->events, $this->data['attachments']);
     }
 
     public function addNpcField()

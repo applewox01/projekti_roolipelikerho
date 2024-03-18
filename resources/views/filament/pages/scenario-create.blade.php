@@ -243,7 +243,7 @@
                     tag="button"
                     type="submit"
                 >
-                Päivitä
+                Luo Skenaario
             </x-filament::button>
         </form>
 
