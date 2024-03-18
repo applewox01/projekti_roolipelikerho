@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Demon Slayer;
+    src: url('../fonts/DragonSlayer-2Oe7d.ttf');
+}
+
+* {
+    margin: 0;
+    font-family: Demon Slayer;
+}

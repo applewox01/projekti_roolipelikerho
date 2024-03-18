@@ -36,20 +36,21 @@ body {
 #panel {
     background-color: var(--main);
     height: 100vh;
-    width: 150px;
+    width: 180px;
     overflow-y:scroll;
     border-right: 2px solid var(--border);
 }
 
 .icon-box {
-    margin: 10px auto;
-    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 75%;
     text-align: center;
     background-color: lightgray;
     border: 2px solid black;
     border-radius: 20px;
     transition: box-shadow 0.3s ease;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 .icon-box:hover {
@@ -72,6 +73,7 @@ main {
     width: 100%; 
     text-overflow: ellipsis; 
     overflow: hidden; 
+    vertical-align: middle;
     margin: 0;
 }
 
@@ -79,6 +81,7 @@ main {
     height: 30px; 
     width: 30px; 
     background-color: green;
+    cursor: move;
 }
 
 .hide_window {
@@ -98,6 +101,11 @@ main {
     height: fit-content;
 }
 
+.window_info {
+    display: flex;  
+    background-color: grey;
+}
+
 .window_content {
     background-color: white;
     width: fit-content;
@@ -105,7 +113,5 @@ main {
     resize: both;
     overflow: auto;
     min-height: 100px;
-    max-height: 600px;
     min-width: 200px;
-    max-width: 600px;
 }

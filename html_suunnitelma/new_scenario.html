@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/new_scenario.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Scenario window</title>
+</head>
+<body>
+    <aside id="panel">
+        <header id="scenario-name">
+            <a>UUsi skenaario</a>
+        </header>
+        <br>
+        <section id="icons">
+            <div class="icon-box">
+                <h2><a><i class="fa-solid fa-scroll"></i></a></h2>
+                <p><a>Skenaariot</a></p>
+            </div>            
+            <br>
+            <div class="icon-box">
+                <h2><a><i class="fa-solid fa-users-gear"></i></a></h2>
+                <p><a>KÃ¤yttÃ¤jÃ¤t</a></p>
+            </div>
+            <br>
+            <div class="icon-box">
+                <h2><a><i class="fa-solid fa-hat-wizard"></i></a></h2>
+                <p><a>Hahmot</a></p>
+            </div>
+            <br>
+
+            <div class="icon-box">
+                <h2><i class="fa-solid fa-dungeon"></i></h2>
+                <p>Takaisin kiltaan</p>
+            </div>
+        </section>
+    </aside>
+
+    <section class="custom-box">
+        <h2>Perustiedot</h2>
+        <form>
+            <div>
+                <label for="name">Nimi</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div>
+                <label for="description">Kuvaus</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <div>
+                <label for="gm_description">Kuvaus pelinjohtajalle</label>
+                <textarea id="gm_description" name="gm_description"></textarea>
+            </div>
+            <div>
+                <label for="background_info">Taustatiedot</label>
+                <textarea id="background_info" name="background_info"></textarea>
+            </div>
+                    <div class="form-group">
+                        <label for="players">Hahmojen mÃ¤Ã¤rÃ¤</label>
+                        <div class="range-input">
+                            <input type="text" id="players1" name="players1">
+                            <span> - </span>
+                            <input type="text" id="players2" name="players2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="level">Hahmojen kokemustaso</label>
+                        <div class="range-input">
+                            <input type="text" id="level1" name="level1">
+                            <span> - </span>
+                            <input type="text" id="level2" name="level2">
+                        </div>
+                    </div>
+        </form>
+
+    <section class="custom-box">
+        <h2>NPC:t</h2>
+        <form>
+            <div class="form-group">
+                <label for="npc_name">Nimi</label>
+                <input type="text" id="npc_name" name="npc_name">
+            </div>
+            <div>
+                <label for="description">Kuvaus</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </form>
+    </section>
+    
+    <section class="custom-box">
+        <h2>HirviÃ¶t</h2>
+        <form>
+            <div class="form-group">
+                <label for="monster_name">Nimi</label>
+                <input type="text" id="monster_name" name="monster_name">
+            </div>
+            <div>
+                <label for="description">Kuvaus</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </form>
+    </section>
+    
+    <section class="custom-box">
+        <h2>Paikat</h2>
+        <form>
+            <div class="form-group">
+                <label for="location_name">Nimi</label>
+                <input type="text" id="location_name" name="location_name">
+            </div>
+            <div>
+                <label for="description">Kuvaus</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </form>
+    </section>
+    
+    <section class="custom-box">
+        <h2>Tapahtumat</h2>
+        <form>
+            <div class="form-group">
+                <label for="event_name">Nimi</label>
+                <input type="text" id="event_name" name="event_name">
+            </div>
+            <div>
+                <label for="description">Kuvaus</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </form>
+    </section>
+    
+    <section class="custom-box">
+        <h2>Liitteet</h2>
+        <form>
+            <div class="form-group">
+                <label for="attachment_name">Nimi</label>
+                <input type="text" id="attachment_name" name="attachment_name">
+            </div>
+            <div>
+                <label for="description">Kuvaus</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+        </form>
+    </section>
+    
+</body>
+</html>

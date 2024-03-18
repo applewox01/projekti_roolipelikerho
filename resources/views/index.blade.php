@@ -64,8 +64,8 @@
 			@if ($scenarios->count() != 0)
 			@foreach ($scenarios as $scenario)
 			<section class="adventure-box">
-				<a href="{{ route('scenario') }}?id='{{$scenario->id}}'">
-				<h2><a><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</a></h2>
+				<a href="{{ route('scenario', ['id' => $scenario->id]) }}">
+				<h2><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</h2>
 				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest}}-{{$scenario->lvl_highest}}, {{$scenario->plr_least}}-{{$scenario->plr_most}} hahmoa</p>
 				<p class="adventure-desc">{{$scenario->description}}</p>
 				</a>
