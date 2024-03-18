@@ -41,11 +41,3 @@ Route::post('/login', [AuthController::class, 'authenticate'] )->middleware('gue
 
 //Logout
 Route::get('/logout', [AuthController::class, 'logout'] )->middleware('auth')->name('logout');
-
-//Dashboard
-Route::get('/dashboard', [DashboardController::class, 'render'] )->middleware('auth')->name('dashboard');
-
-// Invite codes
-Route::get('admin/invitecodes', function(){
-return view("admin.invitecodes");
-})->name("invitecodes");

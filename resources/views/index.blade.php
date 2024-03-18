@@ -17,7 +17,7 @@
 				<a class="guild-link">Seikkailijoiden kilta</a></h1>
             @if (Auth::check())
 			<div style="margin: 0; height: 100%;" class="list_after_login">
-            <a class="login-link" href="{{ route('dashboard') }}" style="height: 50%; display: block;"> 
+            <a class="login-link" href="{{ route('filament.admin.pages.dashboard') }}" style="height: 50%; display: block;">
 				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
 			</a>
 			<a class="login-link" href="{{ route('logout') }}" style="height: 50%; display: block;">
@@ -69,7 +69,7 @@
 				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest}}-{{$scenario->lvl_highest}}, {{$scenario->plr_least}}-{{$scenario->plr_most}} hahmoa</p>
 				<p class="adventure-desc">{{$scenario->description}}</p>
 				</a>
-			</section>	
+			</section>
 			@endforeach
 
 			@endif
