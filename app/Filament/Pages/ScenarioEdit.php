@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\npc;
 use App\Models\Scenario;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -20,6 +21,7 @@ class ScenarioEdit extends Page implements HasForms
     public $edit = '';
     public ?array $data = [];
     public $scenario;
+    public $npcs;
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -31,6 +33,7 @@ class ScenarioEdit extends Page implements HasForms
             abort(404, 'Skenaariota ei löytynyt');
         }
 
+        $this->npcs = npc::where('scenario_id', $this->scenario->id)->get();
         $this->form->fill($this->scenario->toArray());
     }
 
