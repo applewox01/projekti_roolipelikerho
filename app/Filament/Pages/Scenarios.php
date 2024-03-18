@@ -9,7 +9,6 @@ use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
-use App\Filament\Pages\Scenarios\Pages;
 
 class Scenarios extends Page implements HasTable
 {
@@ -57,6 +56,10 @@ class Scenarios extends Page implements HasTable
                     ->icon('heroicon-o-trash')
                     ->color('danger'),
                 Action::make('edit')
+                    ->url(fn (Scenario $scenario): string => route('filament.admin.pages.scenario-edit', ['edit' => $scenario]))
+                    ->openUrlInNewTab()
+                    ->icon('gmdi-edit')
+                    ->color('info'),
             ]);
     }
 }
