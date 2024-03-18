@@ -67,7 +67,6 @@ class ScenarioCreate extends Page implements HasForms
                 FileUpload::make('attachments')
                     ->multiple()
                     ->disk('local')
-                    ->directory('scenarios')
                     ->label('Liitteet')
             ])
             ->statePath('data')
@@ -75,7 +74,13 @@ class ScenarioCreate extends Page implements HasForms
     }
 
     public function create() {
-        // dd($this->data, $this->npcs, $this->monsters, $this->places, $this->events, $this->data['attachments']);
+        $attachmentPaths = [];
+
+        foreach ($this->data['attachments'] as $key => $attachment) {
+            $filename = uniqid('attachment_') . '.' . $attachment->extension();
+            $path = $attachment->storeAs('attachments', $filename);
+            $attachmentPaths[] = $path;
+        }
 
         $scenario = Scenario::create($this->data);
 
@@ -99,10 +104,10 @@ class ScenarioCreate extends Page implements HasForms
             'data' => $this->events
         ]);
 
-        // attachments::create([
-        //     'scenario_id' => $scenario->id,
-        //     'data' => $this->data['attachments']
-        // ]);
+        attachments::create([
+            'scenario_id' => $scenario->id,
+            'data' => $attachmentPaths
+        ]);
 
         Notification::make()
             ->title('Skenaario luotu')
@@ -110,6 +115,7 @@ class ScenarioCreate extends Page implements HasForms
             ->send();
 
         $this->form->fill();
+        $this->reset('data', 'npcs', 'monsters', 'places', 'events');
     }
 
     public function addNpcField()
