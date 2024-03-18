@@ -62,6 +62,7 @@ class ScenarioCreate extends Page implements HasForms
                     ->required(),
                 FileUpload::make('attachments')
                     ->multiple()
+                    ->label('Liitteet')
             ])
             ->statePath('data')
             ->live();
