@@ -9,6 +9,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Actions\Action as HeaderAction;
 
 class Scenarios extends Page implements HasTable
 {
@@ -20,6 +21,17 @@ class Scenarios extends Page implements HasTable
     protected static ?string $navigationIcon = 'rpg-scroll-unfurled';
 
     protected static string $view = 'filament.pages.scenarios';
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            HeaderAction::make('create')
+                ->label('Luo uusi skenaario')
+                ->url(route('filament.admin.pages.scenario-create'))
+                ->icon('gmdi-add')
+                ->color('primary'),
+        ];
+    }
 
     public function table(Table $table): Table
     {

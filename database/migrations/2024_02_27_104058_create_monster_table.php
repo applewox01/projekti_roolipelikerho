@@ -14,12 +14,7 @@ return new class extends Migration
         Schema::create('monster', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('scenario_id')->nullable();
-            $table->string('name');
-            $table->integer('defense');
-            $table->integer('hp');
-            $table->integer('xp');
-            $table->string('attack_info')->nullable();
-            $table->string('misc_info')->nullable();
+            $table->json('data')->nullable();
             $table->timestamps();
         });
         if (Schema::hasColumn('monster', 'scenario_id')) {

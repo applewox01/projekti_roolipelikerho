@@ -2,43 +2,27 @@
 
 namespace App\Filament\Pages;
 
-use App\Models\npc;
-use App\Models\Scenario;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
-use Livewire\Attributes\Url;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 
-
-class ScenarioEdit extends Page implements HasForms
+class ScenarioCreate extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    #[Url]
-    public $edit = '';
-    public ?array $data = [];
-    public $scenario;
-    public $npcs;
-
     protected static bool $shouldRegisterNavigation = false;
-    protected static ?string $recordTitleAttribute = 'Skenaarion muokkaus';
-    protected static ?string $navigationLabel = 'Skenaarion muokkaus';
-    protected static ?string $title = 'Skenaarion muokkaus';
+    protected static ?string $recordTitleAttribute = 'Skenaarion luonti';
+    protected static ?string $navigationLabel = 'Skenaarion luonti';
+    protected static ?string $title = 'Skenaarion luonti';
+    protected static string $view = 'filament.pages.scenario-create';
 
-    protected static string $view = 'filament.pages.scenario-edit';
-
-    public function mount() {
-        $this->scenario = Scenario::find($this->edit);
-        if(!$this->scenario) {
-            abort(404, 'Skenaariota ei löytynyt');
-        }
-
-        $this->npcs = npc::where('scenario_id', $this->scenario->id)->get();
-        $this->form->fill($this->scenario->toArray());
-    }
+    public ?array $data = [];
+    public ?array $npcs = [];
+    public ?array $monsters = [];
+    public ?array $places = [];
+    public ?array $events = [];
 
     public function form(Form $form): Form
     {
@@ -78,5 +62,49 @@ class ScenarioEdit extends Page implements HasForms
             ])
             ->statePath('data')
             ->live();
+    }
+
+    public function create() {
+        dd($this->data, $this->npcs, $this->monsters, $this->places, $this->events);
+    }
+
+    public function addNpcField()
+    {
+        $this->npcs[] = ['name' => '', 'description' => ''];
+    }
+
+    public function removeNpc($index)
+    {
+        array_splice($this->npcs, $index, 1);
+    }
+
+    public function addMonsterField()
+    {
+        $this->monsters[] = ['name' => '', 'attack_info' => '', 'misc_info' => '', 'defense' => '', 'hp' => '', 'xp' => '', 'link' => ''];
+    }
+
+    public function removeMonster($index)
+    {
+        array_splice($this->monsters, $index, 1);
+    }
+
+    public function addPlaceField()
+    {
+        $this->places[] = ['name' => '', 'description' => ''];
+    }
+
+    public function removePlace($index)
+    {
+        array_splice($this->places, $index, 1);
+    }
+
+    public function addEventField()
+    {
+        $this->events[] = ['name' => '', 'description' => ''];
+    }
+
+    public function removeEvent($index)
+    {
+        array_splice($this->events, $index, 1);
     }
 }
