@@ -11,17 +11,17 @@ class IndexController extends Controller
     public function index() {
         try {
             $scenarios = DB::table('scenarios')->get();
+            return view("index",
+            [
+                'scenarios' => $scenarios,
+                'search_by' => "",
+                'order_by' => ""
+            ]
+            );
         }
         catch (Exception $e) {
             return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
         }
-        return view("index",
-        [
-            'scenarios' => $scenarios,
-            'search_by' => "",
-            'order_by' => ""
-        ]
-    );
     }
 
     public function sort_by() {
@@ -35,16 +35,16 @@ class IndexController extends Controller
             } else {
                 $scenarios = DB::table('scenarios')->get();
             };
+            return view("index",
+            [
+                'order_by' => $order_by,
+                'search_by' => $search_by,
+                'scenarios' => $scenarios
+            ]
+            );
         }
         catch (Exception $e) {
             return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
         }
-        return view("index",
-        [
-            'order_by' => $order_by,
-            'search_by' => $search_by,
-            'scenarios' => $scenarios
-        ]
-    );
     }
 }

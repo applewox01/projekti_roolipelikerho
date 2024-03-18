@@ -15,9 +15,16 @@ class ScenarioController extends Controller
                 throw new Exception("Skenaarion tietoja ei löydetty! (ID: $id)");
             } else {
                 $scenario_info = DB::table('scenarios')->where("id",$id)->select('name','admin_desc','background_info')->first();
+                $character_relations = DB::table('scenario_characters')->where("scenario_id", $id)->get();
+                $characters = array();
+                foreach ($character_relations as $single_relation) {
+                    array_push($characters, DB::table('characters')->where("id", $single_relation->id)->first());
+                }
+                $unassigned_characters = DB::table('characters')->get();
+                $rooms = DB::table('rooms')->where("scenario_id",$id)->get();
+
             }
-            /*$rooms = DB::table('rooms')->where("scenario_id",$id)->get();
-            $monsters = DB::table('monsters')->where("scenario_id",$id)->get();
+            /*$monsters = DB::table('monsters')->where("scenario_id",$id)->get();
             $npcs = DB::table('npcs')->where("scenario_id",$id)->get();
             $scenario_characters = DB::table('scenario_characters')->where("scenario_id",$id)->select('id')->get();
             $characters = [];
@@ -32,7 +39,10 @@ class ScenarioController extends Controller
             [
                 'name' => $scenario_info->name,
                 'admin_desc' => $scenario_info->admin_desc,
-                'background_info' => $scenario_info->background_info
+                'background_info' => $scenario_info->background_info,
+                'characters' => $characters,
+                'unassigned_characters' => $unassigned_characters,
+                'rooms' => $rooms
             ]);
         }
         catch(Exception $e) {

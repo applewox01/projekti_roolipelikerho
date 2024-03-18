@@ -1,6 +1,10 @@
 
+//pari ongelmaa
+//kokoa muuttaessa, se voi ylittää näytön koon ja mennä ulkopuolelle
+//avatessa uusi ikkuna, toinen ikkuna menee ulkopuolelle
+
 document.addEventListener("DOMContentLoaded", function(){
-    const objects = document.getElementsByClassName("moveable_window");
+
     const icons = document.getElementsByClassName("icon-box");
     for (let icon of icons) {
         icon.addEventListener("click", function(){
@@ -12,10 +16,36 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         })
     }
+
+    const character_boxes = document.getElementsByClassName("character_box");
+    for (let box of character_boxes) {
+        box.addEventListener("click", function(){
+            const character_info = box.getElementsByClassName("character_info");
+            if (character_info.length > 0) {
+                if (character_info[0].style.display == "none") {
+                    character_info[0].style.display = "block"
+                } else {
+                    character_info[0].style.display = "none"
+                }
+            }
+
+        })
+    }
+
+    const add_character = document.getElementById("add_character");
+    add_character.addEventListener("click", function(){
+        const unassigned_list = document.getElementById("unassigned_list")
+        if (unassigned_list.style.display == "none") {
+            unassigned_list.style.display = "block"
+        } else {
+            unassigned_list.style.display = "none"
+        }
+    })
+
+    const objects = document.getElementsByClassName("moveable_window");
     for (let object of objects) {
         for (let child of object.querySelectorAll(".move_window")) {
                 child.addEventListener("mousedown", function(){
-    
                     document.addEventListener("mousemove", moveObject)
                     function moveObject(event) {
                         event.preventDefault();
@@ -25,14 +55,28 @@ document.addEventListener("DOMContentLoaded", function(){
                         object.style.opacity = 0.5;
                         object.style["pointer-events"] = "none";
                         
-                        let trueHeight = Number((object.querySelectorAll(".window_content")[0].style.height).replace('px', ''));
-                        if (trueHeight > 600) {
-                            trueHeight = 600
+                        let content = object.querySelectorAll(".window_content")[0];
+                        let trueMaxHeight = Number((content.style["max-height"]).replace('px', '')); 
+                        let trueHeight = Number((content.style.height).replace('px', ''));
+                        if (trueHeight > trueMaxHeight) {
+                            trueHeight = trueMaxHeight;
+                            content.style.height = trueMaxHeight + "px";
+                        }
+                        if (trueHeight < 100) {
+                            trueHeight = 100;
+                            content.style.height = 100 + "px";
                         }
                         trueHeight += 30;
-                        let trueWidth = Number((object.querySelectorAll(".window_content")[0].style.width).replace('px', ''));
-                        if (trueWidth > 600) {
-                            trueWidth = 600
+
+                        let trueWidth = Number((content.style.width).replace('px', ''));
+                        let trueMaxWidth = Number((content.style["max-width"]).replace('px', ''));
+                        if (trueWidth > trueMaxWidth) {
+                            trueWidth = trueMaxWidth;
+                            content.style.width = trueMaxWidth + "px";
+                        }
+                        if (trueWidth < 200) {
+                            trueWidth = 200;
+                            content.style.width = 200 + "px";
                         }
         
                         if (event.clientY - 15 > 0 
@@ -64,8 +108,32 @@ document.addEventListener("DOMContentLoaded", function(){
                         content.style.display = "inline-block";
                     } else {
                         child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe313;"
-                        child.parentNode.style.width = content.style.width;
                         content.style.display = "none";
+
+                        let trueMaxHeight = Number((content.style["max-height"]).replace('px', '')); 
+                        let trueHeight = Number((content.style.height).replace('px', ''));
+                        if (trueHeight > trueMaxHeight) {
+                            trueHeight = trueMaxHeight;
+                            content.style.height = trueMaxHeight + "px";
+                        }
+                        if (trueHeight < 100) {
+                            trueHeight = 100;
+                            content.style.height = 100 + "px";
+                        }
+                        trueHeight += 30;
+
+                        let trueWidth = Number((content.style.width).replace('px', ''));
+                        let trueMaxWidth = Number((content.style["max-width"]).replace('px', ''));
+                        if (trueWidth > trueMaxWidth) {
+                            trueWidth = trueMaxWidth;
+                            content.style.width = trueMaxWidth + "px";
+                        }
+                        if (trueWidth < 200) {
+                            trueWidth = 200;
+                            content.style.width = 200 + "px";
+                        }
+
+                        child.parentNode.style.width = content.style.width;
                     }
                     break
                 }

@@ -115,3 +115,27 @@ main {
     min-height: 100px;
     min-width: 200px;
 }
+
+.character_box, .add_character_box, #add_character {
+    border: 2px solid grey;
+    border-radius: 15px; 
+    width: 90%; 
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.character_box:hover, .add_character_box:hover, #add_character:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+
+.character_info * {
+    margin: 0;
+}
+
+.info_name {
+    text-align: left;
+}
