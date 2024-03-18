@@ -2,12 +2,19 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\attachments;
+use App\Models\events;
+use App\Models\monster;
+use App\Models\npc;
+use App\Models\rooms;
+use App\Models\Scenario;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 
 class ScenarioCreate extends Page implements HasForms
 {
@@ -31,16 +38,14 @@ class ScenarioCreate extends Page implements HasForms
             ->schema([
                 TextInput::make('name')
                     ->label('Nimi')
+                    ->unique('scenarios', 'name')
                     ->required(),
                 TextInput::make('description')
-                    ->label('Kuvaus')
-                    ->required(),
+                    ->label('Kuvaus'),
                 TextInput::make('background_info')
-                    ->label('Taustatiedot')
-                    ->required(),
+                    ->label('Taustatiedot'),
                 TextInput::make('other_requirements')
-                    ->label('Muut vaatimukset')
-                    ->required(),
+                    ->label('Muut vaatimukset'),
                 TextInput::make('lvl_highest')
                     ->label('Korkein taso')
                     ->numeric()
@@ -58,10 +63,11 @@ class ScenarioCreate extends Page implements HasForms
                     ->numeric()
                     ->required(),
                 TextInput::make('admin_desc')
-                    ->label('Ylläpidon kuvaus')
-                    ->required(),
+                    ->label('Ylläpidon kuvaus'),
                 FileUpload::make('attachments')
                     ->multiple()
+                    ->disk('local')
+                    ->directory('scenarios')
                     ->label('Liitteet')
             ])
             ->statePath('data')
@@ -69,7 +75,41 @@ class ScenarioCreate extends Page implements HasForms
     }
 
     public function create() {
-        dd($this->data, $this->npcs, $this->monsters, $this->places, $this->events, $this->data['attachments']);
+        // dd($this->data, $this->npcs, $this->monsters, $this->places, $this->events, $this->data['attachments']);
+
+        $scenario = Scenario::create($this->data);
+
+        npc::create([
+            'scenario_id' => $scenario->id,
+            'data' => $this->npcs
+        ]);
+
+        monster::create([
+            'scenario_id' => $scenario->id,
+            'data' => $this->monsters
+        ]);
+
+        rooms::create([
+            'scenario_id' => $scenario->id,
+            'data' => $this->places
+        ]);
+
+        events::create([
+            'scenario_id' => $scenario->id,
+            'data' => $this->events
+        ]);
+
+        // attachments::create([
+        //     'scenario_id' => $scenario->id,
+        //     'data' => $this->data['attachments']
+        // ]);
+
+        Notification::make()
+            ->title('Skenaario luotu')
+            ->success()
+            ->send();
+
+        $this->form->fill();
     }
 
     public function addNpcField()
