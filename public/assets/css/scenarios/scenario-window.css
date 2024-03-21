@@ -96,6 +96,16 @@ main {
     background-color: crimson;
 }
 
+.hide_window, .close_window {
+    cursor: pointer;
+}
+
+.hide_window i, .close_window i, .move_window i  {
+    font-size: 30px; 
+    text-align: center;
+    cursor: pointer;
+}
+
 .moveable_window {
     width: fit-content; 
     height: fit-content;
@@ -108,12 +118,17 @@ main {
 
 .window_content {
     background-color: white;
-    width: fit-content;
-    height: fit-content;
     resize: both;
     overflow: auto;
-    min-height: 100px;
+    min-height: 200px;
     min-width: 200px;
+    max-height: 600px;
+    max-width: 600px;
+    border: 2px solid grey;
+}
+
+.misc_notif {
+    color: grey;
 }
 
 .character_box, .add_character_box, #add_character {
@@ -131,11 +146,32 @@ main {
     cursor: pointer;
 }
 
-
 .character_info * {
     margin: 0;
 }
 
 .info_name {
     text-align: left;
+}
+
+.monster_info_flexbox {
+    display: flex;
+}
+
+.monster_info_icon {
+    width: 24px; 
+    height: 100%;
+}
+
+.info_button_icon {
+    margin: 0;  
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.info_button_name {
+    margin: 0; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
 }

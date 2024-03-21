@@ -28,7 +28,6 @@ Route::get('/scenario/{id}', [ScenarioController::class, 'index'])->name("scenar
 
 Route::redirect('/scenario', "/");
 
-
 //Registeration page
 Route::get('/register', [AuthController::class, 'register'] )->name('register')->middleware('guest');
 

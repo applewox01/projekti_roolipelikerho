@@ -55,6 +55,20 @@ body::-webkit-scrollbar {
 	font-style: italic;
 }
 
+.tf_px_icon {
+    font-size: 24px
+}
+
+.list_after_login {
+    margin: 0; 
+    height: 100%;
+}
+
+.list_after_login .login_link {
+    height: 50%; 
+    display: block; 
+}
+
 @media screen and (max-width: 825px) {
     #page-header {
         display: block;
@@ -95,6 +109,7 @@ h1 {
     background-position: right;
 	border: 2px solid var(--border);
 	border-radius: 10px;
+    width: 180px;
 	text-align: center;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -107,13 +122,12 @@ h1 {
 }
 
 main#adventure-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	display: grid;
+	gap: 5px;
+    grid-template-columns: auto auto auto;
 }
 
 .adventure-box {
-    width: 32%;
     border-radius: 20px;
     padding: 10px;
     margin-top: 10px;

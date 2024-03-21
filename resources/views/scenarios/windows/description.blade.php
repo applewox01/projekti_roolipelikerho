@@ -1,3 +1,3 @@
 <div class="window_content">
-    {{$background_info}}
+    {{$admin_desc}}
 </div>

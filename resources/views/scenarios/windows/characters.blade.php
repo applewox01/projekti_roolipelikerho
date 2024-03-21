@@ -1,6 +1,7 @@
-<div class="window_content" style="width: 400px; height: 200px; max-width: 400px; max-height: 600px;">
-
-<div>
+<div class="window_content">
+        @if ($character_relations->count() == 0)
+        <p class="misc_notif">Liitä pelaajia skenaarioon admin-paneelin kautta</p>
+        @else
         @foreach ($characters as $character)
         <div class="character_box">
                 <p style="margin: 0;  margin-top: 5px; margin-bottom: 5px;"><i style="font-size: 24px;" class="fas fa-user-alt"></i></p>
@@ -21,19 +22,17 @@
 
         </div>
         @endforeach
-        <div id="add_character">
+        @endif
+        <!--<div id="add_character">
                 <p style="margin: 0; margin-top: 5px; margin-bottom: 5px;"><i style="font-size: 24px;" class="fas fa-user-plus"></i></p>
 
                 <div id="unassigned_list" style="display: none">
-                        @foreach ($unassigned_characters as $unassigned)
-                        <div class="add_character_box">
+                        <div class="add_character_box" id="">
                         <p style="margin: 0;  margin-top: 5px; margin-bottom: 5px;"><i style="font-size: 24px;" class="fas fa-user-alt"></i></p>
-                        <p style="margin: 0; text-overflow: ellipsis; overflow: hidden; ">{{$unassigned->name}}</p>
-                        </div>
-                        @endforeach
+                        <p style="margin: 0; text-overflow: ellipsis; overflow: hidden; "></p>
+                        </div
                 </div>
 
-        </div>
-</div>
+        </div>-->
 
 </div>

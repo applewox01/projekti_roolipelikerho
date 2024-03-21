@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin="anonymous"></script>
-	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin='anonymous'></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index.css') }}">
 	<script src="{{ asset('assets/js/index.js') }}"></script>
     <title>Seikkailijoiden kilta</title>
@@ -16,11 +15,11 @@
 			<h1><i class="fa-brands fa-d-and-d"></i>
 				<a class="guild-link">Seikkailijoiden kilta</a></h1>
             @if (Auth::check())
-			<div style="margin: 0; height: 100%;" class="list_after_login">
-            <a class="login-link" href="{{ route('filament.admin.pages.dashboard') }}" style="height: 50%; display: block;">
+			<div class="list_after_login">
+            <a class="login-link" href="{{ route('filament.admin.pages.dashboard') }}">
 				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
 			</a>
-			<a class="login-link" href="{{ route('logout') }}" style="height: 50%; display: block;">
+			<a class="login-link" href="{{ route('logout') }}">
 				<i class='fas'>&#xf52b;</i> Kirjaudu ulos
 			</a>
 			</div>
@@ -33,7 +32,7 @@
 
 			<br>
 			@if ($errors->has('get_scenarios'))
-			<div class='fas fa-exclamation-triangle' style="font-size: 24px"></div>
+			<p class="tf_px_icon"><i class='fas fa-exclamation-triangle'></i></p>
 			<p>Ongelma skenaarioiden haussa:</p>
 			<code>
 				{{$errors->first('get_scenarios')}}
@@ -57,7 +56,7 @@
 
 		    <br>
 			@if ($scenarios->count() == 0)
-			<div class='fas' style="font-size: 24px">&#xf49e;</div>
+			<p class="tf_px_icon"><i class='fas'>&#xf49e;</i></p>
 			<p>Skenaarioita ei löydetty</p>
 			@endif
 		<main id="adventure-list">
