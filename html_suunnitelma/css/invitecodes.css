@@ -7,3 +7,24 @@
     margin: 0;
     font-family: Demon Slayer;
 }
+
+.invite-code {
+    background-color: grey;
+    width: 100%;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+#inviteCodesContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#createNewInviteCode {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    z-index: 1;
+}
