@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="{{asset('assets/js/scenario.js')}}"></script>
+    <script src="{{asset('assets/js/windows.js')}}"></script>
     @if (isset($name))
     <title>{{$name}}</title>
     @else
@@ -87,21 +88,21 @@
 
             @php
                 $windows = array(["background_info","Taustatiedot"],
-                ["characters","Pelaajat"]/*,
+                ["characters","Pelaajat"],
                 ["npcs","NPC:t"],
                 ["monsters","Hirviöt"],
                 ["attachments","Liitteet"],
                 ["events","Tapahtumat"],
                 ["rooms","Paikat"],
-                ["description","Kuvaus"]*/)
+                ["description","Kuvaus"])
             @endphp
             @foreach ($windows as $window) 
             <div class="moveable_window" id="{{$window[0]}}_window" style="display: none;">
                 <div class="window_info">
                     <p class="window_name">{{$window[1]}}</p>
-                        <div class="move_window"><i style="font-size: 30px; text-align: center;" class="fas">&#xf0b2;</i></div>
-                        <div class="hide_window"><i style="font-size: 30px; text-align: center;" class="material-icons">&#xe5ce;</i></div>
-                        <div class="close_window"><i style="font-size: 30px; text-align: center;" class="fa">&#xf00d;</i></div>
+                        <div class="move_window"><i class="fas">&#xf0b2;</i></div>
+                        <div class="hide_window"><i class="material-icons">&#xe5ce;</i></div>
+                        <div class="close_window"><i class="fa">&#xf00d;</i></div>
                 </div>
                     @include("scenarios.windows.".$window[0])
             </div>

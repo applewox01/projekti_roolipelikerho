@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('npc', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('scenario_id')->nullable();
-            $table->string('name');
-            $table->string('content')->nullable();
+            $table->json('data')->nullable();
             $table->timestamps();
         });
         if (Schema::hasColumn('npc', 'scenario_id')) {
