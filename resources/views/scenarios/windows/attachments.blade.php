@@ -7,12 +7,16 @@
     @foreach ($attachments_urls as $url)
     <div class="character_box">
         @if (file_exists(public_path($url)))
-            <p><img src="{{asset($url)}}" style="border-radius: 15px; width: 100%; height: fit-content;"></p>
+            <p><img src="{{asset($url)}}" class="attachment_icon"></p>
         @else
             <p class="info_button_name">404 ({{$url}})</p>
         @endif
-    <div class="character_info" style="display: none;">
+    <div class="character_info" >
+        @if (file_exists(public_path($url)))
             <p><img src="{{asset($url)}}"></p>
+        @else
+            <img class="placeholder_for_404" src="{{asset("assets/css/scenarios/textures/placeholder404.PNG")}}">
+        @endif
     </div>
 
     </div>

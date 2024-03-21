@@ -8,10 +8,10 @@
         @if (count($json_data) > 0)
         @foreach ($json_data as $room) 
         <div class="character_box">
-            <p style="margin: 0;  margin-top: 5px; margin-bottom: 5px;"><i style="font-size: 24px;" class="	fas fa-door-open"></i></p>
-            <p style="margin: 0; text-overflow: ellipsis; overflow: hidden; ">{{$room->name}}</p>
+            <p class="info_button_icon"><i class="fas fa-door-open"></i></p>
+            <p class="info_button_name">{{$room->name}}</p>
 
-            <div class="character_info" style="display: none;">
+            <div class="character_info">
                     <p>{{$room->description}}</p>
             </div>
 

@@ -8,7 +8,7 @@
             <p class="info_button_icon"><i class="fa-solid fa-dragon"></i></p>
             <p class="info_button_name">{{$monster->name}}</p>
 
-            <div class="character_info" style="display: none;">
+            <div class="character_info">
 
                     <div class="monster_info_flexbox">
                     <p class="monster_info_icon"><i class="fas fa-star"></i></p>

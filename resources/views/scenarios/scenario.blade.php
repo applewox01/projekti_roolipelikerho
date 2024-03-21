@@ -18,18 +18,18 @@
 </head>
 <body>
     @if ($errors->has('load_scenario'))
-    <div style="display: block;">
-    <h3 style="margin: 0;">Ongelma ladatessa skeenarion tietoja:</h3>
-    <code style="background-color: white;">
+    <div class="display_block">
+    <h3 class="no-margin">Ongelma ladatessa skeenarion tietoja:</h3>
+    <code>
         {{$errors->first('load_scenario')}}
     </code>
-    <a href="{{ route('index') }}"><p style="margin: 0;"><i class="fa-solid fa-dungeon"></i>Palaa kiltaan</p></a>
-    <p style="margin: 0;">tai</p>
-    <a href="{{ route('scenario', ['id' => $id]) }}"><p style="margin: 0;">Lataa sivu uudelleen</p></a>
+    <a href="{{ route('index') }}"><p class="no-margin"><i class="fa-solid fa-dungeon"></i>Palaa kiltaan</p></a>
+    <p class="no-margin">tai</p>
+    <a href="{{ route('scenario', ['id' => $id]) }}"><p class="no-margin">Lataa sivu uudelleen</p></a>
 </div>
     @else
     <aside id="panel">
-            <p style="text-align: center">{{$name}}</p>
+            <p class="scenario_name">{{$name}}</p>
         <section id="icons">
             <div class="icon-box" id="characters">
                 <h2><i class="fa-solid fa-people-line"></i></h2>
@@ -76,8 +76,8 @@
                 <p>Liitteet</p>
             </div>
             <br>
-            <div class="icon-box">
-                <a href="{{route('index')}}" style="color: black; text-decoration: none;">
+            <div class="exit-box">
+                <a href="{{route('index')}}">
                     <h2><i class="fa-solid fa-dungeon"></i></h2>
                     <p>Takaisin kiltaan</p>
                 </a>
@@ -97,7 +97,7 @@
                 ["description","Kuvaus"])
             @endphp
             @foreach ($windows as $window) 
-            <div class="moveable_window" id="{{$window[0]}}_window" style="display: none;">
+            <div class="moveable_window" id="{{$window[0]}}_window">
                 <div class="window_info">
                     <p class="window_name">{{$window[1]}}</p>
                         <div class="move_window"><i class="fas">&#xf0b2;</i></div>

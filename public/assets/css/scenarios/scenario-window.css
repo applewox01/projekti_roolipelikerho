@@ -41,7 +41,12 @@ body {
     border-right: 2px solid var(--border);
 }
 
-.icon-box {
+.placeholder_for_404 {
+    width: 24px;
+    height: fit-content;
+}
+
+.icon-box, .exit-box {
     margin-right: auto;
     margin-left: auto;
     width: 75%;
@@ -53,7 +58,12 @@ body {
     margin-bottom: 2px;
 }
 
-.icon-box:hover {
+.icon-box a, .exit-box a {
+    color: black; 
+    text-decoration: none;
+}
+
+.icon-box:hover, .exit-box:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
@@ -65,8 +75,22 @@ main {
     background-repeat: repeat;
 }
 
+.scenario_name {
+    text-align: center;
+}
+
+.attachment_icon {
+    border-radius: 15px; 
+    width: 100%; 
+    height: fit-content;
+}
+
 .no-margin {
     margin: 0;
+}
+
+.display_block {
+    display: block;
 }
 
 .window_name {

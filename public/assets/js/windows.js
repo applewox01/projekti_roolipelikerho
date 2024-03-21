@@ -1,8 +1,15 @@
 
+
+//pari ongelmaa
+//kokoa muuttaessa, se voi ylittää näytön koon ja mennä ulkopuolelle
+//avatessa uusi ikkuna, toinen ikkuna menee ulkopuolelle
+//
+
 document.addEventListener("DOMContentLoaded", function(){
 
 const objects = document.getElementsByClassName("moveable_window");
 for (let object of objects) {
+    object.style.display = "none";
     let content = object.querySelectorAll(".window_content")[0];
     content.style.height = "300px";
     content.style.width = "300px";

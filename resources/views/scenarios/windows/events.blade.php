@@ -11,7 +11,7 @@
             <p class="info_button_icon"><i class="fa-solid fa-calendar-days"></i></p>
             <p class="info_button_name">{{$event->name}}</p>
 
-    <div class="character_info" style="display: none;">
+    <div class="character_info">
             <p>{{$event->description}}</p>
     </div>
 

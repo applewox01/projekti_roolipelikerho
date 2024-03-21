@@ -10,7 +10,7 @@
             <p class="info_button_icon"><i class="fa-solid fa-person"></i></p>
             <p class="info_button_name">{{$npc->name}}</p>
 
-            <div class="character_info" style="display: none;">
+            <div class="character_info">
                     <p>{{$npc->description}}</p>
             </div>
 

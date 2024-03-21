@@ -1,14 +1,12 @@
 
-//pari ongelmaa
-//kokoa muuttaessa, se voi ylittää näytön koon ja mennä ulkopuolelle
-//avatessa uusi ikkuna, toinen ikkuna menee ulkopuolelle
 
 document.addEventListener("DOMContentLoaded", function(){
 
     const icons = document.getElementsByClassName("icon-box");
     for (let icon of icons) {
+        const icon_window = document.getElementById(`${icon.id}_window`)
+        icon_window.style.display = "none";
         icon.addEventListener("click", function(){
-            const icon_window = document.getElementById(`${icon.id}_window`)
             if (icon_window.style.display == "none") {
                 icon_window.style.display = "block";
             } else {
@@ -17,20 +15,22 @@ document.addEventListener("DOMContentLoaded", function(){
         })
     }
 
+    //lukee character, mutta pätee jokaista info nappia
     const character_boxes = document.getElementsByClassName("character_box");
     for (let box of character_boxes) {
+        const character_info = box.getElementsByClassName("character_info");
+        character_info[0].style.display = "none";
         box.addEventListener("click", function(){
-            const character_info = box.getElementsByClassName("character_info");
             if (character_info.length > 0) {
                 if (character_info[0].style.display == "none") {
-                    character_info[0].style.display = "block"
+                    character_info[0].style.display = "block";
                 } else {
-                    character_info[0].style.display = "none"
+                    character_info[0].style.display = "none";
                 }
             }
 
         })
-    }
+    };
 
     /*const add_character = document.getElementById("add_character");
     add_character.addEventListener("click", function(){
