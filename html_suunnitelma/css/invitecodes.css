@@ -8,6 +8,10 @@
     font-family: Demon Slayer;
 }
 
+h2 {
+    text-align: center;
+}
+
 .invite-code {
     background-color: grey;
     width: 100%;
@@ -16,15 +20,46 @@
     margin-bottom: 10px;
 }
 
-#inviteCodesContainer {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+.custom-box {
+    display: block;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    width: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #createNewInviteCode {
-    position: fixed;
-    top: 50px;
-    left: 20px;
-    z-index: 1;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#createNewInviteCode button {
+    background-color: lightgray; 
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#createNewInviteCode button:hover {
+    background-color: darkgray;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .custom-box {
+        width: 90%;
+        max-height: 80%;
+        padding: 10px;
+    }
 }

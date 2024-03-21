@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var generateButton = document.getElementById('generateButton');
+
+    generateButton.addEventListener('click', function() {
+        generateInviteCode();
+    });
+});
+
 function generateInviteCode() {
     var code = generateRandomCode(10);
     var currentDate = new Date().toLocaleDateString('fi');
