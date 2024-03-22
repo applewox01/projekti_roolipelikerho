@@ -73,6 +73,8 @@ main {
     width: calc(100vw - 150px);
     background-image:url("textures/grid.png");
     background-repeat: repeat;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 
 .scenario_name {
