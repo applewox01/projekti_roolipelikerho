@@ -20,6 +20,7 @@ class CharactersResource extends Resource
     protected static ?string $recordTitleAttribute = 'Hahmojen hallinta';
     protected static ?string $navigationLabel = 'Hahmojen hallinta';
     protected static ?string $title = 'Hahmojen hallinta';
+    protected static ?string $navigationIcon = 'fas-hat-wizard';
 
     protected static ?string $navigationGroup = 'Hahmot';
 

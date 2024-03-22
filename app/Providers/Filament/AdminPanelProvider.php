@@ -53,8 +53,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
-                     ->label('Hahmot')
-                     ->icon('fas-hat-wizard'),
+                     ->label('Hahmot'),
             ]);
     }
 }
