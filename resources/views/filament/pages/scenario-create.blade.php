@@ -185,7 +185,7 @@
             <x-filament::button
                 color="danger"
                 icon="heroicon-o-x-mark"
-                wire:click.prevent="removePlace({{ $index }})"
+                wire:click.prevent="removeEvent({{ $index }})"
                 labeled-from="sm"
                 tag="button"
                 type="button"
