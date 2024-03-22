@@ -17,10 +17,11 @@ class CharactersResource extends Resource
 {
     protected static ?string $model = Characters::class;
 
-    protected static ?string $recordTitleAttribute = 'Hahmot';
-    protected static ?string $navigationLabel = 'Hahmot';
-    protected static ?string $title = 'Hahmot';
-    protected static ?string $navigationIcon = 'fas-hat-wizard';
+    protected static ?string $recordTitleAttribute = 'Hahmojen hallinta';
+    protected static ?string $navigationLabel = 'Hahmojen hallinta';
+    protected static ?string $title = 'Hahmojen hallinta';
+
+    protected static ?string $navigationGroup = 'Hahmot';
 
     public static function form(Form $form): Form
     {

@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -49,6 +50,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Kirjaudu ulos'),
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                     ->label('Hahmot')
+                     ->icon('fas-hat-wizard'),
             ]);
     }
 }
