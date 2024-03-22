@@ -53,11 +53,11 @@ class ScenarioEdit extends Page implements HasForms
         $events = events::where('scenario_id', $this->scenario->id)->get();
         $attachments = attachments::where('scenario_id', $this->scenario->id)->get();
 
-        $this->npcs = $npc[0]->data;
-        $this->monsters = $monster[0]->data;
-        $this->places = $rooms[0]->data;
-        $this->events = $events[0]->data;
-        $this->attachments = $attachments[0]->data;
+        $this->npcs = $npc[0]->data ?? [];
+        $this->monsters = $monster[0]->data ?? [];
+        $this->places = $rooms[0]->data ?? [];
+        $this->events = $events[0]->data ?? [];
+        $this->attachments = $attachments[0]->data ?? [];
 
         $this->form->fill($this->scenario->toArray());
     }
@@ -105,7 +105,8 @@ class ScenarioEdit extends Page implements HasForms
 
     public function update() {
 
-        $scenario = Scenario::create($this->data);
+        $scenario = Scenario::find($this->edit);
+        $scenario->update($this->data);
 
         $npc = npc::where('scenario_id', $this->scenario->id)->get();
         $monster = monster::where('scenario_id', $this->scenario->id)->get();
