@@ -27,6 +27,25 @@ for (const object of objects) {
     let trueTop = Number((object.style.top).replace('px', ''));
     let trueLeft = Number((object.style.left).replace('px', ''));
 
+    function checkBoundaries() {
+        trueHeight = Number((content.style.height).replace('px', ''));
+        if (trueHeight > 800) {
+            content.style.height = "800px";
+        }
+        else if (trueHeight < 200) {
+            content.style.height = "200px";
+        }
+        trueHeight += 30;
+
+        trueWidth = Number((content.style.width).replace('px', ''));
+        if (trueWidth > 800) {
+            content.style.width = "800px";
+        }
+        else if (trueWidth < 200) {
+            content.style.width = "200px";
+        }
+    }
+
     function checkSize() {
         if (previousHeight != content.style.height || previousWidth != content.style.width) {
             object.style.position = "absolute";
@@ -59,23 +78,8 @@ for (const object of objects) {
                     trueTop = Number((object.style.top).replace('px', ''));
                     trueLeft = Number((object.style.left).replace('px', ''));
 
-                    trueHeight = Number((content.style.height).replace('px', ''));
-                    if (trueHeight > 600) {
-                        content.style.height = "600px";
-                    }
-                    else if (trueHeight < 200) {
-                        content.style.height = "200px";
-                    }
-                    trueHeight += 30;
+                    checkBoundaries()
 
-                    trueWidth = Number((content.style.width).replace('px', ''));
-                    if (trueWidth > 600) {
-                        content.style.width = "600px";
-                    }
-                    else if (trueWidth < 200) {
-                        content.style.width = "200px";
-                    }
-    
                     if (event.clientY - 15 > 0 
                         && event.clientY + trueHeight - 15 < viewportHeight) {
                         object.style.top = (event.clientY - 15) + "px";
@@ -107,20 +111,7 @@ for (const object of objects) {
                     child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe313;"
                     content.style.display = "none";
 
-                    if (trueHeight > 600) {
-                        content.style.height = "600px";
-                    }
-                    if (trueHeight < 200) {
-                        content.style.height = "200px";
-                    }
-                    trueHeight += 30;
-
-                    if (trueWidth > 600) {
-                        content.style.width = "600px";
-                    }
-                    else if (trueWidth < 200) {
-                        content.style.width = "200px";
-                    }
+                    checkBoundaries()
 
                     child.parentNode.style.width = content.style.width;
                 }
