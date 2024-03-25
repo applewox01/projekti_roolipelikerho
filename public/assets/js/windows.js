@@ -8,24 +8,58 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 const objects = document.getElementsByClassName("moveable_window");
-for (let object of objects) {
+for (const object of objects) {
     object.style.display = "none";
-    let content = object.querySelectorAll(".window_content")[0];
+
+    const content = object.querySelectorAll(".window_content")[0];
     content.style.height = "300px";
     content.style.width = "300px";
+
+    let previousHeight = content.style.height;
+    let previousWidth = content.style.width;
+
+    let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+
+    let trueHeight = Number((content.style.height).replace('px', ''));
+    let trueWidth = Number((content.style.width).replace('px', ''));
+    
+    let trueTop = Number((object.style.top).replace('px', ''));
+    let trueLeft = Number((object.style.left).replace('px', ''));
+
+    function checkSize() {
+        if (previousHeight != content.style.height || previousWidth != content.style.width) {
+            object.style.position = "absolute";
+
+            trueHeight = Number((content.style.height).replace('px', ''));
+            trueWidth = Number((content.style.width).replace('px', ''));
+            //jostakin syystä + 35, koska muuten ei toimi LOL
+            if ((trueTop + trueHeight + 35) < viewportHeight) {
+                previousHeight = content.style.height;
+            } else {
+                content.style.height = previousHeight;
+            };
+            if ((trueLeft + trueWidth) < viewportWidth) {
+                previousWidth = content.style.width;
+            } else {
+                content.style.width = previousWidth;
+            };
+        };
+    };
+    new ResizeObserver(checkSize).observe(content);
     for (let child of object.querySelectorAll(".move_window")) {
             child.addEventListener("mousedown", function(){
                 document.addEventListener("mousemove", moveObject)
                 function moveObject(event) {
                     event.preventDefault();
                     object.style.position = "absolute";
-                    let viewportWidth = window.innerWidth;
-                    let viewportHeight = window.innerHeight;
                     object.style.opacity = 0.5;
                     object.style["pointer-events"] = "none";
-                    
-                    let content = object.querySelectorAll(".window_content")[0];
-                    let trueHeight = Number((content.style.height).replace('px', ''));
+
+                    trueTop = Number((object.style.top).replace('px', ''));
+                    trueLeft = Number((object.style.left).replace('px', ''));
+
+                    trueHeight = Number((content.style.height).replace('px', ''));
                     if (trueHeight > 600) {
                         content.style.height = "600px";
                     }
@@ -34,7 +68,7 @@ for (let object of objects) {
                     }
                     trueHeight += 30;
 
-                    let trueWidth = Number((content.style.width).replace('px', ''));
+                    trueWidth = Number((content.style.width).replace('px', ''));
                     if (trueWidth > 600) {
                         content.style.width = "600px";
                     }
@@ -56,7 +90,7 @@ for (let object of objects) {
                     object.style.opacity = 1;
                     object.style["pointer-events"] = "all";
                     document.removeEventListener("mousemove", moveObject);
-                    
+                    checkSize()
                 });
                 
                 });
@@ -73,7 +107,6 @@ for (let object of objects) {
                     child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe313;"
                     content.style.display = "none";
 
-                    let trueHeight = Number((content.style.height).replace('px', ''));
                     if (trueHeight > 600) {
                         content.style.height = "600px";
                     }
@@ -82,7 +115,6 @@ for (let object of objects) {
                     }
                     trueHeight += 30;
 
-                    let trueWidth = Number((content.style.width).replace('px', ''));
                     if (trueWidth > 600) {
                         content.style.width = "600px";
                     }

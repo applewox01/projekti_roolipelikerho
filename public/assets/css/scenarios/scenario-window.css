@@ -96,7 +96,7 @@ main {
 }
 
 .window_name {
-    width: 100%; 
+    width: calc(100% - 90px); 
     text-overflow: ellipsis; 
     overflow: hidden; 
     vertical-align: middle;
@@ -127,9 +127,9 @@ main {
 }
 
 .hide_window i, .close_window i, .move_window i  {
+    width: 100%;
     font-size: 30px; 
     text-align: center;
-    cursor: pointer;
 }
 
 .moveable_window {
@@ -139,7 +139,7 @@ main {
 
 .window_info {
     display: flex;  
-    background-color: grey;
+    background-image: linear-gradient(rgb(190, 190, 190), grey);
 }
 
 .window_content {
