@@ -68,6 +68,16 @@ body {
     cursor: pointer;
 }
 
+.exit-box-mobile {
+    width: 100%;
+    text-align: center;
+}
+
+.exit-box-mobile a {
+    text-decoration: none;
+    color: white;
+}
+
 main {
     height: 100vh;
     width: calc(100vw - 150px);
@@ -75,6 +85,38 @@ main {
     background-repeat: repeat;
     display: grid;
     grid-template-columns: auto auto auto auto;
+}
+
+#mobile_version {
+    display: none;
+    width: 100%;
+}
+
+.window_content {
+    background-color: white;
+    resize: both;
+    overflow: auto;
+    min-height: 200px;
+    min-width: 200px;
+    max-height: 800px;
+    max-width: 800px;
+    border: 2px solid grey;
+}
+
+@media screen and (max-width: 1000px) {
+    #mobile_version {
+        display: block;
+    }
+    main {
+        display: none;
+    }
+    #panel {
+        display: none;
+    }
+    .window_content {
+        resize: vertical;
+        max-width: none;
+    }
 }
 
 .scenario_name {
@@ -142,16 +184,6 @@ main {
     background-image: linear-gradient(rgb(190, 190, 190), grey);
 }
 
-.window_content {
-    background-color: white;
-    resize: both;
-    overflow: auto;
-    min-height: 200px;
-    min-width: 200px;
-    max-height: 800px;
-    max-width: 800px;
-    border: 2px solid grey;
-}
 
 .misc_notif {
     color: grey;

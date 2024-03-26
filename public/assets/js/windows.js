@@ -12,8 +12,8 @@ for (const object of objects) {
     object.style.display = "none";
 
     const content = object.querySelectorAll(".window_content")[0];
-    content.style.height = "300px";
-    content.style.width = "300px";
+    content.style.height = "200px";
+    content.style.width = "200px";
 
     let previousHeight = content.style.height;
     let previousWidth = content.style.width;
@@ -49,6 +49,9 @@ for (const object of objects) {
     function checkSize() {
         if (previousHeight != content.style.height || previousWidth != content.style.width) {
             object.style.position = "absolute";
+            
+            viewportWidth = window.innerWidth;
+            viewportHeight = window.innerHeight;
 
             trueHeight = Number((content.style.height).replace('px', ''));
             trueWidth = Number((content.style.width).replace('px', ''));
@@ -74,6 +77,8 @@ for (const object of objects) {
                     object.style.position = "absolute";
                     object.style.opacity = 0.5;
                     object.style["pointer-events"] = "none";
+                    viewportWidth = window.innerWidth;
+                    viewportHeight = window.innerHeight;
 
                     trueTop = Number((object.style.top).replace('px', ''));
                     trueLeft = Number((object.style.left).replace('px', ''));
