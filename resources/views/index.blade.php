@@ -49,8 +49,8 @@
 				<select id="dropdown" name="jarjestys">
 				<option value="">Järjestä</option>
 				<option value="name">A-Z</option>
-				<option value="lvl_lowest">Vaikeustaso</option>
-				<option value="plr_least">Pelaajien määrä</option>
+				<option value="lvl_highest">Vaikeustaso</option>
+				<option value="plr_most">Pelaajien määrä</option>
 				</select>
 			</form>
 
