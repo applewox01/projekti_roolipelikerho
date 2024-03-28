@@ -100,7 +100,6 @@ main {
     min-width: 200px;
     max-height: 800px;
     max-width: 800px;
-    border: 2px solid grey;
 }
 
 @media screen and (max-width: 1000px) {
@@ -177,6 +176,7 @@ main {
 .moveable_window {
     width: fit-content; 
     height: fit-content;
+    box-shadow: 0 0 20px black;
 }
 
 .window_info {

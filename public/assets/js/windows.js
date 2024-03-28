@@ -68,7 +68,17 @@ for (const object of objects) {
             };
         };
     };
+
     new ResizeObserver(checkSize).observe(content);
+
+    object.addEventListener("click", function(){
+        const other_windows = document.getElementsByClassName("moveable_window");
+        for (const sW of other_windows) {
+            sW.style["z-index"] = "0";
+        };
+        object.style["z-index"] = "1";
+    });
+
     for (let child of object.querySelectorAll(".move_window")) {
             child.addEventListener("mousedown", function(){
                 document.addEventListener("mousemove", moveObject)

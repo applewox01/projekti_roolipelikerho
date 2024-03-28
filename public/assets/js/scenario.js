@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", function(){
         icon_window.style.display = "none";
         icon.addEventListener("click", function(){
             if (icon_window.style.display == "none") {
+                icon.style["background-color"] = "grey";
                 icon_window.style.display = "block";
             } else {
+                icon.style["background-color"] = "lightgray";
                 icon_window.style.display = "none";
             }
         })
