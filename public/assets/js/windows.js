@@ -138,6 +138,9 @@ for (const object of objects) {
     for (let child of object.querySelectorAll(".close_window")) {
         child.addEventListener("click", function(){
                     object.style.display = "none";
+                    let object_box_name = String(object.id).replace("_window","")
+                    const object_box = document.getElementById(object_box_name);
+                    object_box.style["background-color"] = "lightgray";
         })
         break
     }

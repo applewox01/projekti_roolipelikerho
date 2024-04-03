@@ -18,7 +18,7 @@
 </head>
 <body>
     @if ($errors->has('load_scenario'))
-    <div class="display_block">
+    <div class="error_page">
     <h3 class="no-margin">Ongelma ladatessa skeenarion tietoja:</h3>
     <code>
         {{$errors->first('load_scenario')}}
@@ -35,22 +35,18 @@
                 <h2><i class="fa-solid fa-people-line"></i></h2>
                 <p>Pelaajat</p>
             </div>            
-            <br>
             <div class="icon-box" id="npcs">
                 <h2><i class="fa-solid fa-person"></i></h2>
                 <p>NPC:t</p>
             </div>
-            <br>
             <div class="icon-box" id="monsters">
                 <h2><i class="fa-solid fa-dragon"></i></h2>
                 <p>Hirviöt</p>
             </div>
-            <br>
             <div class="icon-box" id="description">
                 <h2><i class="fa-solid fa-book-open"></i></h2>
                 <p>Kuvaus</p>
             </div>
-            <br>
             <div class="icon-box" id="background_info">
                 <h2><a><i class="fa-solid fa-book"></i></a></h2>
                 <p>Taustatiedot</p>
@@ -60,22 +56,18 @@
                 <h2><a><i class="fa-solid fa-map-location-dot"></i></a></h2>
                 <p>Kartta</a></p>
             </div>-->
-            <br>
             <div class="icon-box" id="rooms">
-                <h2><a><i class="fa-solid fa-signs-post"></i></h2>
+                <h2><i class="fa-solid fa-signs-post"></i></h2>
                 <p>Paikat</p>
             </div>
-            <br>
             <div class="icon-box" id="events">
-                <h2><a><i class="fa-solid fa-calendar-days"></i></h2>
+                <h2><i class="fa-solid fa-calendar-days"></i></h2>
                 <p>Tapahtumat</p>
             </div>
-            <br>
             <div class="icon-box" id="attachments">
                 <h2><i class="fa-solid fa-paperclip"></i></h2>
                 <p>Liitteet</p>
             </div>
-            <br>
             <div class="exit-box">
                 <a href="{{route('index')}}">
                     <h2><i class="fa-solid fa-dungeon"></i></h2>
