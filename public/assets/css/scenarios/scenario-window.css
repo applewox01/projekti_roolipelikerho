@@ -52,11 +52,12 @@ body {
     width: 75%;
     text-align: center;
     background-color: lightgray;
-    box-shadow: 0 0 10px rgba(24, 0, 72, 0.5);
+    box-shadow: 0 0 10px rgba(64, 22, 149, 0.5);
     border-radius: 20px;
     height: fit-content;
+    padding: 10px;
     transition: box-shadow 0.3s ease;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 }
 
 .icon-box a, .exit-box a {
@@ -65,7 +66,7 @@ body {
 }
 
 .icon-box:hover, .exit-box:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
 
