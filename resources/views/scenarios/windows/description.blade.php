@@ -1,3 +1,5 @@
 <div class="window_content">
-    {{$admin_desc}}
+    <div class="info_plain_text">
+        {{$admin_desc}}
+    </div>
 </div>

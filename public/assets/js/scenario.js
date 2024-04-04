@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     //lukee character, mutta pätee jokaista info nappia
-    const character_boxes = document.getElementsByClassName("character_box");
-    for (let box of character_boxes) {
+    const character_box = document.getElementsByClassName("character_box");
+    const character_box_error = document.getElementsByClassName("character_box_error");
+    for (let box of character_box) {
         const character_info = box.getElementsByClassName("character_info");
         character_info[0].style.display = "none";
         box.addEventListener("click", function(){
@@ -30,9 +31,22 @@ document.addEventListener("DOMContentLoaded", function(){
                     character_info[0].style.display = "none";
                 }
             }
-
         })
     };
+    for (let box of character_box_error) {
+        const character_info = box.getElementsByClassName("character_info");
+        character_info[0].style.display = "none";
+        box.addEventListener("click", function(){
+            if (character_info.length > 0) {
+                if (character_info[0].style.display == "none") {
+                    character_info[0].style.display = "block";
+                } else {
+                    character_info[0].style.display = "none";
+                }
+            }
+        })
+    };
+
 
     /*const add_character = document.getElementById("add_character");
     add_character.addEventListener("click", function(){
