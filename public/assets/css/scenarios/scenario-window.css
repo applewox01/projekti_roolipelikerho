@@ -86,7 +86,7 @@ main {
     background-image:url("textures/grid.png");
     background-repeat: repeat;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto ;
 }
 
 #mobile_version {
@@ -125,12 +125,16 @@ main {
 }
 
 .attachment_icon {
-    border-radius: 15px; 
     width: 100%; 
     height: fit-content;
 }
 
-
+.image_grid {
+    display: grid;
+    justify-content: start;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
+    gap: 5px;
+}
 
 .no-margin {
     margin: 0;
@@ -166,17 +170,19 @@ main {
     background-color: lightblue;
 }
 
-.close_window {
+.close_window, .close_image {
     height: 30px; 
     width: 30px; 
     background-color: crimson;
 }
 
-.hide_window, .close_window {
+
+
+.hide_window, .close_window, .close_image {
     cursor: pointer;
 }
 
-.hide_window i, .close_window i, .move_window i  {
+.hide_window i, .close_window i, .move_window i, .close_image i  {
     width: 100%;
     font-size: 30px; 
     text-align: center;
@@ -209,6 +215,14 @@ main {
     cursor: pointer;
 }
 
+.image_box  {
+    border: 2px solid grey; 
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin: 5px;
+}
+
 .white_icon_tfpx {
     font-size: 24px;
     color: white;
@@ -226,7 +240,7 @@ main {
     text-align: center;
 }
 
-.character_box:hover, .add_character_box:hover, #add_character:hover {
+.character_box:hover, .add_character_box:hover, #add_character:hover, .image_box:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }

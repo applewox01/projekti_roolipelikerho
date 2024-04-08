@@ -53,7 +53,7 @@
 				<option value="plrcount">Pelaajien määrä</option>
 				</select>
 				<select class="dropdown" name="maailma">
-					<option value="">Maailma 1</option>
+					<option value="">Maailma</option>
 					</select>
 			</form>
 
