@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function(){
             if (icon_window.style.display == "none") {
                 icon.style["background-color"] = "grey";
                 icon_window.style.display = "block";
+                const other_windows = document.getElementsByClassName("moveable_window");
+                for (const sW of other_windows) {
+                    sW.style["z-index"] = "0";
+                };
+                icon_window.style["z-index"] = "1";
             } else {
                 icon.style["background-color"] = "lightgray";
                 icon_window.style.display = "none";
@@ -18,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     //lukee character, mutta pätee jokaista info nappia
-    const character_boxes = document.getElementsByClassName("character_box");
-    for (let box of character_boxes) {
+    const character_box = document.getElementsByClassName("character_box");
+    for (let box of character_box) {
         const character_info = box.getElementsByClassName("character_info");
         character_info[0].style.display = "none";
         box.addEventListener("click", function(){
@@ -30,9 +35,28 @@ document.addEventListener("DOMContentLoaded", function(){
                     character_info[0].style.display = "none";
                 }
             }
-
         })
     };
+
+    const image_box = document.getElementsByClassName("image_box");
+    for (let box of image_box) {
+        if (document.getElementById(`full_${box.id}`)) {
+        const full_image = document.getElementById(`full_${box.id}`);
+        full_image.style.display = "none";
+        box.addEventListener("click", function(){
+                if (full_image.style.display == "none") {
+                    box.style.display = "none";
+                    full_image.style.display = "block";
+                };
+        });
+        const close_image = full_image.getElementsByClassName("close_image");
+        close_image[0].addEventListener("click", function(){
+            box.style.display = "block";
+            full_image.style.display = "none";
+        })
+    };
+    };
+
 
     /*const add_character = document.getElementById("add_character");
     add_character.addEventListener("click", function(){

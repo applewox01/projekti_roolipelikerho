@@ -14,7 +14,7 @@ class ScenarioController extends Controller
         try {
             //load basic scenario info, monsters and characters related, rooms, npcs, and events
             if (DB::table('scenarios')->where("id",$id)->doesntExist()) {
-                throw new Exception("Skenaarion tietoja ei löydetty! (ID: $id)");
+                throw new Exception("Skenaarion tietoja ei löydetty (ID: $id)");
             } else {
                 $scenario_info = DB::table('scenarios')->where("id",$id)->select('name','admin_desc','background_info')->first();
                 $character_relations = DB::table('scenario_characters')->where("scenario_id", $id)->get();

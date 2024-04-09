@@ -46,10 +46,18 @@ for (const object of objects) {
         }
     }
 
+    function zindex() {
+        const other_windows = document.getElementsByClassName("moveable_window");
+        for (const sW of other_windows) {
+            sW.style["z-index"] = "0";
+        };
+        object.style["z-index"] = "1";
+    };
+
     function checkSize() {
         if (previousHeight != content.style.height || previousWidth != content.style.width) {
             object.style.position = "absolute";
-            
+            zindex();
             viewportWidth = window.innerWidth;
             viewportHeight = window.innerHeight;
 
@@ -71,19 +79,20 @@ for (const object of objects) {
 
     new ResizeObserver(checkSize).observe(content);
 
-    object.addEventListener("click", function(){
-        const other_windows = document.getElementsByClassName("moveable_window");
-        for (const sW of other_windows) {
-            sW.style["z-index"] = "0";
-        };
-        object.style["z-index"] = "1";
-    });
+    object.addEventListener("click", zindex);
+
+    const objectChildren = object.getElementsByTagName("*");
+    for (let child of objectChildren) {
+        child.addEventListener("click", zindex);
+    };
+
 
     for (let child of object.querySelectorAll(".move_window")) {
             child.addEventListener("mousedown", function(){
                 document.addEventListener("mousemove", moveObject)
                 function moveObject(event) {
                     event.preventDefault();
+                    zindex();
                     object.style.position = "absolute";
                     object.style.opacity = 0.5;
                     object.style["pointer-events"] = "none";
@@ -138,6 +147,9 @@ for (const object of objects) {
     for (let child of object.querySelectorAll(".close_window")) {
         child.addEventListener("click", function(){
                     object.style.display = "none";
+                    let object_box_name = String(object.id).replace("_window","")
+                    const object_box = document.getElementById(object_box_name);
+                    object_box.style["background-color"] = "lightgray";
         })
         break
     }

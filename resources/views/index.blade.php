@@ -46,12 +46,15 @@
 						document.getElementById("dropdown").value = "{{$order_by}}";
 					});
 				</script>
-				<select id="dropdown" name="jarjestys">
+				<select class="dropdown" name="jarjestys">
 				<option value="">Järjestä</option>
-				<option value="name">A-Z</option>
-				<option value="lvl_highest">Vaikeustaso</option>
-				<option value="plr_most">Pelaajien määrä</option>
+				<option value="az">A-Z</option>
+				<option value="lvl">LVL</option>
+				<option value="plrcount">Pelaajien määrä</option>
 				</select>
+				<select class="dropdown" name="maailma">
+					<option value="">Maailma</option>
+					</select>
 			</form>
 
 		    <br>

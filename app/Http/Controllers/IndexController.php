@@ -30,10 +30,20 @@ class IndexController extends Controller
             $search_by = trim(request()->get('search'));
             if ($search_by != '') {
                 $scenarios = DB::table('scenarios')->where('name',$search_by)->get();
-            } else if ($order_by != '') {
-                $scenarios = DB::table('scenarios')->orderBy($order_by)->get();
             } else {
-                $scenarios = DB::table('scenarios')->get();
+                switch ($order_by) {
+                    case "az":
+                        $scenarios = DB::table('scenarios')->orderBy('name')->get();
+                        break;
+                    case "lvl":
+                        $scenarios = DB::table('scenarios')->orderBy('lvl_highest', 'asc')->orderBy('lvl_lowest', 'asc')->get();
+                        break;
+                    case "plrcount":
+                        $scenarios = DB::table('scenarios')->orderBy('plr_most', 'asc')->orderBy('plr_least', 'asc')->get();
+                        break;
+                    default:
+                    $scenarios = DB::table('scenarios')->get();
+                };
             };
             return view("index",
             [
