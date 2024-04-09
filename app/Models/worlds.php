@@ -10,5 +10,6 @@ class worlds extends Model
     use HasFactory;
 
     protected $table = 'worlds';
+    public $timestamps = false;
     protected $fillable = ['name'];
 }
