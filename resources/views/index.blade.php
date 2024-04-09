@@ -43,17 +43,21 @@
 				<input id="search" type="search" placeholder="Hae" name="search" value="{{$search_by}}">
 				<script>
 					document.addEventListener("DOMContentLoaded", function(){
-						document.getElementById("dropdown").value = "{{$order_by}}";
+						document.getElementById("jarjestys").value = '{{$order_by}}';
+						document.getElementById("maailma").value = '{{$filter_world}}';
 					});
 				</script>
-				<select class="dropdown" name="jarjestys">
+				<select class="dropdown" name="jarjestys" id="jarjestys">
 				<option value="">Järjestä</option>
 				<option value="az">A-Z</option>
 				<option value="lvl">LVL</option>
 				<option value="plrcount">Pelaajien määrä</option>
 				</select>
-				<select class="dropdown" name="maailma">
+				<select class="dropdown" name="maailma" id="maailma">
 					<option value="">Maailma</option>
+					@foreach ($worlds as $world)
+					<option value="{{$world->id}}">{{$world->name}}</option>
+					@endforeach
 					</select>
 			</form>
 
@@ -68,8 +72,12 @@
 			<section class="adventure-box">
 				<a href="{{ route('scenario', ['id' => $scenario->id]) }}">
 				<h2><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</h2>
-				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest}}-{{$scenario->lvl_highest}}, {{$scenario->plr_least}}-{{$scenario->plr_most}} hahmoa</p>
+				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest}}-{{$scenario->lvl_highest}}, {{$scenario->plr_least}}-{{$scenario->plr_most}} pelaajaa</p>
+				@if (is_null($scenario->description))
+				<p class="adventure-desc">...</p>
+				@else
 				<p class="adventure-desc">{{$scenario->description}}</p>
+				@endif
 				</a>
 			</section>
 			@endforeach

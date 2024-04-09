@@ -11,11 +11,14 @@ class IndexController extends Controller
     public function index() {
         try {
             $scenarios = DB::table('scenarios')->get();
+            $worlds = DB::table('worlds')->select('name','id')->get();
             return view("index",
             [
                 'scenarios' => $scenarios,
                 'search_by' => "",
-                'order_by' => ""
+                'filter_world' => "",
+                'order_by' => "",
+                'worlds' => $worlds
             ]
             );
         }
@@ -26,30 +29,37 @@ class IndexController extends Controller
 
     public function sort_by() {
         try {
-            $order_by = trim(request()->get('jarjestys'));
+            $filter_world = request()->get('maailma');
+            $order_by = request()->get('jarjestys');
             $search_by = trim(request()->get('search'));
-            if ($search_by != '') {
-                $scenarios = DB::table('scenarios')->where('name',$search_by)->get();
-            } else {
-                switch ($order_by) {
-                    case "az":
-                        $scenarios = DB::table('scenarios')->orderBy('name')->get();
-                        break;
-                    case "lvl":
-                        $scenarios = DB::table('scenarios')->orderBy('lvl_highest', 'asc')->orderBy('lvl_lowest', 'asc')->get();
-                        break;
-                    case "plrcount":
-                        $scenarios = DB::table('scenarios')->orderBy('plr_most', 'asc')->orderBy('plr_least', 'asc')->get();
-                        break;
-                    default:
-                    $scenarios = DB::table('scenarios')->get();
-                };
+            $worlds = DB::table('worlds')->select('name','id')->get();
+            $query = DB::table('scenarios');
+
+            if ($filter_world != '') {
+                $query->where('world_id',$filter_world);
             };
+            if ($search_by != '') {
+                $query->where('name',$search_by)->orderBy('name');
+            };
+            switch ($order_by) {
+                case "az":
+                    $query->orderBy('name');
+                    break;
+                case "lvl":
+                    $query->orderBy('lvl_highest', 'asc')->orderBy('lvl_lowest', 'asc');
+                    break;
+                case "plrcount":
+                    $query->orderBy('plr_most', 'asc')->orderBy('plr_least', 'asc');
+                    break;
+            };
+            $scenarios = $query->get();
             return view("index",
             [
                 'order_by' => $order_by,
                 'search_by' => $search_by,
-                'scenarios' => $scenarios
+                'scenarios' => $scenarios,
+                'worlds' => $worlds,
+                'filter_world' => $filter_world
             ]
             );
         }

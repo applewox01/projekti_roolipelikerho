@@ -36,17 +36,6 @@ class ScenarioController extends Controller
                     }
                 }
             }
-            /*
-            
-            $scenario_characters = DB::table('scenario_characters')->where("scenario_id",$id)->select('id')->get();
-            $characters = [];
-            foreach ($scenario_characters as $relation_id) {
-                array_push($characters, DB::table('characters')->where("id",$relation_id)->first());
-            }
-
-            $events = DB::table('events')->where("scenario_id",$id)->get();
-            //tämän vois tehdä tietyllä tavalla
-            $attachments = DB::table('attachments')->where("scenario_id",$id)->select('id','name')->get();*/
             return view('scenarios.scenario',
             [
                 'name' => $scenario_info->name,

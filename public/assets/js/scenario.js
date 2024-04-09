@@ -38,9 +38,19 @@ document.addEventListener("DOMContentLoaded", function(){
         })
     };
 
+    const mobile_window = document.getElementsByClassName("mobile_window");
+    const mobile_version = document.getElementById("mobile_version")
+    for (let window of mobile_window) {
+        mobile_version.appendChild(window)
+    }
+    const exit_box_mobile = document.getElementById("exit-box-mobile");
+    mobile_version.appendChild(exit_box_mobile);
+
     const image_box = document.getElementsByClassName("image_box");
     for (let box of image_box) {
         if (document.getElementById(`full_${box.id}`)) {
+        
+        //tämä ei toimi koska mobiili versio laiminlyödään!:
         const full_image = document.getElementById(`full_${box.id}`);
         full_image.style.display = "none";
         box.addEventListener("click", function(){

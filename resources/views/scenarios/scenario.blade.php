@@ -103,14 +103,14 @@
         </main>
         <div id="mobile_version">
             @foreach ($windows as $window) 
-            <div>
+            <div class="mobile_window">
                 <div class="window_info">
                     <p class="window_name">{{$window[1]}}</p>
                 </div>
                     @include("scenarios.windows.".$window[0])
             </div>
             @endforeach
-            <div class="exit-box-mobile">
+            <div id="exit-box-mobile">
                 <a href="{{route('index')}}">
                     <h2><i class="fa-solid fa-dungeon"></i></h2>
                     <p>Takaisin kiltaan</p>

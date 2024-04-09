@@ -7,9 +7,10 @@
     @endphp
         @foreach ($attachments_urls as $url)
         @if (file_exists(public_path($url)))
-        <div style="width: 100%; height: fit-content;" id="full_{{$i}}">
-            <div style="background-color: lightgray;">
+        <div  id="full_{{$i}}" class="full_image">
+            <div class="full_image_info">
                 <div class="close_image"><i class="fa">&#xf00d;</i></div>
+                <p>{{$url}}</p>
             </div>
             <p style="margin: 0;"><img style="height: 100%; width: 100%;" src="{{asset($url)}}"></p>
         </div>

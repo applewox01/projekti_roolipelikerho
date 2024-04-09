@@ -70,12 +70,27 @@ body {
     cursor: pointer;
 }
 
-.exit-box-mobile {
+#exit-box-mobile {
     width: 100%;
     text-align: center;
 }
 
-.exit-box-mobile a {
+.full_image {
+    width: 100%; 
+    height: fit-content;
+}
+
+.full_image_info {
+    background-color: lightgray;
+}
+
+.full_image_info p {
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    margin: 0;
+}
+
+#exit-box-mobile a {
     text-decoration: none;
     color: white;
 }
