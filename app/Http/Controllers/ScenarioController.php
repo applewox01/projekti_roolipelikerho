@@ -16,12 +16,12 @@ class ScenarioController extends Controller
             if (DB::table('scenarios')->where("id",$id)->doesntExist()) {
                 throw new Exception("Skenaarion tietoja ei löydetty (ID: $id)");
             } else {
-                $scenario_info = DB::table('scenarios')->where("id",$id)->select('name','admin_desc','background_info')->first();
-                $character_relations = DB::table('scenario_characters')->where("scenario_id", $id)->get();
-                $characters = array();
-                foreach ($character_relations as $single_relation) {
-                    array_push($characters, DB::table('characters')->where("id", $single_relation->id)->first());
-                }
+                $scenario_info = DB::table('scenarios')->where("id",$id)
+                    ->select('name','admin_desc','background_info')
+                    ->first();
+                $characters = DB::table('scenario_characters')->where("scenario_id", $id)
+                    ->join('characters', 'scenario_characters.id', '=', 'characters.id')
+                    ->get();
                 $rooms = DB::table('rooms')->where("scenario_id",$id)->first();
                 $monsters = DB::table('monster')->where("scenario_id",$id)->first();
                 $npcs = DB::table('npc')->where("scenario_id",$id)->first();
@@ -42,7 +42,6 @@ class ScenarioController extends Controller
                 'admin_desc' => $scenario_info->admin_desc,
                 'background_info' => $scenario_info->background_info,
                 'characters' => $characters,
-                'character_relations' => $character_relations,
                 'npcs' => $npcs,
                 'rooms' => $rooms,
                 'monsters' => $monsters,
