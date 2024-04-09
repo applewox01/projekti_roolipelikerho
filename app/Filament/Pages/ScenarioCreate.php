@@ -8,7 +8,9 @@ use App\Models\monster;
 use App\Models\npc;
 use App\Models\rooms;
 use App\Models\Scenario;
+use App\Models\worlds;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -64,22 +66,28 @@ class ScenarioCreate extends Page implements HasForms
                     ->required(),
                 TextInput::make('admin_desc')
                     ->label('Ylläpidon kuvaus'),
+                Select::make('world_id')
+                    ->label('Maailma')
+                    ->native(false)
+                    ->searchable()
+                    ->options([worlds::all()->pluck('name', 'id')->toArray()]),
                 FileUpload::make('attachments')
                     ->multiple()
                     ->disk('local')
-                    ->label('Liitteet')
+                    ->label('Liitteet'),
             ])
-            ->statePath('data')
-            ->live();
+            ->statePath('data');
     }
 
     public function create() {
         $attachmentPaths = [];
 
-        foreach ($this->data['attachments'] as $key => $attachment) {
-            $filename = uniqid('attachment_') . '.' . $attachment->extension();
-            $path = $attachment->storeAs('attachments', $filename);
-            $attachmentPaths[] = $path;
+        if(isset($this->data['attachments'])) {
+            foreach ($this->data['attachments'] as $key => $attachment) {
+                $filename = uniqid('attachment_') . '.' . $attachment->extension();
+                $path = $attachment->storeAs('attachments', $filename);
+                $attachmentPaths[] = $path;
+            }
         }
 
         $scenario = Scenario::create($this->data);

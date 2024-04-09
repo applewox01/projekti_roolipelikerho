@@ -8,6 +8,7 @@ use App\Models\monster;
 use App\Models\npc;
 use App\Models\rooms;
 use App\Models\Scenario;
+use App\Models\worlds;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -94,10 +95,15 @@ class ScenarioEdit extends Page implements HasForms
                     ->required(),
                 TextInput::make('admin_desc')
                     ->label('Ylläpidon kuvaus'),
+                Select::make('world_id')
+                    ->label('Maailma')
+                    ->native(false)
+                    ->searchable()
+                    ->options([worlds::all()->pluck('name', 'id')->toArray()]),
                 FileUpload::make('attachments')
                     ->multiple()
                     ->disk('local')
-                    ->label('Liitteet')
+                    ->label('Liitteet'),
             ])
             ->statePath('data')
             ->live();

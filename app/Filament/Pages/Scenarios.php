@@ -48,6 +48,7 @@ class Scenarios extends Page implements HasTable
                 TextColumn::make('lvl_lowest'),
                 TextColumn::make('plr_most'),
                 TextColumn::make('plr_least'),
+                TextColumn::make('world.name'),
                 TextColumn::make('admin_desc')
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')

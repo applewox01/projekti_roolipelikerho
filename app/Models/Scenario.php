@@ -24,7 +24,13 @@ class Scenario extends Model
         'plr_most',
         'plr_least',
         'admin_desc',
+        'world_id',
         'created_at',
         'updated_at',
     ];
+
+    public function world()
+    {
+        return $this->belongsTo(worlds::class);
+    }
 }
