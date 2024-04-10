@@ -23,16 +23,5 @@
         </div>
         @endforeach
         @endif
-        <!--<div id="add_character">
-                <p style="margin: 0; margin-top: 5px; margin-bottom: 5px;"><i style="font-size: 24px;" class="fas fa-user-plus"></i></p>
-
-                <div id="unassigned_list" style="display: none">
-                        <div class="add_character_box" id="">
-                        <p style="margin: 0;  margin-top: 5px; margin-bottom: 5px;"><i style="font-size: 24px;" class="fas fa-user-alt"></i></p>
-                        <p style="margin: 0; text-overflow: ellipsis; overflow: hidden; "></p>
-                        </div
-                </div>
-
-        </div>-->
 
 </div>

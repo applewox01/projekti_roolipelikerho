@@ -102,6 +102,9 @@
 
         </main>
         <div id="mobile_version">
+            @php
+                array_splice($windows, 4, 1);
+            @endphp
             @foreach ($windows as $window) 
             <div class="mobile_window">
                 <div class="window_info">

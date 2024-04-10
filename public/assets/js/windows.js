@@ -79,6 +79,8 @@ for (const object of objects) {
 
     new ResizeObserver(checkSize).observe(content);
 
+    document.addEventListener("mouseup", checkSize);
+
     object.addEventListener("click", zindex);
 
     const objectChildren = object.getElementsByTagName("*");
@@ -118,7 +120,6 @@ for (const object of objects) {
                     object.style.opacity = 1;
                     object.style["pointer-events"] = "all";
                     document.removeEventListener("mousemove", moveObject);
-                    checkSize()
                 });
                 
                 });

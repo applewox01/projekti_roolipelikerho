@@ -26,15 +26,7 @@ class ScenarioController extends Controller
                 $monsters = DB::table('monster')->where("scenario_id",$id)->first();
                 $npcs = DB::table('npc')->where("scenario_id",$id)->first();
                 $events = DB::table('events')->where("scenario_id",$id)->first();
-
                 $attachments = DB::table('attachments')->where("scenario_id",$id)->first();
-                $attachments_urls = array();
-                if ($attachments) {
-                    $json_data = json_decode($attachments->data);
-                    foreach ($json_data as $attachment) {
-                        array_push($attachments_urls, Storage::url($attachment));
-                    }
-                }
             }
             return view('scenarios.scenario',
             [
@@ -46,7 +38,7 @@ class ScenarioController extends Controller
                 'rooms' => $rooms,
                 'monsters' => $monsters,
                 'events' => $events,
-                'attachments_urls' => $attachments_urls
+                'attachments' => $attachments
             ]);
         }
         catch(Exception $e) {
