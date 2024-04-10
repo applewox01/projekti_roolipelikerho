@@ -27,12 +27,12 @@
         class="image_box"
         id="{{$i}}"
         @else
-        class="character_box_error"
+        class="image_box_error"
         @endif>
         @if (file_exists(public_path($url[1])))
             <p class="attachment_icon"><img src="{{asset($url[1])}}"></p>
         @else
-            <p class="info_button_name">404</p>
+            <p class="image_error_icon"><i class="fas fa-file"></i></p>
         @endif
         <p class="image_name">{{$url[0]}}</p>
     </div>

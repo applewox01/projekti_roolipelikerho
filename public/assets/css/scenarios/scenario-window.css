@@ -134,14 +134,18 @@ main {
     text-align: center;
 }
 
-.attachment_icon {
+.attachment_icon, .image_error_icon {
     margin: 0;
 }
 
-.attachment_icon img {
+.attachment_icon img, .image_error_icon {
     width: 100%; 
     box-shadow: 2px 2px black;
     height: fit-content;
+}
+
+.image_error_icon {
+    box-shadow: 0px 0px black;
 }
 
 .full_image {
@@ -208,8 +212,6 @@ main {
     background-color: crimson;
 }
 
-
-
 .hide_window, .close_window, .close_image {
     cursor: pointer;
 }
@@ -247,11 +249,21 @@ main {
     cursor: pointer;
 }
 
-.image_box  {
+.image_box, .image_box_error {
     width: 100%;
     text-align: center;
     cursor: pointer;
     margin: 5px;
+}
+
+.image_box_error {
+    background-color: rgb(255, 80, 80);
+    cursor: not-allowed;
+}
+
+.image_error_icon {
+    color: white;
+    font-size: 22px;
 }
 
 .white_icon_tfpx {
