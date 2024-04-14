@@ -10,6 +10,7 @@ use App\Models\rooms;
 use App\Models\Scenario;
 use App\Models\worlds;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
@@ -66,47 +67,74 @@ class ScenarioEdit extends Page implements HasForms
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
-                TextInput::make('name')
-                    ->label('Nimi')
-                    ->unique('scenarios', 'name')
-                    ->required(),
-                TextInput::make('description')
-                    ->label('Kuvaus'),
-                TextInput::make('background_info')
-                    ->label('Taustatiedot'),
-                TextInput::make('other_requirements')
-                    ->label('Muut vaatimukset'),
-                TextInput::make('lvl_highest')
-                    ->label('Korkein taso')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('lvl_lowest')
-                    ->label('Matalin taso')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('plr_most')
-                    ->label('Eniten pelaajia')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('plr_least')
-                    ->label('Vähiten pelaajia')
-                    ->numeric()
-                    ->required(),
-                TextInput::make('admin_desc')
-                    ->label('Ylläpidon kuvaus'),
-                Select::make('world_id')
-                    ->label('Maailma')
-                    ->native(false)
-                    ->searchable()
-                    ->options([worlds::all()->pluck('name', 'id')->toArray()]),
-                FileUpload::make('attachments')
-                    ->multiple()
-                    ->disk('local')
-                    ->label('Liitteet'),
-            ])
-            ->statePath('data')
-            ->live();
+        ->schema([
+            TextInput::make('name')
+                ->label('Nimi')
+                ->unique('scenarios', 'name')
+                ->required()
+                ->columnSpan(2),
+            MarkdownEditor::make('description')
+                ->label('Kuvaus')
+                ->toolbarButtons([
+                    'blockquote',
+                    'bold',
+                    'italic',
+                ])
+                ->columnSpan(2),
+            MarkdownEditor::make('background_info')
+                ->label('Taustatiedot')
+                ->toolbarButtons([
+                    'blockquote',
+                    'bold',
+                    'italic',
+                ])
+                ->columnSpan(2),
+            MarkdownEditor::make('other_requirements')
+                ->label('Muut vaatimukset')
+                ->toolbarButtons([
+                    'blockquote',
+                    'bold',
+                    'italic',
+                ])
+                ->columnSpan(2),
+            TextInput::make('lvl_lowest')
+                ->label('Matalin taso')
+                ->numeric()
+                ->required(),
+            TextInput::make('lvl_highest')
+                ->label('Korkein taso')
+                ->numeric()
+                ->required(),
+            TextInput::make('plr_least')
+                ->label('Vähiten pelaajia')
+                ->numeric()
+                ->required(),
+            TextInput::make('plr_most')
+                ->label('Eniten pelaajia')
+                ->numeric()
+                ->required(),
+            MarkdownEditor::make('admin_desc')
+                ->label('Ylläpidon kuvaus')
+                ->toolbarButtons([
+                    'blockquote',
+                    'bold',
+                    'italic',
+                ])
+                ->columnSpan(2),
+            Select::make('world_id')
+                ->label('Maailma')
+                ->native(false)
+                ->searchable()
+                ->options([worlds::all()->pluck('name', 'id')->toArray()])
+                ->columnSpan(2),
+            FileUpload::make('attachments')
+                ->multiple()
+                ->disk('local')
+                ->label('Liitteet')
+                ->columnSpan(2),
+        ])
+        ->statePath('data')
+        ->columns(2);
     }
 
     public function update() {

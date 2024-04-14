@@ -13,6 +13,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -41,42 +42,70 @@ class ScenarioCreate extends Page implements HasForms
                 TextInput::make('name')
                     ->label('Nimi')
                     ->unique('scenarios', 'name')
-                    ->required(),
-                TextInput::make('description')
-                    ->label('Kuvaus'),
-                TextInput::make('background_info')
-                    ->label('Taustatiedot'),
-                TextInput::make('other_requirements')
-                    ->label('Muut vaatimukset'),
-                TextInput::make('lvl_highest')
-                    ->label('Korkein taso')
-                    ->numeric()
-                    ->required(),
+                    ->required()
+                    ->columnSpan(2),
+                MarkdownEditor::make('description')
+                    ->label('Kuvaus')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
+                MarkdownEditor::make('background_info')
+                    ->label('Taustatiedot')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
+                MarkdownEditor::make('other_requirements')
+                    ->label('Muut vaatimukset')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
                 TextInput::make('lvl_lowest')
                     ->label('Matalin taso')
                     ->numeric()
                     ->required(),
-                TextInput::make('plr_most')
-                    ->label('Eniten pelaajia')
+                TextInput::make('lvl_highest')
+                    ->label('Korkein taso')
                     ->numeric()
                     ->required(),
                 TextInput::make('plr_least')
                     ->label('Vähiten pelaajia')
                     ->numeric()
                     ->required(),
-                TextInput::make('admin_desc')
-                    ->label('Ylläpidon kuvaus'),
+                TextInput::make('plr_most')
+                    ->label('Eniten pelaajia')
+                    ->numeric()
+                    ->required(),
+                MarkdownEditor::make('admin_desc')
+                    ->label('Ylläpidon kuvaus')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
                 Select::make('world_id')
                     ->label('Maailma')
                     ->native(false)
                     ->searchable()
-                    ->options([worlds::all()->pluck('name', 'id')->toArray()]),
+                    ->options([worlds::all()->pluck('name', 'id')->toArray()])
+                    ->columnSpan(2),
                 FileUpload::make('attachments')
                     ->multiple()
                     ->disk('local')
-                    ->label('Liitteet'),
+                    ->label('Liitteet')
+                    ->columnSpan(2),
             ])
-            ->statePath('data');
+            ->statePath('data')
+            ->columns(2);
     }
 
     public function create() {
