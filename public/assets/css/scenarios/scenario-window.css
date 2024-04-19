@@ -21,6 +21,7 @@ body {
     display: flex;
     font-family: Demon Slayer, sans-serif;
     background-color: var(--background);
+    overflow: hidden;
 }
 
 #scenario-name {

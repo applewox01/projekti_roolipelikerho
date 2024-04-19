@@ -36,6 +36,9 @@ for (const object of objects) {
             content.style.height = "200px";
         }
         trueHeight += 30;
+        if (content.style.display == "none") {
+            trueHeight = 30;
+        };
 
         trueWidth = Number((content.style.width).replace('px', ''));
         if (trueWidth > 800) {
@@ -128,19 +131,19 @@ for (const object of objects) {
     for (let child of object.querySelectorAll(".hide_window")) {
         child.addEventListener("click", function(){
             for (let content of object.querySelectorAll(".window_content")) {
-                if (content.style.opacity == "0.05") {
+                if (content.style.display == "none") {
                     child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe5ce;"
-                    /*child.parentNode.style.width = "100%";
-                    content.style.display = "inline-block";*/
-                    content.style.opacity = "1";
-                    object.style["box-shadow"] = "0 0 20px black";
+                    child.parentNode.style.width = "100%";
+                    content.style.display = "inline-block";
+                    /*content.style.opacity = "1";
+                    object.style["box-shadow"] = "0 0 20px black";*/
                 } else {
                     child.getElementsByClassName("material-icons")[0].innerHTML = "&#xe313;"
-                    //content.style.display = "none";
+                    content.style.display = "none";
+                    child.parentNode.style.width = content.style.width;
                     checkBoundaries()
-                    //child.parentNode.style.width = content.style.width;
-                    content.style.opacity = "0.05";
-                    object.style["box-shadow"] = "0 0 0px black";
+                    /*content.style.opacity = "0.05";
+                    object.style["box-shadow"] = "0 0 0px black";*/
                 }
                 break
             }
