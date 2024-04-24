@@ -14,6 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -44,7 +45,7 @@ class ScenarioCreate extends Page implements HasForms
                     ->unique('scenarios', 'name')
                     ->required()
                     ->columnSpan(2),
-                MarkdownEditor::make('description')
+                RichEditor::make('description')
                     ->label('Kuvaus')
                     ->toolbarButtons([
                         'blockquote',
@@ -52,7 +53,7 @@ class ScenarioCreate extends Page implements HasForms
                         'italic',
                     ])
                     ->columnSpan(2),
-                MarkdownEditor::make('background_info')
+                RichEditor::make('background_info')
                     ->label('Taustatiedot')
                     ->toolbarButtons([
                         'blockquote',
@@ -60,7 +61,7 @@ class ScenarioCreate extends Page implements HasForms
                         'italic',
                     ])
                     ->columnSpan(2),
-                MarkdownEditor::make('other_requirements')
+                RichEditor::make('other_requirements')
                     ->label('Muut vaatimukset')
                     ->toolbarButtons([
                         'blockquote',
@@ -84,7 +85,7 @@ class ScenarioCreate extends Page implements HasForms
                     ->label('Eniten pelaajia')
                     ->numeric()
                     ->required(),
-                MarkdownEditor::make('admin_desc')
+                RichEditor::make('admin_desc')
                     ->label('Ylläpidon kuvaus')
                     ->toolbarButtons([
                         'blockquote',
@@ -100,7 +101,7 @@ class ScenarioCreate extends Page implements HasForms
                     ->columnSpan(2),
                 FileUpload::make('attachments')
                     ->multiple()
-                    ->disk('local')
+                    ->disk('public')
                     ->label('Liitteet')
                     ->columnSpan(2),
             ])
@@ -114,7 +115,7 @@ class ScenarioCreate extends Page implements HasForms
         if(isset($this->data['attachments'])) {
             foreach ($this->data['attachments'] as $key => $attachment) {
                 $filename = uniqid('attachment_') . '.' . $attachment->extension();
-                $path = $attachment->storeAs('attachments', $filename);
+                $path = $attachment->storeAs('public/attachments', $filename);
                 $attachmentPaths[] = $path;
             }
         }

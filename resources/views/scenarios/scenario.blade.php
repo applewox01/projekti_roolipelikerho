@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="{{asset('assets/js/scenario.js')}}"></script>
     <script src="{{asset('assets/js/windows.js')}}"></script>
-    @if (isset($name))
-    <title>{{$name}}</title>
-    @else
-    <title>ID: {{$id}}</title>
-    @endif
+   <title>{{ $scenario->name }}</title>
 </head>
 <body>
     @if ($errors->has('load_scenario'))
@@ -29,12 +25,12 @@
 </div>
     @else
     <aside id="panel">
-            <p class="scenario_name">{{$name}}</p>
+            <p class="scenario_name">{{ $scenario->name }}</p>
         <section id="icons">
             <div class="icon-box" id="characters">
                 <h2><i class="fa-solid fa-people-line"></i></h2>
                 <p>Pelaajat</p>
-            </div>            
+            </div>
             <div class="icon-box" id="npcs">
                 <h2><i class="fa-solid fa-person"></i></h2>
                 <p>NPC:t</p>
@@ -88,7 +84,7 @@
                 ["rooms","Paikat"],
                 ["description","Kuvaus"])
             @endphp
-            @foreach ($windows as $window) 
+            @foreach ($windows as $window)
             <div class="moveable_window" id="{{$window[0]}}_window">
                 <div class="window_info">
                     <p class="window_name">{{$window[1]}}</p>
@@ -105,7 +101,7 @@
             @php
                 array_splice($windows, 4, 1);
             @endphp
-            @foreach ($windows as $window) 
+            @foreach ($windows as $window)
             <div class="mobile_window">
                 <div class="window_info">
                     <p class="window_name">{{$window[1]}}</p>

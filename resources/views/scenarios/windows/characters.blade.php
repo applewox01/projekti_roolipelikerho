@@ -1,5 +1,5 @@
 <div class="window_content">
-        @if ($characters->count() == 0)
+        @if (count($characters) == 0)
         <p class="misc_notif">Liitä pelaajia skenaarioon admin-paneelin kautta</p>
         @else
         @foreach ($characters as $character)

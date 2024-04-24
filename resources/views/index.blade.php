@@ -73,7 +73,7 @@
 				<a href="{{ route('scenario', ['id' => $scenario->id]) }}">
 				<h2><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</h2>
 				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest ?? '??'}}-{{$scenario->lvl_highest ?? '??'}}, {{$scenario->plr_least ?? '??'}}-{{$scenario->plr_most ?? '??'}} pelaajaa</p>
-				<p class="adventure-desc">{{$scenario->description ?? '...'}}</p>
+				<p class="adventure-desc">{!! $scenario->description ?? '...' !!}</p>
 				</a>
 			</section>
 			@endforeach
