@@ -39,7 +39,9 @@ class Scenarios extends Page implements HasTable
             ->query(Scenario::query())
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('description'),
+                TextColumn::make('description')
+                    ->html()
+                    ->words(5),
                 TextColumn::make('background_info')
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('other_requirements')

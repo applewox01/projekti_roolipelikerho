@@ -13,7 +13,6 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -35,6 +34,10 @@ class ScenarioCreate extends Page implements HasForms
     public ?array $monsters = [];
     public ?array $places = [];
     public ?array $events = [];
+
+    public function mount() {
+        $this->form->fill();
+    }
 
     public function form(Form $form): Form
     {
@@ -106,6 +109,7 @@ class ScenarioCreate extends Page implements HasForms
                     ->columnSpan(2),
             ])
             ->statePath('data')
+            ->live()
             ->columns(2);
     }
 
