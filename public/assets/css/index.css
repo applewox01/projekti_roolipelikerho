@@ -59,29 +59,34 @@ body::-webkit-scrollbar {
     font-size: 24px
 }
 
+#sort_form {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sort_form input, #sort_form select {
+    width: 33%;
+}
+
 .list_after_login {
     margin: 0; 
     height: 100%;
 }
 
 .list_after_login .login_link {
-    height: 50%; 
-    display: block; 
+    text-align: center;
 }
 
-@media screen and (max-width: 825px) {
+@media screen and (max-width: 830px) {
     #page-header {
         display: block;
-        text-align: center;
-    }
-    .login_link {
-        width: 100%;
         text-align: center;
     }
     .guild_link {
         text-align: center;
     }
 }
+
 
 h1 {
 	font-size: 35px;
@@ -122,18 +127,25 @@ h1 {
 
 main#adventure-list {
 	display: grid;
-	gap: 5px;
-    grid-template-columns: auto auto auto;
+	justify-content: space-between;
+    grid-template-columns: 33% 33% 33%;
 }
 
 .adventure-box {
     border-radius: 20px;
     padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 100%;
     background-color: lightgray;
     border: 2px solid black;
     transition: box-shadow 0.3s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.world_info {
+    text-align: center;
+    width: 100%;
 }
 
 .adventure-box:hover {
@@ -142,14 +154,16 @@ main#adventure-list {
 }
 
 .adventure-box .adventure-stats {
-    font-size: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: var(--text);
-	font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .adventure-desc {
-    font-size: 14px;
+    margin-top: 10px;
+    height: 40%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
     color: var(--text);
 }
 

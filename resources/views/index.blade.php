@@ -16,12 +16,17 @@
 				<a class="guild-link">Seikkailijoiden kilta</a></h1>
             @if (Auth::check())
 			<div class="list_after_login">
-            <a class="login-link" href="{{ route('filament.admin.pages.dashboard') }}">
-				Hallintapaneeli <i class="fa-solid fa-shield-halved"></i>
+            <p class="login-link">
+				<a href="{{ route('filament.admin.pages.dashboard') }}">
+					<i class="fa-solid fa-shield-halved"></i>
+				Hallintapaneeli
 			</a>
-			<a class="login-link" href="{{ route('logout') }}">
+			</p>
+			<p class="login-link" >
+				<a href="{{ route('logout') }}">
 				<i class='fas'>&#xf52b;</i> Kirjaudu ulos
-			</a>
+				</a>
+			</p>
 			</div>
             @else
             <a class="login-link" href="{{ route('login') }}">
@@ -48,7 +53,6 @@
 					});
 				</script>
 				<select class="dropdown" name="jarjestys" id="jarjestys">
-				<option value="">Järjestä</option>
 				<option value="az">A-Z</option>
 				<option value="lvl">LVL</option>
 				<option value="plrcount">Pelaajien määrä</option>
@@ -61,10 +65,13 @@
 					</select>
 			</form>
 
-		    <br>
 			@if ($scenarios->count() == 0)
 			<p class="tf_px_icon"><i class='fas'>&#xf49e;</i></p>
 			<p>Skenaarioita ei löydetty</p>
+			@else
+			@if ($search_by != "")
+			<p>Tulokset, jotka sisältävät '{{$search_by}}':</p>
+			@endif
 			@endif
 		<main id="adventure-list">
 			@if ($scenarios->count() != 0)
@@ -73,7 +80,12 @@
 				<a href="{{ route('scenario', ['id' => $scenario->id]) }}">
 				<h2><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</h2>
 				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest ?? '??'}}-{{$scenario->lvl_highest ?? '??'}}, {{$scenario->plr_least ?? '??'}}-{{$scenario->plr_most ?? '??'}} pelaajaa</p>
-				<p class="adventure-desc">{!! $scenario->description ?? '...' !!}</p>
+				<p>{{$scenario->other_requirements}}</p>
+				<!--ehkäpä adventure desc ja world eri diviin 50% height-->
+				<p class="adventure-desc">
+				{{ $scenario->description ?? '...' }}
+				</p>
+				<p class="world_info">{{ $scenario->world ?? 'Määrittelemätön maailma' }}</p>
 				</a>
 			</section>
 			@endforeach

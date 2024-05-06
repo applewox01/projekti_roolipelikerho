@@ -10,14 +10,14 @@ class IndexController extends Controller
 {
     public function index() {
         try {
-            $scenarios = DB::table('scenarios')->get();
+            $scenarios = DB::table('scenarios')->orderBy('name')->get();
             $worlds = DB::table('worlds')->select('name','id')->get();
             return view("index",
             [
                 'scenarios' => $scenarios,
                 'search_by' => "",
                 'filter_world' => "",
-                'order_by' => "",
+                'order_by' => "az",
                 'worlds' => $worlds
             ]
             );
@@ -39,7 +39,7 @@ class IndexController extends Controller
                 $query->where('world_id',$filter_world);
             };
             if ($search_by != '') {
-                $query->where('name',$search_by)->orderBy('name');
+                $query->where('name', 'LIKE', '%'.$search_by.'%')->orderBy('name');
             };
             switch ($order_by) {
                 case "az":
