@@ -61,11 +61,11 @@ body::-webkit-scrollbar {
 
 #sort_form {
     display: flex;
-    justify-content: space-between;
 }
 
 #sort_form input, #sort_form select {
-    width: 33%;
+    width: 23%;
+    margin-right: 2px;
 }
 
 .list_after_login {
@@ -129,6 +129,12 @@ main#adventure-list {
 	display: grid;
 	justify-content: space-between;
     grid-template-columns: 33% 33% 33%;
+    gap: 5px;
+}
+
+.ad_box_below_section {
+    height: 55%;
+    display: block;
 }
 
 .adventure-box {
@@ -136,7 +142,7 @@ main#adventure-list {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
-    height: 100%;
+    height: fit-content;
     background-color: lightgray;
     border: 2px solid black;
     transition: box-shadow 0.3s ease;
@@ -146,6 +152,9 @@ main#adventure-list {
 .world_info {
     text-align: center;
     width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .adventure-box:hover {
@@ -158,11 +167,23 @@ main#adventure-list {
     color: var(--text);
 }
 
+.scenario_req, .adventure-stats {
+    width: 100%; 
+    height: fit-content; 
+    word-wrap: break-word;
+}
+
+.adventure-box h2 {
+    height: fit-content; 
+    word-wrap: break-word;
+}
+
 .adventure-desc {
     margin-top: 10px;
-    height: 40%;
+    height: fit-content;
     text-overflow: ellipsis;
     overflow: hidden;
+    word-wrap: break-word;
     font-family: Arial, sans-serif;
     color: var(--text);
 }

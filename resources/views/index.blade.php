@@ -80,13 +80,10 @@
 				<a href="{{ route('scenario', ['id' => $scenario->id]) }}">
 				<h2><i class="fa-solid fa-scroll"></i>{{$scenario->name}}</h2>
 				<p class="adventure-stats">Lvl {{$scenario->lvl_lowest ?? '??'}}-{{$scenario->lvl_highest ?? '??'}}, {{$scenario->plr_least ?? '??'}}-{{$scenario->plr_most ?? '??'}} pelaajaa</p>
-				<p>{{$scenario->other_requirements}}</p>
-				<!--ehkäpä adventure desc ja world eri diviin 50% height-->
-				<p class="adventure-desc">
-				{{ $scenario->description ?? '...' }}
-				</p>
+				<p class="scenario_req">{{$scenario->other_requirements}}</p>
+				<p class="adventure-desc">{{ $scenario->description ?? '...' }}</p>
 				<p class="world_info">{{ $scenario->world ?? 'Määrittelemätön maailma' }}</p>
-				</a>
+			</a>
 			</section>
 			@endforeach
 
