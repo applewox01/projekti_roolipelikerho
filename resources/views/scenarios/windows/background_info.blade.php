@@ -2,8 +2,8 @@
         @if (empty($scenario->background_info))
             <p class="misc_notif">Lisää taustatiedot skenaarioon admin-paneelin kautta</p>
         @else
-            <p class="info_plain_text">
+                <div class="taustatiedot">
                 {!! $scenario->background_info !!}
-            </p>
+                </div>
         @endif
 </div>

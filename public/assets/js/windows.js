@@ -113,9 +113,9 @@ for (const object of objects) {
                         && event.clientY + trueHeight - 15 < viewportHeight) {
                         object.style.top = (event.clientY - 15) + "px";
                    }
-                    if (event.clientX - (trueWidth - 75) > 150
-                        && event.clientX + (75) < viewportWidth) {
-                        object.style.left = (event.clientX - trueWidth + 75) + "px";
+                    if (event.clientX - (trueWidth/2) > 175
+                        && event.clientX  + trueWidth/2 < viewportWidth) {
+                        object.style.left = (event.clientX - (trueWidth/2)) + "px";
                     }
                 };
                 

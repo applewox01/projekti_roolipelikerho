@@ -12,7 +12,7 @@
     @endphp
 
     @if (empty($attachments_urls))
-        <p class="misc_notif">Liitä liitteitä skenaarioon admin-paneelin kautta</p>
+        <p class="misc_notif">Lisää liitteitä skenaarioon admin-paneelin kautta</p>
     @else
         @foreach ($attachments_urls as $url)
             @if (Storage::disk('local')->exists($url[0]))

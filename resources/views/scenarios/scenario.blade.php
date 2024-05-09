@@ -87,8 +87,7 @@
             @foreach ($windows as $window)
             <div class="moveable_window" id="{{$window[0]}}_window">
                 <div class="window_info">
-                    <p class="window_name">{{$window[1]}}</p>
-                        <div class="move_window"><i class="fas">&#xf0b2;</i></div>
+                    <p class="move_window">{{$window[1]}}</p>
                         <div class="hide_window"><i class="material-icons">&#xe5ce;</i></div>
                         <div class="close_window"><i class="fa">&#xf00d;</i></div>
                 </div>

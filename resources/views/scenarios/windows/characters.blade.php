@@ -1,11 +1,11 @@
 <div class="window_content">
         @if (count($characters) == 0)
-        <p class="misc_notif">Liitä pelaajia skenaarioon admin-paneelin kautta</p>
+        <p class="misc_notif">Lisää pelaajia skenaarioon admin-paneelin kautta</p>
         @else
         @foreach ($characters as $character)
         <div class="character_box">
                 <p class="info_button_icon"><i class="fas fa-user-alt"></i></p>
-                <p class="info_button_name">{{$character->name}}</p>
+                <h3 class="info_button_name">{{$character->name}}</h3>
 
         <div class="character_info">
                 <p class="info_name">Rotu:</p>

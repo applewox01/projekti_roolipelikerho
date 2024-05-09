@@ -133,6 +133,8 @@ main {
 
 .scenario_name {
     text-align: center;
+    word-wrap: break-word;
+    width: 100%;
 }
 
 .attachment_icon, .image_error_icon {
@@ -186,18 +188,12 @@ main {
     background-color: white;
 }
 
-.window_name {
-    width: calc(100% - 90px);
+.move_window {
+    width: calc(100% - 60px);
     text-overflow: ellipsis;
     overflow: hidden;
     vertical-align: middle;
     margin: 0;
-}
-
-.move_window {
-    height: 30px;
-    width: 30px;
-    background-color: green;
     cursor: move;
 }
 
@@ -237,12 +233,15 @@ main {
 
 .misc_notif {
     color: grey;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
 }
 
 .character_box, .add_character_box, #add_character {
     border: 2px solid grey;
-    border-radius: 15px;
-    width: 90%;
+    border-radius: 5px;
+    padding: 5px;
+    width: calc(100% - 5px);
     margin: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -291,13 +290,32 @@ main {
 
 .character_info * {
     margin: 0;
-    font-size: 12px;
+    font-size: 16px;
+    text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .info_plain_text, .image_name {
-    font-size: 12px;
+    font-size: 16px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.info_plain_text * {
+    margin: 0;
+}
+
+.taustatiedot {
+    padding: 5px;
+}
+
+.taustatiedot * {
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 1px;
+}
+
+.taustatiedot blockquote {
+    width: 100%;
 }
 
 .image_name {
@@ -320,22 +338,23 @@ main {
 }
 
 .info_button_icon {
-    height: fit-content;
     margin: 0;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 24px;
+    font-size: 16px;
 }
+
+
 
 .info_button_name {
     margin: 0;
+    width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 blockquote {
     background-color: gray;
     padding: 5px;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 4px double black;
 }

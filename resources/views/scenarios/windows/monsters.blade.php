@@ -6,10 +6,13 @@
         @php
             $json_data = $monster->data;
         @endphp
+        @if (empty($json_data))
+        <p class="misc_notif">Lisää hirviöitä skenaarioon admin-paneelin kautta</p>
+        @else
             @foreach ($json_data as $monters_data)
             <div class="character_box">
                 <p class="info_button_icon"><i class="fa-solid fa-dragon"></i></p>
-                <p class="info_button_name">{{$monters_data['name']}}</p>
+                <h3 class="info_button_name">{{$monters_data['name']}}</h3>
 
                 <div class="character_info">
 
@@ -30,7 +33,7 @@
                         <p>{{$monters_data['misc_info']}}</p>
                 </div>
             @endforeach
-
+                @endif
     </div>
     @endforeach
     @endif

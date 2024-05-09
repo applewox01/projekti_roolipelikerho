@@ -6,15 +6,19 @@
             @php
                 $json_data = $npc->data;
             @endphp
+            @if (empty($json_data))
+            <p class="misc_notif">Lisää NPC:itä skenaarioon admin-paneelin kautta</p>
+            @else
             @foreach ($json_data as $npc_data)
                 <div class="character_box">
                     <p class="info_button_icon"><i class="fa-solid fa-person"></i></p>
-                    <p class="info_button_name">{{$npc_data['name']}}</p>
+                    <h3 class="info_button_name">{{$npc_data['name']}}</h3>
                     <div class="character_info">
                         <p>{{$npc_data['description']}}</p>
                     </div>
                 </div>
             @endforeach
+            @endif
         @endforeach
     @endif
 </div>
