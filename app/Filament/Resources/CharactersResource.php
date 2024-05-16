@@ -3,19 +3,16 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CharactersResource\Pages;
-use App\Filament\Resources\CharactersResource\RelationManagers;
-use App\Models\Characters;
+use App\Models\characters;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CharactersResource extends Resource
 {
-    protected static ?string $model = Characters::class;
+    protected static ?string $model = characters::class;
 
     protected static ?string $recordTitleAttribute = 'Hahmojen hallinta';
     protected static ?string $navigationLabel = 'Hahmojen hallinta';
