@@ -4,6 +4,11 @@
             {{ $this->form }}
 
             <br>
+            @if (count($npcs) !== 0)
+            <h1 class="fi-header-heading text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl dark:text-white">
+                NPC:T
+            </h1><br>
+            @endif
             @foreach($npcs as $index => $npc)
             <label for="npcs.{{ $index }}">NPC {{ $index + 1 }}</label>
             <x-filament::input.wrapper>
@@ -36,9 +41,12 @@
             <br><br>
             @endforeach
             <br>
-
+            @if (count($monsters) !== 0)
+            <h1 class="fi-header-heading text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl dark:text-white">
+                Hirviöt
+            </h1><br>
+            @endif
             @foreach($monsters as $index => $npc)
-
             <label for="monsters.{{ $index }}">Hirviö {{ $index + 1 }}</label>
             <x-filament::input.wrapper>
                 <x-filament::input
@@ -129,7 +137,11 @@
             <br><br>
             @endforeach
             <br>
-
+            @if (count($places) !== 0)
+            <h1 class="fi-header-heading text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl dark:text-white">
+                Paikat
+            </h1><br>
+            @endif
             @foreach($places as $index => $npc)
             <label for="place.{{ $index }}">Paikka {{ $index + 1 }}</label>
             <x-filament::input.wrapper>
@@ -162,7 +174,11 @@
             <br><br>
             @endforeach
             <br>
-
+            @if (count($events) !== 0)
+            <h1 class="fi-header-heading text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl dark:text-white">
+                Tapahtumat
+            </h1><br>
+            @endif
             @foreach($events as $index => $npc)
             <label for="events.{{ $index }}">Tapahtuma {{ $index + 1 }}</label>
             <x-filament::input.wrapper>
