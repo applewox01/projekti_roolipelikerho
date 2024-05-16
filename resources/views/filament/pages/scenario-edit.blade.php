@@ -218,7 +218,7 @@
                 tag="button"
                 type="button"
             >
-            Poista Paikka
+            Poista Tapahtuma
             </x-filament::button>
             <br><br>
             @endforeach
