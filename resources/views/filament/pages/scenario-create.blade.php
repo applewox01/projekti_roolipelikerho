@@ -58,6 +58,17 @@
 
             <br>
 
+            <label for="monstr.defense.{{ $index }}">Hirviö:n {{ $index + 1 }} Puolustus</label>
+            <x-filament::input.wrapper>
+                <x-filament::input
+                    type="text"
+                    wire:model="monsters.{{ $index }}.defense"
+                    id="monstr.defense.{{ $index }}"
+                />
+            </x-filament::input.wrapper>
+
+            <br>
+
             <label for="attack_info.{{ $index }}">Hirviö:n {{ $index + 1 }} Taistelutiedot</label>
             <x-filament::input.wrapper>
                 <x-filament::input
@@ -75,17 +86,6 @@
                     type="text"
                     wire:model="monsters.{{ $index }}.misc_info"
                     id="monstr.misc_info.{{ $index }}"
-                />
-            </x-filament::input.wrapper>
-
-            <br>
-
-            <label for="monstr.defense.{{ $index }}">Hirviö:n {{ $index + 1 }} Puolustus</label>
-            <x-filament::input.wrapper>
-                <x-filament::input
-                    type="text"
-                    wire:model="monsters.{{ $index }}.defense"
-                    id="monstr.defense.{{ $index }}"
                 />
             </x-filament::input.wrapper>
 
