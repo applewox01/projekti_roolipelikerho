@@ -48,24 +48,14 @@ class ScenarioCreate extends Page implements HasForms
                     ->unique('scenarios', 'name')
                     ->required()
                     ->columnSpan(2),
+                Select::make('world_id')
+                    ->label('Maailma')
+                    ->native(false)
+                    ->searchable()
+                    ->options([worlds::all()->pluck('name', 'id')->toArray()])
+                    ->columnSpan(2),
                 RichEditor::make('description')
                     ->label('Kuvaus')
-                    ->toolbarButtons([
-                        'blockquote',
-                        'bold',
-                        'italic',
-                    ])
-                    ->columnSpan(2),
-                RichEditor::make('background_info')
-                    ->label('Taustatiedot')
-                    ->toolbarButtons([
-                        'blockquote',
-                        'bold',
-                        'italic',
-                    ])
-                    ->columnSpan(2),
-                RichEditor::make('other_requirements')
-                    ->label('Muut vaatimukset')
                     ->toolbarButtons([
                         'blockquote',
                         'bold',
@@ -88,6 +78,22 @@ class ScenarioCreate extends Page implements HasForms
                     ->label('Eniten pelaajia')
                     ->numeric()
                     ->required(),
+                RichEditor::make('background_info')
+                    ->label('Taustatiedot')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
+                RichEditor::make('other_requirements')
+                    ->label('Muut vaatimukset')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
                 RichEditor::make('admin_desc')
                     ->label('Ylläpidon kuvaus')
                     ->toolbarButtons([
@@ -95,12 +101,6 @@ class ScenarioCreate extends Page implements HasForms
                         'bold',
                         'italic',
                     ])
-                    ->columnSpan(2),
-                Select::make('world_id')
-                    ->label('Maailma')
-                    ->native(false)
-                    ->searchable()
-                    ->options([worlds::all()->pluck('name', 'id')->toArray()])
                     ->columnSpan(2),
                 FileUpload::make('attachments')
                     ->multiple()
