@@ -78,14 +78,6 @@ class ScenarioCreate extends Page implements HasForms
                     ->label('Eniten pelaajia')
                     ->numeric()
                     ->required(),
-                RichEditor::make('background_info')
-                    ->label('Taustatiedot')
-                    ->toolbarButtons([
-                        'blockquote',
-                        'bold',
-                        'italic',
-                    ])
-                    ->columnSpan(2),
                 RichEditor::make('other_requirements')
                     ->label('Muut vaatimukset')
                     ->toolbarButtons([
@@ -96,6 +88,14 @@ class ScenarioCreate extends Page implements HasForms
                     ->columnSpan(2),
                 RichEditor::make('admin_desc')
                     ->label('Ylläpidon kuvaus')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'italic',
+                    ])
+                    ->columnSpan(2),
+                RichEditor::make('background_info')
+                    ->label('Taustatiedot')
                     ->toolbarButtons([
                         'blockquote',
                         'bold',
