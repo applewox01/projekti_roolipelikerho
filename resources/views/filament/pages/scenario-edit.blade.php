@@ -226,16 +226,6 @@
             <x-filament::button
                     color="info"
                     icon="heroicon-o-plus"
-                    wire:click.prevent="addAttachmentField"
-                    labeled-from="sm"
-                    tag="button"
-                    type="button"
-                >
-                Uusi Liite
-            </x-filament::button>
-            <x-filament::button
-                    color="info"
-                    icon="heroicon-o-plus"
                     wire:click.prevent="addNpcField"
                     labeled-from="sm"
                     tag="button"
