@@ -83,6 +83,7 @@ class ScenarioEdit extends Page implements HasForms
             RichEditor::make('description')
                 ->label('Kuvaus')
                 ->toolbarButtons([
+                    'h2',
                     'blockquote',
                     'bold',
                     'italic',
@@ -107,6 +108,7 @@ class ScenarioEdit extends Page implements HasForms
             RichEditor::make('other_requirements')
                 ->label('Muut vaatimukset')
                 ->toolbarButtons([
+                    'h2',
                     'blockquote',
                     'bold',
                     'italic',
@@ -115,6 +117,7 @@ class ScenarioEdit extends Page implements HasForms
             RichEditor::make('admin_desc')
                 ->label('Ylläpidon kuvaus')
                 ->toolbarButtons([
+                    'h2',
                     'blockquote',
                     'bold',
                     'italic',
@@ -123,6 +126,7 @@ class ScenarioEdit extends Page implements HasForms
             RichEditor::make('background_info')
                 ->label('Taustatiedot')
                 ->toolbarButtons([
+                    'h2',
                     'blockquote',
                     'bold',
                     'italic',
