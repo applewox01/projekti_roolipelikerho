@@ -49,6 +49,10 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->userMenuItems([
+                'etusivu' => MenuItem::make()
+                    ->label('Etusivu')
+                    ->url('/')
+                    ->icon('heroicon-o-home'),
                 'logout' => MenuItem::make()->label('Kirjaudu ulos'),
             ])
             ->navigationGroups([
