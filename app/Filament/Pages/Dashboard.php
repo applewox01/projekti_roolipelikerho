@@ -9,16 +9,21 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Table;
 use Filament\Tables\Contracts\HasTable;
-
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Auth;
 class Dashboard extends Page implements HasTable
 {
     use InteractsWithTable;
     protected static ?string $recordTitleAttribute = 'Etusivu';
     protected static ?string $navigationLabel = 'Etusivu';
-    protected static ?string $title = 'Etusivu';
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     protected static string $view = 'filament.pages.dashboard';
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Tervetuloa takaisin ' . Auth::user()->username . '! 👋');
+    }
 
     public function table(Table $table): Table
     {
