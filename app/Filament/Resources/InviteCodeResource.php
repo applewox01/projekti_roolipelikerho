@@ -20,7 +20,7 @@ class InviteCodeResource extends Resource
 {
     protected static ?string $model = InviteCode::class;
 
-    protected static ?string $recordTitleAttribute = 'Kutsukoodit';
+    protected static ?string $recordTitleAttribute = 'code';
     protected static ?string $navigationLabel = 'Kutsukoodit';
     protected static ?string $title = 'Kutsukoodit';
     protected static ?string $navigationIcon = 'heroicon-o-envelope';

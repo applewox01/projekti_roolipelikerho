@@ -14,7 +14,7 @@ class CharactersResource extends Resource
 {
     protected static ?string $model = characters::class;
 
-    protected static ?string $recordTitleAttribute = 'Hahmojen hallinta';
+    protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $navigationLabel = 'Hahmojen hallinta';
     protected static ?string $title = 'Hahmojen hallinta';
     protected static ?string $navigationIcon = 'fas-hat-wizard';

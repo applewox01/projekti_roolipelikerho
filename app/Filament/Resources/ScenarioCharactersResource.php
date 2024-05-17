@@ -25,7 +25,7 @@ class ScenarioCharactersResource extends Resource
 
     protected ?string $heading = 'Skenaariohahmojen hallinta';
     protected ?string $subheading = 'Skenaariohahmojen hallinta';
-    protected static ?string $recordTitleAttribute = 'Skenaariohahmojen hallinta';
+    protected static ?string $recordTitleAttribute = 'character_id';
     protected static ?string $navigationLabel = 'Skenaariohahmojen hallinta';
     protected static ?string $title = 'Skenaariohahmojen hallinta';
 

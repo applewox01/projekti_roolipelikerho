@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Auth;
 
 class WorldsResource extends Resource
 {
@@ -16,11 +18,16 @@ class WorldsResource extends Resource
 
     protected ?string $heading = 'Skenaario Maailmat';
     protected ?string $subheading = 'Skenaario Maailmat';
-    protected static ?string $recordTitleAttribute = 'Skenaario Maailmat';
+    protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $navigationLabel = 'Skenaario Maailmat';
     protected static ?string $title = 'Skenaario Maailmat';
 
     protected static ?string $navigationParentItem = 'Skenaariot';
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('Maailmat');
+    }
 
     public static function form(Form $form): Form
     {
