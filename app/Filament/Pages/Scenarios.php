@@ -75,6 +75,7 @@ class Scenarios extends Page implements HasTable
                     ->openUrlInNewTab()
                     ->icon('gmdi-edit')
                     ->color('info'),
-            ]);
+            ])
+            ->emptyStateHeading('Ei skenaarioita');
     }
 }

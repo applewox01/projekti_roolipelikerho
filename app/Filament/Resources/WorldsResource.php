@@ -46,7 +46,8 @@ class WorldsResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateHeading('Ei maailmoja');
     }
 
     public static function getRelations(): array

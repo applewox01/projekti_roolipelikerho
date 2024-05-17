@@ -56,7 +56,8 @@ class InviteCodeResource extends Resource
                     Tables\Actions\DeleteBulkAction::make()
                         ->requiresConfirmation(),
                 ]),
-            ]);
+            ])
+            ->emptyStateHeading('Ei kutsukoodeja');
     }
 
     public static function getRelations(): array
