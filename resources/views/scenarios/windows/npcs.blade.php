@@ -11,8 +11,11 @@
             @else
             @foreach ($json_data as $npc_data)
                 <div class="character_box">
-                    <p class="info_button_icon"><i class="fa-solid fa-person"></i></p>
+                    <div class="info_area">
+                    <i class="fa-solid fa-person"></i>
                     <h3 class="info_button_name">{{$npc_data['name']}}</h3>
+                    </div>
+
                     <div class="character_info">
                         <p>{{$npc_data['description']}}</p>
                     </div>

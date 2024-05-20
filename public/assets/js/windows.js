@@ -95,6 +95,10 @@ for (const object of objects) {
     for (let child of object.querySelectorAll(".move_window")) {
             child.addEventListener("mousedown", function(){
                 document.addEventListener("mousemove", moveObject)
+                const objects_select = document.getElementsByClassName("moveable_window");
+                for (const object_s of objects_select) {
+                    object_s.style["user-select"] = "none";
+                };
                 function moveObject(event) {
                     event.preventDefault();
                     zindex();
@@ -122,6 +126,10 @@ for (const object of objects) {
                 document.addEventListener("mouseup", function(){
                     object.style.opacity = 1;
                     object.style["pointer-events"] = "all";
+                    const objects_select = document.getElementsByClassName("moveable_window");
+                    for (const object_s of objects_select) {
+                        object_s.style["user-select"] = "auto";
+                    };
                     document.removeEventListener("mousemove", moveObject);
                 });
                 

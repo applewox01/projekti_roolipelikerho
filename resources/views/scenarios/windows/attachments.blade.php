@@ -10,7 +10,6 @@
             }
         }
     @endphp
-
     @if (empty($attachments_urls))
         <p class="misc_notif">Lisää liitteitä skenaarioon admin-paneelin kautta</p>
     @else
@@ -21,7 +20,9 @@
                         <div class="close_image"><i class="fa">&#xf00d;</i></div>
                         <p>{{ $url[0] }}</p>
                     </div>
-                    <p class="full_image_icon"><img src="{{ $url[1] }}"></p>
+                    <div class="full_image_icon">
+                        <img src="{{ $url[1] }}">
+                    </div>
                 </div>
             @endif
             @php

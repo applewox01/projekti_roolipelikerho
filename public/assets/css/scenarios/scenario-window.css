@@ -164,8 +164,9 @@ main {
 }
 
 .full_image_icon img {
-    height: fit-content;
-    width: auto;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
 }
 
 .image_grid {
@@ -259,6 +260,7 @@ main {
 .image_box_error {
     background-color: rgb(255, 80, 80);
     cursor: not-allowed;
+    box-shadow: 2px 2px black;
 }
 
 .image_error_icon {
@@ -293,7 +295,13 @@ main {
     font-size: 16px;
     text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    word-wrap: break-word;
 }
+
 
 .info_plain_text, .image_name {
     font-size: 16px;
@@ -330,19 +338,22 @@ main {
 
 .monster_info_flexbox {
     display: flex;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.monster_info_icon {
-    width: 24px;
-    height: 100%;
+.monster_info_flexbox p {
+    display: inline-block;
+    width: fit-content;
 }
 
-.info_button_icon {
-    margin: 0;
+.monster_info_flexbox i {
+    width: 18px;
+    height: 18px;
     font-size: 16px;
+    text-align: center;
 }
-
-
 
 .info_button_name {
     margin: 0;
@@ -350,6 +361,12 @@ main {
     text-overflow: ellipsis;
     overflow: hidden;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 16px;
+    font-size: 16px;
+}
+
+.info_area {
+    display: flex;
 }
 
 blockquote {

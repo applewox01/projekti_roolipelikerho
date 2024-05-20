@@ -9,8 +9,10 @@
         @foreach ($json_data as $event_data)
         <div class="character_box">
 
-                <p class="info_button_icon"><i class="fa-solid fa-calendar-days"></i></p>
+                <div class="info_area">
+                <i class="fa-solid fa-calendar-days"></i>
                 <h3 class="info_button_name">{{$event_data['name']}}</h3>
+        </div>
 
         <div class="character_info">
                 <p>{{$event_data['description']}}</p>

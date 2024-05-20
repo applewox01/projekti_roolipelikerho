@@ -11,21 +11,23 @@
         @else
             @foreach ($json_data as $monters_data)
             <div class="character_box">
-                <p class="info_button_icon"><i class="fa-solid fa-dragon"></i></p>
+                <div class="info_area">
+                <i class="fa-solid fa-dragon"></i>
                 <h3 class="info_button_name">{{$monters_data['name']}}</h3>
+                </div>
 
                 <div class="character_info">
 
                         <div class="monster_info_flexbox">
-                        <p class="monster_info_icon"><i class="fas fa-star"></i></p>
+                        <i class="fa fa-star"></i>
                         <p>{{$monters_data['xp']}}</p>
                         </div>
                         <div class="monster_info_flexbox">
-                        <p class="monster_info_icon"><i class="fa fa-heart"></i></p>
+                        <i class="fa fa-heart"></i>
                         <p>{{$monters_data['hp']}}</p>
                         </div>
                         <div class="monster_info_flexbox">
-                        <p class="monster_info_icon"><i class="fa fa-shield"></i></p>
+                        <i class="fa fa-shield"></i>
                         <p>{{$monters_data['defense']}}</p>
                         </div>
 

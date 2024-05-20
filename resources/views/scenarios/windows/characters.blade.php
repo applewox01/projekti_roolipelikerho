@@ -4,9 +4,10 @@
         @else
         @foreach ($characters as $character)
         <div class="character_box">
-                <p class="info_button_icon"><i class="fas fa-user-alt"></i></p>
+                <div class="info_area">
+                <i class="fas fa-user-alt"></i>
                 <h3 class="info_button_name">{{$character->name}}</h3>
-
+                </div>
         <div class="character_info">
                 <p class="info_name">Rotu:</p>
                 <p>{{$character->race}}</p>
