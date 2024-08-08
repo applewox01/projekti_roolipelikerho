@@ -10,6 +10,7 @@ use App\Models\rooms;
 use App\Models\Scenario;
 use App\Models\worlds;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
@@ -30,10 +31,6 @@ class ScenarioCreate extends Page implements HasForms
     protected static string $view = 'filament.pages.scenario-create';
 
     public ?array $data = [];
-    public ?array $npcs = [];
-    public ?array $monsters = [];
-    public ?array $places = [];
-    public ?array $events = [];
 
     public function mount() {
         $this->form->fill();
@@ -111,12 +108,127 @@ class ScenarioCreate extends Page implements HasForms
                     ->disk('public')
                     ->label('Liitteet')
                     ->columnSpan(2),
+                Repeater::make('npcs')
+                    ->label('NPC:t')
+                    ->columnSpan(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nimi')
+                            ->required()
+                            ->columnSpan(2),
+                        RichEditor::make('description')
+                            ->label('Kuvaus')
+                            ->toolbarButtons([
+                                'h2',
+                                'blockquote',
+                                'bold',
+                                'italic',
+                            ])
+                            ->columnSpan(2),
+                    ])
+                    ->columns(2)
+                    ->collapsible()
+                    ->cloneable()
+                    ->reorderableWithButtons()
+                    ->addActionLabel('Lisää NPC')
+                    ->itemLabel('NPC'),
+                Repeater::make('monsters')
+                    ->label('Hirviöt')
+                    ->columnSpan(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nimi')
+                            ->required()
+                            ->columnSpan(2),
+                        TextInput::make('defense')
+                            ->label('Puolustus')
+                            ->columnSpan(1),
+                        TextInput::make('attack_info')
+                            ->label('Taistelutiedot')
+                            ->columnSpan(1),
+                        RichEditor::make('misc_info')
+                            ->label('Lisätiedot')
+                            ->toolbarButtons([
+                                'h2',
+                                'blockquote',
+                                'bold',
+                                'italic',
+                            ])
+                            ->columnSpan(2),
+                        TextInput::make('hp')
+                            ->label('Osumapisteet')
+                            ->numeric()
+                            ->required()
+                            ->columnSpan(1),
+                        TextInput::make('xp')
+                            ->label('XP')
+                            ->numeric()
+                            ->required()
+                            ->columnSpan(1),
+                        TextInput::make('link')
+                            ->label('Linkki')
+                            ->url()
+                            ->columnSpan(2),
+                    ])
+                    ->columns(2)
+                    ->collapsible()
+                    ->cloneable()
+                    ->reorderableWithButtons()
+                    ->addActionLabel('Lisää hirviö')
+                    ->itemLabel('Hirviö'),
+                Repeater::make('places')
+                    ->label('Paikat')
+                    ->columnSpan(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nimi')
+                            ->required()
+                            ->columnSpan(2),
+                        RichEditor::make('description')
+                            ->label('Kuvaus')
+                            ->toolbarButtons([
+                                'h2',
+                                'blockquote',
+                                'bold',
+                                'italic',
+                            ])
+                            ->columnSpan(2),
+                    ])
+                    ->columns(2)
+                    ->collapsible()
+                    ->cloneable()
+                    ->reorderableWithButtons()
+                    ->addActionLabel('Lisää paikka')
+                    ->itemLabel('Paikka'),
+                Repeater::make('events')
+                    ->label('Tapahtumat')
+                    ->columnSpan(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nimi')
+                            ->required()
+                            ->columnSpan(2),
+                        RichEditor::make('description')
+                            ->label('Kuvaus')
+                            ->toolbarButtons([
+                                'h2',
+                                'blockquote',
+                                'bold',
+                                'italic',
+                            ])
+                            ->columnSpan(2),
+                    ])
+                    ->columns(2)
+                    ->collapsible()
+                    ->cloneable()
+                    ->reorderableWithButtons()
+                    ->addActionLabel('Lisää tapahtuma')
+                    ->itemLabel('Tapahtuma'),
             ])
             ->statePath('data')
             ->live()
             ->columns(2);
     }
-
     public function create() {
         $attachmentPaths = [];
 
@@ -132,22 +244,22 @@ class ScenarioCreate extends Page implements HasForms
 
         npc::create([
             'scenario_id' => $scenario->id,
-            'data' => $this->npcs
+            'data' => json_encode($this->data['npcs'])
         ]);
 
         monster::create([
             'scenario_id' => $scenario->id,
-            'data' => $this->monsters
+            'data' => json_encode($this->data['monsters'])
         ]);
 
         rooms::create([
             'scenario_id' => $scenario->id,
-            'data' => $this->places
+            'data' => json_encode($this->data['places'])
         ]);
 
         events::create([
             'scenario_id' => $scenario->id,
-            'data' => $this->events
+            'data' => json_encode($this->data['events'])
         ]);
 
         attachments::create([
@@ -161,46 +273,6 @@ class ScenarioCreate extends Page implements HasForms
             ->send();
 
         $this->form->fill();
-        $this->reset('data', 'npcs', 'monsters', 'places', 'events');
-    }
-
-    public function addNpcField()
-    {
-        $this->npcs[] = ['name' => '', 'description' => ''];
-    }
-
-    public function removeNpc($index)
-    {
-        array_splice($this->npcs, $index, 1);
-    }
-
-    public function addMonsterField()
-    {
-        $this->monsters[] = ['name' => '', 'attack_info' => '', 'misc_info' => '', 'defense' => '', 'hp' => '', 'xp' => '', 'link' => ''];
-    }
-
-    public function removeMonster($index)
-    {
-        array_splice($this->monsters, $index, 1);
-    }
-
-    public function addPlaceField()
-    {
-        $this->places[] = ['name' => '', 'description' => ''];
-    }
-
-    public function removePlace($index)
-    {
-        array_splice($this->places, $index, 1);
-    }
-
-    public function addEventField()
-    {
-        $this->events[] = ['name' => '', 'description' => ''];
-    }
-
-    public function removeEvent($index)
-    {
-        array_splice($this->events, $index, 1);
+        $this->reset('data');
     }
 }
