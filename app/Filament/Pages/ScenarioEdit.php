@@ -11,6 +11,7 @@ use App\Models\Scenario;
 use App\Models\worlds;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -29,10 +30,6 @@ class ScenarioEdit extends Page implements HasForms
     public $edit = '';
 
     public ?array $data = [];
-    public ?array $npcs = [];
-    public ?array $monsters = [];
-    public ?array $places = [];
-    public ?array $events = [];
     public ?array $attachments = [];
 
     public $scenario;
@@ -56,13 +53,16 @@ class ScenarioEdit extends Page implements HasForms
         $events = events::where('scenario_id', $this->scenario->id)->get();
         $attachments = attachments::where('scenario_id', $this->scenario->id)->get();
 
-        $this->npcs = $npc[0]->data ?? [];
-        $this->monsters = $monster[0]->data ?? [];
-        $this->places = $rooms[0]->data ?? [];
-        $this->events = $events[0]->data ?? [];
         $this->attachments = $attachments[0]->data ?? [];
 
-        $this->form->fill($this->scenario->toArray());
+        $formData = $this->scenario->toArray();
+
+        $formData['npcs'] = isset($npc[0]) ? json_decode($npc[0]->data, true) : [];
+        $formData['monsters'] = isset($monster[0]) ? json_decode($monster[0]->data, true) : [];
+        $formData['places'] = isset($rooms[0]) ? json_decode($rooms[0]->data, true) : [];
+        $formData['events'] = isset($events[0]) ? json_decode($events[0]->data, true) : [];
+
+        $this->form->fill($formData);
     }
 
     public function form(Form $form): Form
@@ -137,6 +137,122 @@ class ScenarioEdit extends Page implements HasForms
                 ->disk('public')
                 ->label('Liitteet')
                 ->columnSpan(2),
+            Repeater::make('npcs')
+                ->label('NPC:t')
+                ->columnSpan(2)
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Nimi')
+                        ->required()
+                        ->columnSpan(2),
+                    RichEditor::make('description')
+                        ->label('Kuvaus')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ])
+                        ->columnSpan(2),
+                ])
+                ->columns(2)
+                ->collapsible()
+                ->cloneable()
+                ->reorderableWithButtons()
+                ->addActionLabel('Lisää NPC')
+                ->itemLabel('NPC'),
+            Repeater::make('monsters')
+                ->label('Hirviöt')
+                ->columnSpan(2)
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Nimi')
+                        ->required()
+                        ->columnSpan(2),
+                    TextInput::make('defense')
+                        ->label('Puolustus')
+                        ->columnSpan(1),
+                    TextInput::make('attack_info')
+                        ->label('Taistelutiedot')
+                        ->columnSpan(1),
+                    RichEditor::make('misc_info')
+                        ->label('Lisätiedot')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ])
+                        ->columnSpan(2),
+                    TextInput::make('hp')
+                        ->label('Osumapisteet')
+                        ->numeric()
+                        ->required()
+                        ->columnSpan(1),
+                    TextInput::make('xp')
+                        ->label('XP')
+                        ->numeric()
+                        ->required()
+                        ->columnSpan(1),
+                    TextInput::make('link')
+                        ->label('Linkki')
+                        ->url()
+                        ->columnSpan(2),
+                ])
+                ->columns(2)
+                ->collapsible()
+                ->cloneable()
+                ->reorderableWithButtons()
+                ->addActionLabel('Lisää hirviö')
+                ->itemLabel('Hirviö'),
+            Repeater::make('places')
+                ->label('Paikat')
+                ->columnSpan(2)
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Nimi')
+                        ->required()
+                        ->columnSpan(2),
+                    RichEditor::make('description')
+                        ->label('Kuvaus')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ])
+                        ->columnSpan(2),
+                ])
+                ->columns(2)
+                ->collapsible()
+                ->cloneable()
+                ->reorderableWithButtons()
+                ->addActionLabel('Lisää paikka')
+                ->itemLabel('Paikka'),
+            Repeater::make('events')
+                ->label('Tapahtumat')
+                ->columnSpan(2)
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Nimi')
+                        ->required()
+                        ->columnSpan(2),
+                    RichEditor::make('description')
+                        ->label('Kuvaus')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ])
+                        ->columnSpan(2),
+                ])
+                ->columns(2)
+                ->collapsible()
+                ->cloneable()
+                ->reorderableWithButtons()
+                ->addActionLabel('Lisää tapahtuma')
+                ->itemLabel('Tapahtuma'),
         ])
         ->statePath('data')
         ->columns(2);
@@ -147,11 +263,11 @@ class ScenarioEdit extends Page implements HasForms
         $scenario = Scenario::find($this->edit);
         $scenario->update($this->data);
 
-        $npc = npc::where('scenario_id', $this->scenario->id)->get();
-        $monster = monster::where('scenario_id', $this->scenario->id)->get();
-        $rooms = rooms::where('scenario_id', $this->scenario->id)->get();
-        $events = events::where('scenario_id', $this->scenario->id)->get();
-        $attachments = attachments::where('scenario_id', $this->scenario->id)->get();
+        $npc = npc::where('scenario_id', $this->scenario->id)->first();
+        $monster = monster::where('scenario_id', $this->scenario->id)->first();
+        $rooms = rooms::where('scenario_id', $this->scenario->id)->first();
+        $events = events::where('scenario_id', $this->scenario->id)->first();
+        $attachments = attachments::where('scenario_id', $this->scenario->id)->first();
 
         if(isset($this->data['attachments'])) {
             foreach ($this->data['attachments'] as $key => $attachment) {
@@ -161,28 +277,39 @@ class ScenarioEdit extends Page implements HasForms
             }
         }
 
-        $attachments[0]->update([
-            'data' => $this->attachments
-        ]);
+        if ($attachments) {
+            $attachments->update([
+                'data' => $this->attachments
+            ]);
+        }
 
-        $npc[0]->update([
-            'data' => $this->npcs
-        ]);
+        if ($npc) {
+            $npc->update([
+                'data' => json_encode($this->data['npcs'])
+            ]);
+        }
 
-        $monster[0]->update([
-            'data' => $this->monsters
-        ]);
+        if ($monster) {
+            $monster->update([
+                'data' => json_encode($this->data['monsters'])
+            ]);
+        }
 
-        $rooms[0]->update([
-            'data' => $this->places
-        ]);
+        if ($rooms) {
+            $rooms->update([
+                'data' => json_encode($this->data['places'])
+            ]);
+        }
 
-        $events[0]->update([
-            'data' => $this->events
-        ]);
+        if ($events) {
+            $events->update([
+                'data' => json_encode($this->data['events'])
+            ]);
+        }
 
         Notification::make()
             ->title('Skenaario päivitetty')
+            ->body('Skenaario on päivitetty onnistuneesti')
             ->success()
             ->send();
 
@@ -196,45 +323,5 @@ class ScenarioEdit extends Page implements HasForms
     public function removeAttachment($index)
     {
         array_splice($this->attachments, $index, 1);
-    }
-
-    public function addNpcField()
-    {
-        $this->npcs[] = ['name' => '', 'description' => ''];
-    }
-
-    public function removeNpc($index)
-    {
-        array_splice($this->npcs, $index, 1);
-    }
-
-    public function addMonsterField()
-    {
-        $this->monsters[] = ['name' => '', 'attack_info' => '', 'misc_info' => '', 'defense' => '', 'hp' => '', 'xp' => '', 'link' => ''];
-    }
-
-    public function removeMonster($index)
-    {
-        array_splice($this->monsters, $index, 1);
-    }
-
-    public function addPlaceField()
-    {
-        $this->places[] = ['name' => '', 'description' => ''];
-    }
-
-    public function removePlace($index)
-    {
-        array_splice($this->places, $index, 1);
-    }
-
-    public function addEventField()
-    {
-        $this->events[] = ['name' => '', 'description' => ''];
-    }
-
-    public function removeEvent($index)
-    {
-        array_splice($this->events, $index, 1);
     }
 }
