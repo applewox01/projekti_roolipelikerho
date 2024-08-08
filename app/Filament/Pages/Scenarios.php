@@ -28,7 +28,7 @@ class Scenarios extends Page implements HasTable
             HeaderAction::make('create')
                 ->label('Luo uusi skenaario')
                 ->url(route('filament.admin.pages.scenario-create'))
-                ->icon('gmdi-add')
+                ->icon('heroicon-o-plus')
                 ->color('primary')
                 ->outlined(true),
         ];
