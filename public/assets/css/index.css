@@ -69,7 +69,7 @@ body::-webkit-scrollbar {
 }
 
 .list_after_login {
-    margin: 0; 
+    margin: 0;
     height: 100%;
 }
 
@@ -168,13 +168,13 @@ main#adventure-list {
 }
 
 .scenario_req, .adventure-stats {
-    width: 100%; 
-    height: fit-content; 
+    width: 100%;
+    height: fit-content;
     word-wrap: break-word;
 }
 
 .adventure-box h2 {
-    height: fit-content; 
+    height: fit-content;
     word-wrap: break-word;
 }
 
@@ -208,6 +208,14 @@ aside.background-info {
 #description, #intro, #scenario, #monsters, #characters {
 	border-bottom: 2px solid var(--border);
 	margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-link:hover {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {

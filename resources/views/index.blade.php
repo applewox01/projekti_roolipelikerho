@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/df37ec336e.js" crossorigin='anonymous'></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/index.css') }}">
-	<script src="{{ asset('assets/js/index.js') }}"></script>
+	<script src="{{ asset('assets/js/index.js') }}" defer></script>
     <title>Seikkailijoiden kilta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 </head>
@@ -14,25 +14,29 @@
 		<header id="page-header">
 			<h1><i class="fa-brands fa-d-and-d"></i>
 				<a class="guild-link">Seikkailijoiden kilta</a></h1>
-            @if (Auth::check())
+            @auth
 			<div class="list_after_login">
-            <p class="login-link">
-				<a href="{{ route('filament.admin.pages.dashboard') }}">
-					<i class="fa-solid fa-shield-halved"></i>
-				Hallintapaneeli
-			</a>
-			</p>
-			<p class="login-link" >
-				<a href="{{ route('logout') }}">
-				<i class='fas'>&#xf52b;</i> Kirjaudu ulos
-				</a>
-			</p>
-			</div>
-            @else
+                <p class="login-link">
+                    <a href="{{ route('filament.admin.pages.dashboard') }}">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    Hallintapaneeli
+                </a>
+                </p>
+                <form id="logout-form" class="hidden" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
+                <p class="login-link">
+                    <a id="logout">
+                        <i class='fas'>&#xf52b;</i> Kirjaudu ulos
+                    </a>
+                </p>
+            </div>
+            @endauth
+            @guest
             <a class="login-link" href="{{ route('login') }}">
 				Kirjaudu <i class="fa-solid fa-dungeon"></i>
 			</a>
-            @endif
+            @endguest
 		</header>
 
 			<br>

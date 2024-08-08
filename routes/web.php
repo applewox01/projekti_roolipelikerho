@@ -39,4 +39,4 @@ Route::get('/login', [AuthController::class, 'login'] )->name('login')->middlewa
 Route::post('/login', [AuthController::class, 'authenticate'] )->middleware('guest');
 
 //Logout
-Route::get('/logout', [AuthController::class, 'logout'] )->middleware('auth')->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'] )->middleware('auth')->name('logout');
