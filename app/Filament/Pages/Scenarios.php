@@ -29,7 +29,8 @@ class Scenarios extends Page implements HasTable
                 ->label('Luo uusi skenaario')
                 ->url(route('filament.admin.pages.scenario-create'))
                 ->icon('gmdi-add')
-                ->color('primary'),
+                ->color('primary')
+                ->outlined(true),
         ];
     }
 
