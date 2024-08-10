@@ -15,7 +15,7 @@ return [
         ],
 
         'submit' => [
-            'label' => 'Lähetä',
+            'label' => 'Tallenna',
         ],
 
     ],

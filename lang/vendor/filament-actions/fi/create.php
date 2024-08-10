@@ -13,11 +13,11 @@ return [
             'actions' => [
 
                 'create' => [
-                    'label' => 'Luo',
+                    'label' => 'Tallenna',
                 ],
 
                 'create_another' => [
-                    'label' => 'Luo & luo toinen',
+                    'label' => 'Tallenna & luo toinen',
                 ],
 
             ],
@@ -27,7 +27,7 @@ return [
         'notifications' => [
 
             'created' => [
-                'title' => 'Luotu',
+                'title' => 'Tallennettu',
             ],
 
         ],
