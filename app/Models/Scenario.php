@@ -33,9 +33,4 @@ class Scenario extends Model
     {
         return $this->belongsTo(worlds::class, 'world_id', 'id');
     }
-
-    public function wordlName()
-    {
-        return $this->world->name ?? 'Määrittelemätön maailma';
-    }
 }

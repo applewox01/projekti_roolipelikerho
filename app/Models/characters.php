@@ -19,6 +19,7 @@ class characters extends Model
         'class',
         'player_name',
         'notes',
+        'attachment',
         'created_at',
         'updated_at',
     ];

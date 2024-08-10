@@ -9,10 +9,13 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use App\Models\characters as ModelsCharacters;
 use Filament\Actions\Action;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action as TableAction;
 use Filament\Tables\Actions\ActionGroup;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Characters extends Page implements HasTable
 {
@@ -56,8 +59,25 @@ class Characters extends Page implements HasTable
                     TextInput::make('notes')
                         ->maxLength(255)
                         ->label('Muistiinpanot'),
+                    FileUpload::make('attachment')
+                        ->label('Hahmolomake')
+                        ->moveFiles()
+                        ->disk('public')
+                        ->maxSize(107200)
+                        ->uploadingMessage('Ladataan hahmolomaketta...')
+                        ->openable()
+                        ->hint('Max tiedosto koko: 100MB')
+                        ->hintIcon('heroicon-o-information-circle')
                 ])
                 ->action(function (array $data): void {
+                    $attachment = $data['attachment'] ?? null;
+
+                    if ($attachment) {
+                        $extension = '.' . pathinfo($attachment, PATHINFO_EXTENSION);
+                        $newAttachment = $this->handleUpload($attachment, 'characters', $extension);
+                        $data['attachment'] = $newAttachment;
+                    }
+
                     ModelsCharacters::create($data);
 
                     Notification::make()
@@ -115,14 +135,17 @@ class Characters extends Page implements HasTable
                         ->name('Muokkaa')
                         ->icon('heroicon-o-pencil')
                         ->color('primary')
-                        ->fillForm(fn (ModelsCharacters $record): array => [
-                            'name' => $record->name,
-                            'race' => $record->race,
-                            'level' => $record->level,
-                            'class'=> $record->class,
-                            'player_name' => $record->player_name,
-                            'notes' => $record->notes,
-                        ])
+                        ->fillForm(function (ModelsCharacters $record): array {
+                            return [
+                                'name' => $record->name,
+                                'race' => $record->race,
+                                'level' => $record->level,
+                                'class'=> $record->class,
+                                'player_name' => $record->player_name,
+                                'notes' => $record->notes,
+                                'attachment' => $record->attachment,
+                            ];
+                        })
                         ->form([
                             TextInput::make('name')
                                 ->required()
@@ -145,8 +168,25 @@ class Characters extends Page implements HasTable
                             TextInput::make('notes')
                                 ->maxLength(255)
                                 ->label('Muistiinpanot'),
+                            FileUpload::make('attachment')
+                                ->label('Hahmolomake')
+                                ->moveFiles()
+                                ->disk('public')
+                                ->maxSize(107200)
+                                ->uploadingMessage('Ladataan hahmolomaketta...')
+                                ->openable()
+                                ->hint('Max tiedosto koko: 100MB')
+                                ->hintIcon('heroicon-o-information-circle')
                         ])
                         ->action(function (array $data, ModelsCharacters $record): void {
+                            $attachment = $data['attachment'] ?? $record->attachment;
+
+                            if ($attachment) {
+                                $extension = '.' . pathinfo($attachment, PATHINFO_EXTENSION);
+                                $newAttachment = $this->handleUpload($attachment, 'characters', $extension);
+                                $data['attachment'] = $newAttachment;
+                            }
+
                             $record->update($data);
 
                             Notification::make()
@@ -157,7 +197,16 @@ class Characters extends Page implements HasTable
                         }),
                     TableAction::make('delete')
                         ->name('Poista')
-                        ->action(fn (ModelsCharacters $record) => $record->delete())
+                        ->action(function (ModelsCharacters $record) {
+
+                            $attachement = $record->attachement;
+
+                            if ($attachement) {
+                                Storage::disk('public')->delete($attachement);
+                            }
+
+                            $record->delete();
+                        })
                         ->requiresConfirmation()
                         ->modalHeading('Poista hahmo')
                         ->modalDescription('Haluatko varmasti poistaa hahmon?')
@@ -168,4 +217,25 @@ class Characters extends Page implements HasTable
             ])
             ->emptyStateHeading('Ei hahmoja');
     }
+
+    private function handleUpload($file, $folder, $extension): string {
+        $disk = Storage::disk('public');
+
+        if ($disk->exists($file)) {
+            $filePath = $file;
+
+            $newFilename = $folder . '/' . Str::random(8) . $extension;
+
+            $fileContents = $disk->get($filePath);
+
+            $disk->put($newFilename, $fileContents);
+
+            $disk->delete($filePath);
+
+            return $newFilename;
+        }
+
+        return '';
+    }
+
 }
