@@ -169,7 +169,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->cloneable()
                 ->reorderableWithButtons()
                 ->addActionLabel('Lisää liite')
-                ->itemLabel('Liite'),
+                ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Liite'),
             Repeater::make('npcs')
                 ->label('NPC:t')
                 ->columnSpan(2)
@@ -193,7 +193,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->cloneable()
                 ->reorderableWithButtons()
                 ->addActionLabel('Lisää NPC')
-                ->itemLabel('NPC'),
+                ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'NPC'),
             Repeater::make('monsters')
                 ->label('Hirviöt')
                 ->columnSpan(2)
@@ -243,7 +243,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->cloneable()
                 ->reorderableWithButtons()
                 ->addActionLabel('Lisää hirviö')
-                ->itemLabel('Hirviö'),
+                ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Hirviö'),
             Repeater::make('places')
                 ->label('Paikat')
                 ->columnSpan(2)
@@ -267,7 +267,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->cloneable()
                 ->reorderableWithButtons()
                 ->addActionLabel('Lisää paikka')
-                ->itemLabel('Paikka'),
+                ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Paikka'),
             Repeater::make('events')
                 ->label('Tapahtumat')
                 ->columnSpan(2)
@@ -291,7 +291,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->cloneable()
                 ->reorderableWithButtons()
                 ->addActionLabel('Lisää tapahtuma')
-                ->itemLabel('Tapahtuma'),
+                ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Tapahtuma'),
         ])
         ->statePath('data')
         ->columns(2);
