@@ -38,7 +38,7 @@ class Scenarios extends Page implements HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query(Scenario::query())
+            ->query(Scenario::query()->orderBy('lvl_lowest', 'asc')->orderBy('plr_least', 'asc'))
             ->columns([
                 TextColumn::make('name')
                     ->label('Nimi')
