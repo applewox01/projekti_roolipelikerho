@@ -205,18 +205,6 @@ class ScenarioEdit extends Page implements HasForms
                     TextInput::make('defense')
                         ->label('Puolustus')
                         ->columnSpan(1),
-                    TextInput::make('attack_info')
-                        ->label('Taistelutiedot')
-                        ->columnSpan(1),
-                    RichEditor::make('misc_info')
-                        ->label('Lisätiedot')
-                        ->toolbarButtons([
-                            'h2',
-                            'blockquote',
-                            'bold',
-                            'italic',
-                        ])
-                        ->columnSpan(2),
                     TextInput::make('hp')
                         ->label('Osumapisteet')
                         ->numeric()
@@ -230,6 +218,24 @@ class ScenarioEdit extends Page implements HasForms
                     TextInput::make('link')
                         ->label('Linkki')
                         ->url()
+                        ->columnSpan(1),
+                    RichEditor::make('attack_info')
+                        ->label('Taistelutiedot')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ])
+                        ->columnSpan(2),
+                    RichEditor::make('misc_info')
+                        ->label('Lisätiedot')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ])
                         ->columnSpan(2),
                 ])
                 ->columns(2)
