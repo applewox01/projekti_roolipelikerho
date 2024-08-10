@@ -97,7 +97,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->label('Maailma')
                 ->native(false)
                 ->searchable()
-                ->options([worlds::all()->pluck('name', 'id')->toArray()])
+                ->options(Worlds::query()->pluck('name', 'id'))
                 ->columnSpan(2),
             RichEditor::make('description')
                 ->label('Kuvaus')
