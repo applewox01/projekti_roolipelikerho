@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 class Dashboard extends Page implements HasTable
 {
     use InteractsWithTable;
-    protected static ?string $recordTitleAttribute = 'Etusivu';
-    protected static ?string $navigationLabel = 'Etusivu';
+    protected static ?string $recordTitleAttribute = 'Hallintapaneeli';
+    protected static ?string $navigationLabel = 'Hallintapaneeli';
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     protected static string $view = 'filament.pages.dashboard';
