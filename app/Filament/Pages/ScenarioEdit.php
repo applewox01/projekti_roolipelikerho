@@ -21,6 +21,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ScenarioEdit extends Page implements HasForms
 {
@@ -30,7 +31,6 @@ class ScenarioEdit extends Page implements HasForms
     public $edit = '';
 
     public ?array $data = [];
-    public ?array $attachments = [];
 
     public $scenario;
 
@@ -53,9 +53,28 @@ class ScenarioEdit extends Page implements HasForms
         $events = events::where('scenario_id', $this->scenario->id)->get();
         $attachments = attachments::where('scenario_id', $this->scenario->id)->get();
 
-        $this->attachments = $attachments[0]->data ?? [];
 
         $formData = $this->scenario->toArray();
+
+        if (isset($attachments[0])) {
+            $decodedAttachments = json_decode($attachments[0]->data, true);
+            $formData['attachments'] = [];
+
+            foreach ($decodedAttachments as $attachmentGroup) {
+                $attachmentItem = [
+                    'name' => $attachmentGroup['name'],
+                    'attachments' => $attachmentGroup['attachments'],
+                ];
+
+                foreach ($attachmentGroup['attachments'] as $attachment) {
+                    $attachmentItem['attachments'] = $attachment['path'];
+                }
+
+                $formData['attachments'][] = $attachmentItem;
+            }
+        } else {
+            $formData['attachments'] = [];
+        }
 
         $formData['npcs'] = isset($npc[0]) ? json_decode($npc[0]->data, true) : [];
         $formData['monsters'] = isset($monster[0]) ? json_decode($monster[0]->data, true) : [];
@@ -132,11 +151,25 @@ class ScenarioEdit extends Page implements HasForms
                     'italic',
                 ])
                 ->columnSpan(2),
-            FileUpload::make('attachments')
-                ->multiple()
-                ->disk('public')
+            Repeater::make('attachments')
                 ->label('Liitteet')
-                ->columnSpan(2),
+                ->columnSpan(2)
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Nimi')
+                        ->required()
+                        ->columnSpan(2),
+                    FileUpload::make('attachments')
+                        ->disk('public')
+                        ->label('Liitteet')
+                        ->columnSpan(2),
+                ])
+                ->columns(2)
+                ->collapsible()
+                ->cloneable()
+                ->reorderableWithButtons()
+                ->addActionLabel('Lisää liite')
+                ->itemLabel('Liite'),
             Repeater::make('npcs')
                 ->label('NPC:t')
                 ->columnSpan(2)
@@ -269,17 +302,45 @@ class ScenarioEdit extends Page implements HasForms
         $events = events::where('scenario_id', $this->scenario->id)->first();
         $attachments = attachments::where('scenario_id', $this->scenario->id)->first();
 
-        if(isset($this->data['attachments'])) {
-            foreach ($this->data['attachments'] as $key => $attachment) {
-                $filename = uniqid('attachment_') . '.' . $attachment->extension();
-                $path = $attachment->storeAs('public/attachments', $filename);
-                $attachmentPaths[] = $path;
+        $attachmentPaths = [];
+
+        if (isset($this->data['attachments'])) {
+            foreach ($this->data['attachments'] as $groupKey => $attachmentGroup) {
+                $attachmentItem = [
+                    'name' => $attachmentGroup['name'],
+                    'attachments' => []
+                ];
+
+                foreach ($attachmentGroup['attachments'] as $attachmentKey => $attachment) {
+                    if ($attachment instanceof TemporaryUploadedFile) {
+
+                        $filename = uniqid('attachment_') . '.' . $attachment->extension();
+                        $path = $attachment->storeAs('attachments', $filename, 'public');
+
+                        $attachmentItem['attachments'][$attachmentKey] = [
+                            'filename' => $filename,
+                            'path' => $path
+                        ];
+                    } else {
+                        $attachmentItem['attachments'][$attachmentKey] = [
+                            'filename' => basename($attachment),
+                            'path' => $attachment
+                        ];
+                    }
+                }
+
+                $attachmentPaths[$groupKey] = $attachmentItem;
             }
         }
 
         if ($attachments) {
             $attachments->update([
-                'data' => $this->attachments
+                'data' => json_encode($attachmentPaths)
+            ]);
+        } else {
+            attachments::create([
+                'scenario_id' => $scenario->id,
+                'data' => json_encode($attachmentPaths)
             ]);
         }
 
@@ -313,15 +374,5 @@ class ScenarioEdit extends Page implements HasForms
             ->success()
             ->send();
 
-    }
-
-    public function addAttachmentField()
-    {
-        $this->attachments[] = [''];
-    }
-
-    public function removeAttachment($index)
-    {
-        array_splice($this->attachments, $index, 1);
     }
 }

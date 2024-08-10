@@ -103,11 +103,25 @@ class ScenarioCreate extends Page implements HasForms
                         'italic',
                     ])
                     ->columnSpan(2),
-                FileUpload::make('attachments')
-                    ->multiple()
-                    ->disk('public')
+                Repeater::make('attachments')
                     ->label('Liitteet')
-                    ->columnSpan(2),
+                    ->columnSpan(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nimi')
+                            ->required()
+                            ->columnSpan(2),
+                        FileUpload::make('attachments')
+                            ->disk('public')
+                            ->label('Liitteet')
+                            ->columnSpan(2),
+                    ])
+                    ->columns(2)
+                    ->collapsible()
+                    ->cloneable()
+                    ->reorderableWithButtons()
+                    ->addActionLabel('Lisää liite')
+                    ->itemLabel('Liite'),
                 Repeater::make('npcs')
                     ->label('NPC:t')
                     ->columnSpan(2)
@@ -232,11 +246,19 @@ class ScenarioCreate extends Page implements HasForms
     public function create() {
         $attachmentPaths = [];
 
-        if(isset($this->data['attachments'])) {
-            foreach ($this->data['attachments'] as $key => $attachment) {
-                $filename = uniqid('attachment_') . '.' . $attachment->extension();
-                $path = $attachment->storeAs('public/attachments', $filename);
-                $attachmentPaths[] = $path;
+        if (isset($this->data['attachments'])) {
+            foreach ($this->data['attachments'] as $groupKey => $attachmentGroup) {
+                foreach ($attachmentGroup['attachments'] as $attachmentKey => $attachment) {
+                    $filename = uniqid('attachment_') . '.' . $attachment->extension();
+
+                    $path = $attachment->storeAs('attachments', $filename, 'public');
+
+                    $attachmentPaths[$groupKey]['name'] = $attachmentGroup['name'];
+                    $attachmentPaths[$groupKey]['attachments'][$attachmentKey] = [
+                        'filename' => $filename,
+                        'path' => $path
+                    ];
+                }
             }
         }
 
@@ -264,7 +286,7 @@ class ScenarioCreate extends Page implements HasForms
 
         attachments::create([
             'scenario_id' => $scenario->id,
-            'data' => $attachmentPaths
+            'data' => json_encode($attachmentPaths)
         ]);
 
         Notification::make()
