@@ -58,6 +58,8 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 NavigationGroup::make()
                      ->label('Hahmot'),
+                NavigationGroup::make()
+                     ->label('Ylläpito'),
             ]);
     }
 }
