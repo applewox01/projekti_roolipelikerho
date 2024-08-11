@@ -8,63 +8,68 @@ use Exception;
 
 class IndexController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         try {
             $scenarios = DB::table('scenarios')->orderBy('name')->get();
-            $worlds = DB::table('worlds')->select('name','id')->get();
-            return view("index",
-            [
+            $worlds = DB::table('worlds')->select('name', 'id')->get();
+
+            return view('index', [
                 'scenarios' => $scenarios,
-                'search_by' => "",
-                'filter_world' => "",
-                'order_by' => "az",
-                'worlds' => $worlds
-            ]
-            );
-        }
-        catch (Exception $e) {
-            return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
+                'search_by' => '',
+                'filter_world' => '',
+                'order_by' => 'az',
+                'worlds' => $worlds,
+            ]);
+        } catch (Exception $e) {
+            return view('index')->withErrors(['get_scenarios' => $e->getMessage()]);
         }
     }
 
-    public function sort_by() {
+    public function sort_by(Request $request)
+    {
         try {
-            $filter_world = request()->get('maailma');
-            $order_by = request()->get('jarjestys');
-            $search_by = trim(request()->get('search'));
-            $worlds = DB::table('worlds')->select('name','id')->get();
+            $filter_world = $request->input('maailma', '');
+            $order_by = $request->input('jarjestys', 'az');
+            $search_by = trim($request->input('search', ''));
+
+            $worlds = DB::table('worlds')->select('name', 'id')->get();
+
             $query = DB::table('scenarios');
 
-            if ($filter_world != '') {
-                $query->where('world_id',$filter_world);
-            };
-            if ($search_by != '') {
-                $query->where('name', 'LIKE', '%'.$search_by.'%')->orderBy('name');
-            };
+            if (!empty($filter_world)) {
+                $query->where('world_id', $filter_world);
+            }
+
+            if (!empty($search_by)) {
+                $query->where('name', 'LIKE', '%' . $search_by . '%');
+            }
+
             switch ($order_by) {
-                case "az":
+                case 'za':
+                    $query->orderBy('name', 'desc');
+                    break;
+                case 'lvl':
+                    $query->orderBy('lvl_highest')->orderBy('lvl_lowest');
+                    break;
+                case 'plrcount':
+                    $query->orderBy('plr_most')->orderBy('plr_least');
+                    break;
+                default:
                     $query->orderBy('name');
-                    break;
-                case "lvl":
-                    $query->orderBy('lvl_highest', 'asc')->orderBy('lvl_lowest', 'asc');
-                    break;
-                case "plrcount":
-                    $query->orderBy('plr_most', 'asc')->orderBy('plr_least', 'asc');
-                    break;
-            };
+            }
+
             $scenarios = $query->get();
-            return view("index",
-            [
+
+            return view('index', [
                 'order_by' => $order_by,
                 'search_by' => $search_by,
                 'scenarios' => $scenarios,
                 'worlds' => $worlds,
-                'filter_world' => $filter_world
-            ]
-            );
-        }
-        catch (Exception $e) {
-            return view("index")->withErrors(["get_scenarios"=> $e->getMessage()]);
+                'filter_world' => $filter_world,
+            ]);
+        } catch (Exception $e) {
+            return view('index')->withErrors(['get_scenarios' => $e->getMessage()]);
         }
     }
 }

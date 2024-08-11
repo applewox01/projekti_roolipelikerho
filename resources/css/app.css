@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.raleway-font {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.brand {
+    color: #0f60d9;
+    filter: drop-shadow(2px 2px 4px #0f60d9e1);
+    transition: all 0.6s;
+}
