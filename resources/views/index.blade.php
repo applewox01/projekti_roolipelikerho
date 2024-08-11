@@ -124,5 +124,27 @@
             </main>
         @endif
     </section>
+
+    <script type="module">
+        const notyf = new Notyf({
+            duration: 5000,
+            position: {
+                x: 'right',
+                y: 'top',
+            },
+        });
+        @if($errors->any())
+            notyf.error({
+                message: '{{ $errors->first() }}',
+                dismissible: true
+            })
+        @endif
+        @if(session('success'))
+            notyf.success({
+                message: '{{ session('success') }}',
+                dismissible: true
+            })
+        @endif
+    </script>
 </body>
 </html>
