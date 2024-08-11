@@ -294,6 +294,7 @@ class ScenarioEdit extends Page implements HasForms
                 ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Tapahtuma'),
         ])
         ->statePath('data')
+        ->live()
         ->columns(2);
     }
 

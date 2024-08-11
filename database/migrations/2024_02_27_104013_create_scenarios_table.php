@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('scenarios', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('background_info')->nullable();
-            $table->string('other_requirements')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('background_info')->nullable();
+            $table->longText('other_requirements')->nullable();
             $table->integer('lvl_highest');
             $table->integer('lvl_lowest');
             $table->integer('plr_most');
             $table->integer('plr_least');
-            $table->string('admin_desc')->nullable();
+            $table->longText('admin_desc')->nullable();
             $table->timestamps();
         });
     }

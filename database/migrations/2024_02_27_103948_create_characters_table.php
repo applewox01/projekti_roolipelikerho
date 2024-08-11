@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('level');
             $table->string('class')->nullable();
             $table->string('player_name')->nullable();
-            $table->string('notes')->nullable();
+            $table->longText('notes')->nullable();
             $table->timestamps();
         });
     }

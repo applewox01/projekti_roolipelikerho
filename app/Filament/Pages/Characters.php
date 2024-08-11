@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use App\Models\characters as ModelsCharacters;
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action as TableAction;
@@ -56,9 +57,14 @@ class Characters extends Page implements HasTable
                     TextInput::make('player_name')
                         ->maxLength(255)
                         ->label('Pelaajan nimi'),
-                    TextInput::make('notes')
-                        ->maxLength(255)
-                        ->label('Muistiinpanot'),
+                    RichEditor::make('notes')
+                        ->label('Muistiinpanot')
+                        ->toolbarButtons([
+                            'h2',
+                            'blockquote',
+                            'bold',
+                            'italic',
+                        ]),
                     FileUpload::make('attachment')
                         ->label('Hahmolomake')
                         ->moveFiles()
@@ -117,6 +123,8 @@ class Characters extends Page implements HasTable
                 TextColumn::make('notes')
                     ->searchable()
                     ->sortable()
+                    ->html()
+                    ->words(5)
                     ->label('Muistiinpanot'),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -165,9 +173,14 @@ class Characters extends Page implements HasTable
                             TextInput::make('player_name')
                                 ->maxLength(255)
                                 ->label('Pelaajan nimi'),
-                            TextInput::make('notes')
-                                ->maxLength(255)
-                                ->label('Muistiinpanot'),
+                            RichEditor::make('notes')
+                                ->label('Muistiinpanot')
+                                ->toolbarButtons([
+                                    'h2',
+                                    'blockquote',
+                                    'bold',
+                                    'italic',
+                                ]),
                             FileUpload::make('attachment')
                                 ->label('Hahmolomake')
                                 ->moveFiles()

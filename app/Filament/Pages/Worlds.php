@@ -19,7 +19,6 @@ class Worlds extends Page implements HasTable
     use InteractsWithTable;
 
     protected ?string $heading = 'Skenaario Maailmat';
-    protected ?string $subheading = 'Skenaario Maailmat';
     protected static ?string $navigationLabel = 'Skenaario Maailmat';
     protected static ?string $title = 'Skenaario Maailmat';
 
