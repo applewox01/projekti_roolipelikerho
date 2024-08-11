@@ -36,6 +36,7 @@ Before setting up the project, ensure that your development environment meets th
 
 ```bash
    php artisan serve
+   npm run dev
 ```
 
 ## Folder structure
