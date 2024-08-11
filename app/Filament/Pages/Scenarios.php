@@ -94,7 +94,14 @@ class Scenarios extends Page implements HasTable
                         ->color('primary'),
                     Action::make('delete')
                         ->name('Poista')
-                        ->action(fn (Scenario $record) => $record->delete())
+                        ->action(function (Scenario $record) {
+                            activity()
+                                ->causedBy(auth()->user())
+                                ->event('scenario.deleted')
+                                ->log('Ylläpitäjä ' . auth()->user()->username . ' poisti skenaarion ' . $record->name);
+
+                            $record->delete();
+                        })
                         ->requiresConfirmation()
                         ->modalHeading('Poista skenaario')
                         ->modalDescription('Haluatko varmasti poistaa skenaarion?')

@@ -86,6 +86,11 @@ class Characters extends Page implements HasTable
 
                     ModelsCharacters::create($data);
 
+                    activity()
+                        ->causedBy(auth()->user())
+                        ->event('character.created')
+                        ->log('Ylläpitäjä ' . auth()->user()->username . ' loi hahmon ' . $data['name']);
+
                     Notification::make()
                         ->title('Hahmo luotu')
                         ->body('Hahmo on luotu onnistuneesti.')
@@ -202,6 +207,11 @@ class Characters extends Page implements HasTable
 
                             $record->update($data);
 
+                            activity()
+                                ->causedBy(auth()->user())
+                                ->event('character.updated')
+                                ->log('Ylläpitäjä ' . auth()->user()->username . ' muokkasi hahmoa ' . $data['name']);
+
                             Notification::make()
                                 ->title('Hahmo päivitetty')
                                 ->body('Hahmo on päivitetty onnistuneesti.')
@@ -217,6 +227,11 @@ class Characters extends Page implements HasTable
                             if ($attachement) {
                                 Storage::disk('public')->delete($attachement);
                             }
+
+                            activity()
+                                ->causedBy(auth()->user())
+                                ->event('character.deleted')
+                                ->log('Ylläpitäjä ' . auth()->user()->username . ' poisti hahmon ' . $record->name);
 
                             $record->delete();
                         })

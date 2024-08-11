@@ -45,6 +45,11 @@ class Invites extends Page implements HasTable
                 ->action(function (array $data): void {
                     InviteCode::create($data);
 
+                    activity()
+                        ->causedBy(auth()->user())
+                        ->event('invite_code.created')
+                        ->log('Ylläpitäjä ' . auth()->user()->username . ' loi kutsukoodin ' . $data['code']);
+
                     Notification::make()
                         ->title('Kutsukoodi luotu')
                         ->body('Kutsukoodi on luotu onnistuneesti.')
@@ -91,7 +96,15 @@ class Invites extends Page implements HasTable
                         }),
                     TableAction::make('delete')
                         ->name('Poista')
-                        ->action(fn (InviteCode $record) => $record->delete())
+                        ->action(function (InviteCode $record) {
+
+                            activity()
+                                ->causedBy(auth()->user())
+                                ->event('invite_code.deleted')
+                                ->log('Ylläpitäjä ' . auth()->user()->username . ' poisti kutsukoodin ' . $record->code);
+
+                            $record->delete();
+                        })
                         ->requiresConfirmation()
                         ->modalHeading('Poista kutsukoodi')
                         ->modalDescription('Haluatko varmasti poistaa kutsukoodin?')

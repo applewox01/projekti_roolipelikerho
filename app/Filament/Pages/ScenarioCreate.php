@@ -295,6 +295,11 @@ class ScenarioCreate extends Page implements HasForms
             'data' => json_encode($attachmentPaths)
         ]);
 
+        activity()
+            ->causedBy(auth()->user())
+            ->event('scenario.created')
+            ->log('Ylläpitäjä ' . auth()->user()->username . ' loi skenaarion ' . $this->data['name']);
+
         Notification::make()
             ->title('Skenaario luotu')
             ->success()

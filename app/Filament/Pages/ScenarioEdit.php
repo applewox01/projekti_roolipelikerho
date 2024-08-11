@@ -375,6 +375,12 @@ class ScenarioEdit extends Page implements HasForms
             ]);
         }
 
+        activity()
+            ->causedBy(auth()->user())
+            ->event('scenario.edited')
+            ->log('Ylläpitäjä ' . auth()->user()->username . ' muokkasi skeenariota ' . $this->data['name']);
+
+
         Notification::make()
             ->title('Skenaario päivitetty')
             ->body('Skenaario on päivitetty onnistuneesti')

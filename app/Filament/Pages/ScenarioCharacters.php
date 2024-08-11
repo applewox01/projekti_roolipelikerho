@@ -53,6 +53,11 @@ class ScenarioCharacters extends Page implements HasTable
                 ->action(function (array $data): void {
                     scenario_characters::create($data);
 
+                    activity()
+                        ->causedBy(auth()->user())
+                        ->event('scenario_character.created')
+                        ->log('Ylläpitäjä ' . auth()->user()->username . ' lisäsi hahmon skenaarioon');
+
                     Notification::make()
                         ->title('Hahmo lisätty skenaarioon')
                         ->body('Hahmo lisätty skenaarioon onnistuneesti.')
@@ -97,15 +102,27 @@ class ScenarioCharacters extends Page implements HasTable
                         ->action(function (array $data, scenario_characters $record): void {
                             $record->update($data);
 
+                            activity()
+                                ->causedBy(auth()->user())
+                                ->event('scenario_character.edited')
+                                ->log('Ylläpitäjä ' . auth()->user()->username . ' muokkasi hahmoa skenaariossa');
+
                             Notification::make()
-                                ->title('Kutsukoodi päivitetty')
-                                ->body('Kutsukoodi on päivitetty onnistuneesti.')
+                                ->title('Liitos päivitetty')
+                                ->body('Liitos on päivitetty onnistuneesti.')
                                 ->success()
                                 ->send();
                         }),
                     TableAction::make('delete')
                         ->name('Poista')
-                        ->action(fn (scenario_characters $record) => $record->delete())
+                        ->action(function (scenario_characters $record) {
+                            activity()
+                                ->causedBy(auth()->user())
+                                ->event('scenario_character.deleted')
+                                ->log('Ylläpitäjä ' . auth()->user()->username . ' poisti hahmon skenaariosta');
+
+                            $record->delete();
+                        })
                         ->requiresConfirmation()
                         ->modalHeading('Poista liitos')
                         ->modalDescription('Haluatko varmasti poistaa liitoksen?')

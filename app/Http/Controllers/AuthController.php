@@ -55,7 +55,7 @@ class AuthController extends Controller
 
         try {
             // Create a new user
-            User::create([
+            $user = User::create([
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -66,6 +66,11 @@ class AuthController extends Controller
 
             // Commit the transaction
             DB::commit();
+
+            activity()
+                ->causedBy($user)
+                ->event('user.registered')
+                ->log('Käyttäjä ' . $user->username . ' rekisteröityi kutsukoodilla ' . $inviteCode);
 
             // Redirect to the login page with success message
             return redirect()->route('login')->with('success', 'Käyttäjä luotu!');
