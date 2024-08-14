@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Widgets\StatsWidget;
 use App\Models\User;
 use Filament\Pages\Page;
 use Filament\Tables\Actions\Action;
@@ -25,6 +26,13 @@ class Dashboard extends Page implements HasTable
         return __('Tervetuloa takaisin ' . Auth::user()->username . '! 👋');
     }
 
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            StatsWidget::class
+        ];
+    }
+
     public function table(Table $table): Table
     {
         return $table
@@ -45,9 +53,6 @@ class Dashboard extends Page implements HasTable
                     ->searchable()
                     ->sortable(),
             ])
-            ->filters([
-                // ...
-            ])
             ->actions([
                 Action::make('delete')
                     ->label('Poista Käyttäjä')
@@ -57,9 +62,6 @@ class Dashboard extends Page implements HasTable
                     })
                     ->icon('heroicon-o-trash')
                     ->color('danger'),
-            ])
-            ->bulkActions([
-                // ...
             ]);
     }
 }
