@@ -305,7 +305,6 @@ class ScenarioCreate extends Page implements HasForms
             ->success()
             ->send();
 
-        $this->form->fill();
-        $this->reset('data');
+        return redirect()->route('filament.admin.pages.scenarios');
     }
 }
