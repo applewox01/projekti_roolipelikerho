@@ -10,6 +10,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/index/app.js',
                 'resources/js/lib/aos.js',
+                'resources/js/scenarios/windows.js',
+                'resources/js/scenarios/scenario.js',
             ],
             refresh: true,
         }),

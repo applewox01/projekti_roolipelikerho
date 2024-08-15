@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <script src="{{asset('assets/js/scenario.js')}}"></script>
-    <script src="{{asset('assets/js/windows.js')}}"></script>
    <title>{{ $scenario->name }}</title>
+
+   @vite(['resources/js/scenarios/scenario.js', 'resources/js/scenarios/windows.js'])
 </head>
 <body>
     @if ($errors->has('load_scenario'))
@@ -27,6 +27,10 @@
     <aside id="panel">
             <p class="scenario_name">{{ $scenario->name }}</p>
         <section id="icons">
+            <div class="icon-box" id="description">
+                <h2><i class="fa-solid fa-book-open"></i></h2>
+                <p>kuvaus</p>
+            </div>
             <div class="icon-box" id="characters">
                 <h2><i class="fa-solid fa-people-line"></i></h2>
                 <p>Pelaajat</p>
@@ -39,9 +43,9 @@
                 <h2><i class="fa-solid fa-dragon"></i></h2>
                 <p>Hirviöt</p>
             </div>
-            <div class="icon-box" id="description">
+            <div class="icon-box" id="admin_desc">
                 <h2><i class="fa-solid fa-book-open"></i></h2>
-                <p>Kuvaus</p>
+                <p>Ylläpidon kuvaus</p>
             </div>
             <div class="icon-box" id="background_info">
                 <h2><a><i class="fa-solid fa-book"></i></a></h2>
@@ -75,14 +79,17 @@
         <main>
 
             @php
-                $windows = array(["background_info","Taustatiedot"],
+            $windows = array(
+                ["description","Kuvaus"],
+                ["background_info","Taustatiedot"],
                 ["characters","Pelaajat"],
                 ["npcs","NPC:t"],
                 ["monsters","Hirviöt"],
                 ["attachments","Liitteet"],
                 ["events","Tapahtumat"],
                 ["rooms","Paikat"],
-                ["description","Kuvaus"])
+                ["admin_desc","Ylläpidon kuvaus"]
+            );
             @endphp
             @foreach ($windows as $window)
             <div class="moveable_window" id="{{$window[0]}}_window">

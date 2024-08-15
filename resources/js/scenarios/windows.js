@@ -23,7 +23,7 @@ for (const object of objects) {
 
     let trueHeight = Number((content.style.height).replace('px', ''));
     let trueWidth = Number((content.style.width).replace('px', ''));
-    
+
     let trueTop = Number((object.style.top).replace('px', ''));
     let trueLeft = Number((object.style.left).replace('px', ''));
 
@@ -113,7 +113,7 @@ for (const object of objects) {
 
                     checkBoundaries()
 
-                    if (event.clientY - 15 > 0 
+                    if (event.clientY - 15 > 0
                         && event.clientY + trueHeight - 15 < viewportHeight) {
                         object.style.top = (event.clientY - 15) + "px";
                    }
@@ -122,7 +122,7 @@ for (const object of objects) {
                         object.style.left = (event.clientX - (trueWidth/2)) + "px";
                     }
                 };
-                
+
                 document.addEventListener("mouseup", function(){
                     object.style.opacity = 1;
                     object.style["pointer-events"] = "all";
@@ -132,7 +132,7 @@ for (const object of objects) {
                     };
                     document.removeEventListener("mousemove", moveObject);
                 });
-                
+
                 });
                 break
     }
