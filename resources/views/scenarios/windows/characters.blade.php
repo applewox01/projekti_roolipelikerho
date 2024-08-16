@@ -18,7 +18,7 @@
                 <p class="info_name">Pelaajan nimi:</p>
                 <p>{{$character->player_name}}</p>
                 <p class="info_name">Muistiinpanot:</p>
-                <p>{{$character->notes}}</p>
+                <p>{!! $character->notes !!}</p>
         </div>
 
         </div>
