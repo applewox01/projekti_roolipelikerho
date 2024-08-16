@@ -14,10 +14,13 @@
                         <div class="info_area">
                             <i class="fa-solid fa-calendar-days"></i>
                             <h3 class="info_button_name">{{ $event_data['name'] }}</h3>
+                            <i class="fa fa-arrow-circle-down hide_character_box"></i>
                         </div>
 
                         <div class="character_info">
+                            <div class="long_text_format">
                             <p>{!! $event_data['description'] !!}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach

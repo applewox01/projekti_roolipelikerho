@@ -14,9 +14,12 @@
                         <div class="info_area">
                             <i class="fa-solid fa-person"></i>
                             <h3 class="info_button_name">{{ $npc_data['name'] }}</h3>
+                            <i class="fa fa-arrow-circle-down hide_character_box"></i>
                         </div>
                         <div class="character_info">
+                            <div class="long_text_format">
                             <p>{!! $npc_data['description'] !!}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach

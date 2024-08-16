@@ -3,7 +3,7 @@
 //pari ongelmaa
 //kokoa muuttaessa, se voi ylittää näytön koon ja mennä ulkopuolelle
 //avatessa uusi ikkuna, toinen ikkuna menee ulkopuolelle
-//
+//korjattu?
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -13,7 +13,7 @@ for (const object of objects) {
 
     const content = object.querySelectorAll(".window_content")[0];
     content.style.height = "200px";
-    content.style.width = "200px";
+    content.style.width = "220px"
 
     let previousHeight = content.style.height;
     let previousWidth = content.style.width;
@@ -32,8 +32,8 @@ for (const object of objects) {
         if (trueHeight > 800) {
             content.style.height = "800px";
         }
-        else if (trueHeight < 200) {
-            content.style.height = "200px";
+        else if (trueHeight < 50) {
+            content.style.height = "50px";
         }
         trueHeight += 30;
         if (content.style.display == "none") {
@@ -44,8 +44,8 @@ for (const object of objects) {
         if (trueWidth > 800) {
             content.style.width = "800px";
         }
-        else if (trueWidth < 200) {
-            content.style.width = "200px";
+        else if (trueWidth < 220) {
+            content.style.width = "220px";
         }
     }
 
@@ -66,7 +66,7 @@ for (const object of objects) {
 
             trueHeight = Number((content.style.height).replace('px', ''));
             trueWidth = Number((content.style.width).replace('px', ''));
-            //jostakin syystä + 35, koska muuten ei toimi LOL
+            //jostakin syystä + 35, koska muuten ei toimi
             if ((trueTop + trueHeight + 35) < viewportHeight) {
                 previousHeight = content.style.height;
             } else {
@@ -116,11 +116,17 @@ for (const object of objects) {
                     if (event.clientY - 15 > 0
                         && event.clientY + trueHeight - 15 < viewportHeight) {
                         object.style.top = (event.clientY - 15) + "px";
-                   }
+                   };
                     if (event.clientX - (trueWidth/2) > 175
                         && event.clientX  + trueWidth/2 < viewportWidth) {
-                        object.style.left = (event.clientX - (trueWidth/2)) + "px";
-                    }
+                        object.style.left = event.clientX - (trueWidth/2) + "px";
+                        //clientx ei toimi elementin sisällä; mouseaction = none?
+                        //console.log((event.clientX - trueLeft))
+                        /*console.log("trueleft" + trueLeft);
+                        console.log("clientx" + event.clientX);
+                        console.log("trueleft + (client - truleft)" + (trueLeft + (event.clientX - trueLeft)))
+                        console.log(`(${trueLeft} + (${event.clientX} - ${trueLeft}))`);*/
+                    };
                 };
 
                 document.addEventListener("mouseup", function(){

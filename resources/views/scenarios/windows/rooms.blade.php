@@ -14,9 +14,12 @@
                         <div class="info_area">
                             <i class="fas fa-door-open"></i>
                             <h3 class="info_button_name">{{ $room_data['name'] }}</h3>
+                            <i class="fa fa-arrow-circle-down hide_character_box"></i>
                         </div>
                         <div class="character_info">
+                            <div class="long_text_format">
                             <p>{!! $room_data['description'] !!}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach

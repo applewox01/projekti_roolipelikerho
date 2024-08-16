@@ -23,19 +23,22 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     //lukee character, mutta pätee jokaista info nappia
-    const character_box = document.getElementsByClassName("character_box");
-    for (let box of character_box) {
-        const character_info = box.getElementsByClassName("character_info");
+    const hide_character_box = document.getElementsByClassName("hide_character_box");
+    for (let box of hide_character_box) {
+        const character_info = box.parentNode.parentNode.getElementsByClassName("character_info");
         character_info[0].style.display = "none";
         box.addEventListener("click", function(){
             if (character_info.length > 0) {
                 if (character_info[0].style.display == "none") {
                     character_info[0].style.display = "block";
+                    box.className = "fa fa-arrow-circle-up hide_character_box";
                 } else {
                     character_info[0].style.display = "none";
+                    box.className = "fa fa-arrow-circle-down hide_character_box";
                 }
             }
-        })
+        });
+
     };
 
     const mobile_window = document.getElementsByClassName("mobile_window");
@@ -50,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function(){
     for (let box of image_box) {
         if (document.getElementById(`full_${box.id}`)) {
         
-        //tämä ei toimi koska mobiili versio laiminlyödään!:
         const full_image = document.getElementById(`full_${box.id}`);
         full_image.style.display = "none";
         box.addEventListener("click", function(){
