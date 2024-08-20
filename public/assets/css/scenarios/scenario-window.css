@@ -335,6 +335,10 @@ main {
     font-size: 20px;
 }
 
+.monster_icon {
+    margin-right: 5px;
+}
+
 .long_text_format {
     padding: 2px;
     overflow: hidden;

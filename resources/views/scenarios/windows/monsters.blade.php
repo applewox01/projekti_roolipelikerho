@@ -19,15 +19,15 @@
 
                         <div class="character_info">
                             <div class="monster_info_flexbox">
-                                <i class="fa fa-heart"></i>
+                                <i class="fa fa-heart monster_icon"></i>
                                 <p>{{ $monster_data['hp'] }}</p>
                             </div>
                             <div class="monster_info_flexbox">
-                                <i class="fa fa-shield"></i>
+                                <i class="fa fa-shield monster_icon"></i>
                                 <p>{{ $monster_data['defense'] }}</p>
                             </div>
                             <div class="monster_info_flexbox">
-                                <p>XP</p>
+                                <p class="monster_icon">XP</p>
                                 <p>{{ $monster_data['xp'] }}</p>
                             </div>
                             <div class="long_text_format">
