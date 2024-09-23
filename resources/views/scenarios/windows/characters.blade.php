@@ -10,16 +10,27 @@
                 <i class="fa fa-arrow-circle-down hide_character_box"></i>
                 </div>
         <div class="character_info">
-                <p class="info_name">Rotu:</p>
-                <p>{{$character->race}}</p>
-                <p class="info_name">LVL:</p>
-                <p>{{$character->level}}</p>
-                <p class="info_name">Luokka:</p>
-                <p>{{$character->class}}</p>
-                <p class="info_name">Pelaajan nimi:</p>
-                <p>{{$character->player_name}}</p>
-                <p class="info_name">Muistiinpanot:</p>
+                <div class="info_name_character">
+                <p class="character_highlighted_p">Rotu:</p><p class="info_name_character_p">{{$character->race}}</p>
+                </div>
+                <div class="info_name_character">
+                <p class="character_highlighted_p">LVL:</p><p class="info_name_character_p">{{$character->level}}</p>
+                </div>
+                <div class="info_name_character">
+                <p class="character_highlighted_p">Luokka:</p><p class="info_name_character_p">{{$character->class}}</p>
+                </div>
+                <div class="info_name_character">
+                <p class="character_highlighted_p">Pelaajan nimi:</p><p class="info_name_character_p">{{$character->player_name}}</p>
+                </div>
+                @if (Storage::disk('public')->exists($character->attachment))
+                <a href="{{Storage::url($character->attachment)}}"><p class="info_name_character">Hahmolomake</p></a>
+                @else
+                <p class="info_name_character attachment_not_found_character">Hahmolomaketta ei löydetty</p>
+                @endif
+                <div class="character_notes">
+                <p class="character_highlighted_p">Muistiinpanot:</p>
                 <p>{!! $character->notes !!}</p>
+                </div>  
         </div>
 
         </div>
