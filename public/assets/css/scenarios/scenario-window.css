@@ -407,6 +407,10 @@ main {
     text-overflow: ellipsis;
 }
 
+.gap {
+    width: 5px;
+}
+
 .font_notes {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
 }

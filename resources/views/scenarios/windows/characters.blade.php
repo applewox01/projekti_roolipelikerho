@@ -11,16 +11,16 @@
                 </div>
         <div class="character_info">
                 <div class="info_name_character">
-                <p class="character_highlighted_p">Rotu: </p><p class="info_name_character_p"> {{$character->race}}</p>
+                <p class="character_highlighted_p">Rotu: </p><div class="gap"></div><p class="info_name_character_p"> {{$character->race}}</p>
                 </div>
                 <div class="info_name_character">
-                <p class="character_highlighted_p">LVL: </p><p class="info_name_character_p"> {{$character->level}}</p>
+                <p class="character_highlighted_p">LVL: </p><div class="gap"></div><p class="info_name_character_p"> {{$character->level}}</p>
                 </div>
                 <div class="info_name_character">
-                <p class="character_highlighted_p">Luokka: </p><p class="info_name_character_p"> {{$character->class}}</p>
+                <p class="character_highlighted_p">Luokka: </p><div class="gap"></div><p class="info_name_character_p"> {{$character->class}}</p>
                 </div>
                 <div class="info_name_character">
-                <p class="character_highlighted_p">Pelaajan nimi: </p><p class="info_name_character_p"> {{$character->player_name}}</p>
+                <p class="character_highlighted_p">Pelaajan nimi: </p><div class="gap"></div><p class="info_name_character_p"> {{$character->player_name}}</p>
                 </div>
                 @if (Storage::disk('public')->exists($character->attachment))
                 <a href="{{Storage::url($character->attachment)}}"><p class="info_name_character">Hahmolomake</p></a>
